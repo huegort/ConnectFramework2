@@ -1,5 +1,5 @@
 
-<%@ page import="connectframework2.Activity" %>
+<%@ page import="com.guru.connectframework.activity.Activity" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list activity">
 			
+				<g:if test="${activityInstance?.approver}">
+				<li class="fieldcontain">
+					<span id="approver-label" class="property-label"><g:message code="activity.approver.label" default="Approver" /></span>
+					
+						<span class="property-value" aria-labelledby="approver-label"><g:link controller="user" action="show" id="${activityInstance?.approver?.id}">${activityInstance?.approver?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${activityInstance?.created}">
 				<li class="fieldcontain">
 					<span id="created-label" class="property-label"><g:message code="activity.created.label" default="Created" /></span>
@@ -32,20 +41,58 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.name}">
+				<g:if test="${activityInstance?.criteriaData}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="activity.name.label" default="Name" /></span>
+					<span id="criteriaData-label" class="property-label"><g:message code="activity.criteriaData.label" default="Criteria Data" /></span>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${activityInstance}" field="name"/></span>
+						<g:each in="${activityInstance.criteriaData}" var="c">
+						<span class="property-value" aria-labelledby="criteriaData-label"><g:link controller="activityCriteriaData" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.partnership}">
+				<g:if test="${activityInstance?.dateApproved}">
 				<li class="fieldcontain">
-					<span id="partnership-label" class="property-label"><g:message code="activity.partnership.label" default="Partnership" /></span>
+					<span id="dateApproved-label" class="property-label"><g:message code="activity.dateApproved.label" default="Date Approved" /></span>
 					
-						<span class="property-value" aria-labelledby="partnership-label"><g:fieldValue bean="${activityInstance}" field="partnership"/></span>
+						<span class="property-value" aria-labelledby="dateApproved-label"><g:formatDate date="${activityInstance?.dateApproved}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityInstance?.institution}">
+				<li class="fieldcontain">
+					<span id="institution-label" class="property-label"><g:message code="activity.institution.label" default="Institution" /></span>
+					
+						<span class="property-value" aria-labelledby="institution-label"><g:link controller="institution" action="show" id="${activityInstance?.institution?.id}">${activityInstance?.institution?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityInstance?.owner}">
+				<li class="fieldcontain">
+					<span id="owner-label" class="property-label"><g:message code="activity.owner.label" default="Owner" /></span>
+					
+						<span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${activityInstance?.owner?.id}">${activityInstance?.owner?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityInstance?.status}">
+				<li class="fieldcontain">
+					<span id="status-label" class="property-label"><g:message code="activity.status.label" default="Status" /></span>
+					
+						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${activityInstance}" field="status"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityInstance?.type}">
+				<li class="fieldcontain">
+					<span id="type-label" class="property-label"><g:message code="activity.type.label" default="Type" /></span>
+					
+						<span class="property-value" aria-labelledby="type-label"><g:link controller="activityType" action="show" id="${activityInstance?.type?.id}">${activityInstance?.type?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

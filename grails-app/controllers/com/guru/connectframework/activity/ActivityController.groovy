@@ -1,4 +1,4 @@
-package connectframework2
+package com.guru.connectframework.activity
 
 
 

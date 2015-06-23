@@ -1,5 +1,5 @@
 
-<%@ page import="connectframework2.Activity" %>
+<%@ page import="com.guru.connectframework.activity.Activity" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,13 +24,17 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="activity.approver.label" default="Approver" /></th>
+					
 						<g:sortableColumn property="created" title="${message(code: 'activity.created.label', default: 'Created')}" />
 					
-						<g:sortableColumn property="name" title="${message(code: 'activity.name.label', default: 'Name')}" />
+						<g:sortableColumn property="dateApproved" title="${message(code: 'activity.dateApproved.label', default: 'Date Approved')}" />
 					
-						<g:sortableColumn property="partnership" title="${message(code: 'activity.partnership.label', default: 'Partnership')}" />
+						<th><g:message code="activity.institution.label" default="Institution" /></th>
 					
-						<g:sortableColumn property="validUntil" title="${message(code: 'activity.validUntil.label', default: 'Valid Until')}" />
+						<th><g:message code="activity.owner.label" default="Owner" /></th>
+					
+						<g:sortableColumn property="status" title="${message(code: 'activity.status.label', default: 'Status')}" />
 					
 					</tr>
 				</thead>
@@ -38,13 +42,17 @@
 				<g:each in="${activityInstanceList}" status="i" var="activityInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${activityInstance.id}">${fieldValue(bean: activityInstance, field: "created")}</g:link></td>
+						<td><g:link action="show" id="${activityInstance.id}">${fieldValue(bean: activityInstance, field: "approver")}</g:link></td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "name")}</td>
+						<td><g:formatDate date="${activityInstance.created}" /></td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "partnership")}</td>
+						<td><g:formatDate date="${activityInstance.dateApproved}" /></td>
 					
-						<td><g:formatDate date="${activityInstance.validUntil}" /></td>
+						<td>${fieldValue(bean: activityInstance, field: "institution")}</td>
+					
+						<td>${fieldValue(bean: activityInstance, field: "owner")}</td>
+					
+						<td>${fieldValue(bean: activityInstance, field: "status")}</td>
 					
 					</tr>
 				</g:each>
