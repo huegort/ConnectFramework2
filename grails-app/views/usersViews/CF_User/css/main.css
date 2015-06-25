@@ -1,0 +1,25 @@
+.main-body {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.hidden {
+    display: none;
+}
+
+.no-vertical-align {
+    vertical-align: middle;
+}
+
+details > p {
+    margin-left: 24px;
+}
+details details {
+    margin-left: 36px;
+}
+
+article {
+    margin-left: 20px;
+}

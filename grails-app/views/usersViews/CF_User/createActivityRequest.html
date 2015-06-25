@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet"
+          href="css/grid.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function clearInput(value) {
+            $(value).val(' ');
+        }
+
+    </script>
+</head>
+<body>
+<div class="main-body">
+    <div class="grid">
+        <div class="grid__col grid__col--12-of-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Create a New Activity Request</h2>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Chosen Institute</h4>
+                            </div>
+                            <div class="grid__col grid__col--9-of-12" style="vertical-align: bottom;">
+                                <p>Name of the Institute</p>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Enter Main Contact</h4>
+                            </div>
+                            <div class="grid__col grid__col--9-of-12">
+                                <input class="form-control" id="enterContactBox" type="text" value="Contact Details"
+                                       onclick="clearInput('#enterContactBox')">
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>File Upload</h4>
+                            </div>
+                            <div class="grid__col grid__col--9-of-12" style="vertical-align: -webkit-baseline-middle;">
+                                <input id="fileuploadBox" type="file" value="Enter Name">
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                            </div>
+                            <div class="grid__col grid__col--9-of-12" style="text-align: right">
+                                <input class="btn btn-default" id="enterForm" type="button" value="Request">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <a href="home.html"> Go to User Home </a>|
+            <a href="createInstituteRequest.html"> Go to User Institute Request </a>
+        </div>
+</body>
+</html>
