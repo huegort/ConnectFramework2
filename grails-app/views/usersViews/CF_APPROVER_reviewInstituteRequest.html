@@ -1,0 +1,86 @@
+<html>
+<head>
+    <link rel="stylesheet"
+          href="css/grid.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function clearInput(value) {
+            $(value).val(' ');
+        }
+
+    </script>
+</head>
+<body>
+<div class="main-body">
+    <div class="grid">
+        <div class="grid__col grid__col--12-of-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Institute Request Approval</h2>
+                </div>
+                <div class="panel-body">
+                    <form>
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Institute Name</h4>
+                            </div>
+                            <div class="grid__col grid__col--6-of-12">
+                                <p class="h5">Institute A</p>
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span></button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="color: red; font-size: 20px;"></span></button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span></button>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Main Contact</h4>
+                            </div>
+                            <div class="grid__col grid__col--6-of-12">
+                                <p class="h5">Phone: 555-5555 Email: hello@world.com</p>
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span></button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="color: red; font-size: 20px;"></span></button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span></button>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Files</h4>
+                            </div>
+                            <div class="grid__col grid__col--6-of-12">
+                                <input class="btn btn-default btn-sm" type="button" value="View Files">
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span></button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="color: red; font-size: 20px;"></span></button>
+                                <button class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span></button>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                            </div>
+                            <div class="grid__col grid__col--6-of-12" style="text-align: right">
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                <input class="btn btn-default btn-success" id="acceptForm" type="button" value="Approve"></span>
+                                <input class="btn btn-default btn-danger" id="rejectForm" type="button" value="Reject"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <a href="CF_APPROVER_home.html"> Go to Approver Home </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
