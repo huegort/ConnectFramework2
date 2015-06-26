@@ -23,3 +23,7 @@ details details {
 article {
     margin-left: 20px;
 }
+
+.btn-width-30 {
+    width: 31%;
+}
