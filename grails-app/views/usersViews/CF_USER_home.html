@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
         function showActivitiesField() {
-            $('#activity').removeClass('hidden');
+            $('#activity').removeAttr('style');
         }
 
         function getActivityValues() {
@@ -47,6 +47,10 @@
             $(value).val(' ');
         }
 
+        function showDescription() {
+            $('#descriptionField').removeClass('hidden');
+        }
+
 
     </script>
 </head>
@@ -73,18 +77,32 @@
                                 <option>Category Three</option>
                             </select>
                         </div>
-                        <div id="activity" class="hidden">
+                        <div id="activity" style="display: none;">
                             <h4>Please Select Activity</h4>
                             <select id="Activities" class="form-control"
-                                    onchange="getActivityValues();getDescriptionContent()">
+                                    onchange="getActivityValues();getDescriptionContent();showDescription();">
+                                <option>Request Activity</option>
                                 <option>Activity One</option>
                                 <option>Activity Two</option>
                                 <option>Activity Three</option>
                             </select>
                         </div>
+
+                        <p></p>
+
+                        <div id="descriptionField" class="panel panel-default hidden">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Description Field</h3>
+                            </div>
+                            <div class="panel-body" id="description">
+
+                            </div>
+                        </div>
+
                         <div id="institute" class="hidden">
                             <h4>Please Select Institute</h4>
                             <select id="Institutes" class="form-control" onchange="">
+                                <option>Request Institute</option>
                                 <option>Institute One</option>
                                 <option>Institute Two</option>
                                 <option>Institute Three</option>
@@ -95,15 +113,6 @@
                                    style="margin-top: 15px;">
                         </div>
                     </form>
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Description Field</h3>
-                </div>
-                <div class="panel-body" id="description">
-
                 </div>
             </div>
 
