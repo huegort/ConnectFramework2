@@ -1,4 +1,4 @@
-<%@ page import="com.guru.connectframework.activity.ActivityType" %>
+<%@ page import="com.guru.connectframework.Activity.ActivityType" %>
 <!DOCTYPE html>
 <html>
 	<head>

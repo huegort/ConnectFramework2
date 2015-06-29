@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>553</x>
+      <y>266</y>
+      <w>147</w>
+      <h>133</h>
+    </coordinates>
+    <panel_attributes>Activity: Class_
+--
+name: String
+type: ActivityType
+Description: String
+partnership: Partnership
+Owner: String
+approval: Approval
+contact: Contact
+data: Set&lt;CriteriaData&gt;
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>77</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>User
+--
+name: String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>217</x>
+      <y>462</y>
+      <w>147</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Approval: Class_
+--
+createdBy:User
+approver: User
+dateAppoved: Date
+validTo: Date
+status:ApprovalStatus
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>392</x>
+      <y>77</y>
+      <w>147</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Institution: Class_
+--
+name: String
+Description:String
+country:Country
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>749</x>
+      <y>252</y>
+      <w>147</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>ActivityType: Class_
+--
+name: String
+category: ActivityCategory
+requiredLevel: PartnershipLevel
+criteria: ActivityCriteria
+UrlToDoc:String
+docFile:Document
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>287</y>
+      <w>70</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0
+m2=1
+has &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;80.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>469</y>
+      <w>147</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>Criteria: Class_
+--
+name: String
+criteriaEntity:CriteriaEntity
+dataType:DataType
+Description:String
+seqNum:int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>763</x>
+      <y>161</y>
+      <w>147</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>ActivityCategory: Class_
+--
+name: String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>819</x>
+      <y>189</y>
+      <w>21</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>777</x>
+      <y>336</y>
+      <w>84</w>
+      <h>259</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+has &gt;</panel_attributes>
+    <additional_attributes>100.0;10.0;100.0;350.0;10.0;350.0;10.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>406</x>
+      <y>455</y>
+      <w>147</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>CriteriaData: Class_
+--
+entity: approvable
+criteria:Criteria
+valueString: String
+valueDocument: Document
+valueDate: Date
+approval:Approval</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>546</x>
+      <y>504</y>
+      <w>126</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>77</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Country: Class_
+--
+name: String
+region: Region
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>728</x>
+      <y>77</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Region: Class_
+--
+name: String
+[waiting for message]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>532</x>
+      <y>91</y>
+      <w>42</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>91</y>
+      <w>42</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>259</y>
+      <w>217</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Partnership: Class_
+--
+institution: Institution
+approval:Approval
+level: PartnershipLevel
+data: PartnershipCriteriaData
+contact:Contact</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>112</x>
+      <y>259</y>
+      <w>147</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>PartnershipLevel: Class_
+--
+name: String
+level: int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>252</x>
+      <y>308</y>
+      <w>42</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>364</y>
+      <w>77</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+has &gt;</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>287</y>
+      <w>77</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>231</x>
+      <y>77</y>
+      <w>147</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>Contact: Class_
+--
+name: String
+phone: String
+eMail:String
+institution:Institution
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>14</x>
+      <y>147</y>
+      <w>147</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Document: Class_
+--
+name: String
+file: blob
+fileType: String
+fileSize:int
+Description:String
+Created:blob
+createdBy:User
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>434</x>
+      <y>161</y>
+      <w>147</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>DataEnity:interface
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>406</x>
+      <y>189</y>
+      <w>112</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;140.0;80.0;10.0;80.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>497</x>
+      <y>189</y>
+      <w>133</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;170.0;80.0;170.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>350</y>
+      <w>133</w>
+      <h>119</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+&lt; has</panel_attributes>
+    <additional_attributes>170.0;150.0;170.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>602</x>
+      <y>161</y>
+      <w>147</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>CriteriaEntity: interface
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>658</x>
+      <y>189</y>
+      <w>126</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0;160.0;30.0;160.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>189</y>
+      <w>469</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>650.0;10.0;650.0;30.0;10.0;30.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>168</x>
+      <y>329</y>
+      <w>630</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+&lt; Has</panel_attributes>
+    <additional_attributes>880.0;330.0;880.0;360.0;10.0;360.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>357</x>
+      <y>511</y>
+      <w>63</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>301</x>
+      <y>350</y>
+      <w>21</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>301</x>
+      <y>385</y>
+      <w>266</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0;360.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>14</x>
+      <y>371</y>
+      <w>147</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>Notes: Class_
+--
+parent:Noteable
+content:String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>147</y>
+      <w>21</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>371</x>
+      <y>119</y>
+      <w>35</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>378</x>
+      <y>21</y>
+      <w>385</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>Connect Framework. Class Diagram Proposed ver002</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

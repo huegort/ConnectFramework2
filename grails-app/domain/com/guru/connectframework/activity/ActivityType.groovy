@@ -1,19 +1,23 @@
-package com.guru.connectframework.activity
+package com.guru.connectframework.Activity
 
+import com.guru.connectframework.criteria.CriteriaContainer
 import com.guru.connectframework.partnership.PartnershipLevel
+import com.guru.connectframework.util.Document
 
 class ActivityType {
 
     String name
+    String description
     ActivityCategory category
-    String explainationURL
-    String descritption
-    PartnershipLevel levelRequired
+    PartnershipLevel requiredLevel
+    CriteriaContainer criteriaContainer
 
-    static hasMany = [criteria: ActivityCriteria]
-
-
+    String urlToDoc
+    Document document
 
     static constraints = {
+        description nullable: true
+        urlToDoc nullable: true
+        document nullable: true
     }
 }

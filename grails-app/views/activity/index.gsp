@@ -1,5 +1,5 @@
 
-<%@ page import="com.guru.connectframework.activity.Activity" %>
+<%@ page import="com.guru.connectframework.Activity.Activity" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,17 +24,17 @@
 			<thead>
 					<tr>
 					
-						<th><g:message code="activity.approver.label" default="Approver" /></th>
+						<g:sortableColumn property="description" title="${message(code: 'activity.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="created" title="${message(code: 'activity.created.label', default: 'Created')}" />
+						<th><g:message code="activity.contact.label" default="Contact" /></th>
 					
-						<g:sortableColumn property="dateApproved" title="${message(code: 'activity.dateApproved.label', default: 'Date Approved')}" />
+						<g:sortableColumn property="notes" title="${message(code: 'activity.notes.label', default: 'Notes')}" />
 					
-						<th><g:message code="activity.institution.label" default="Institution" /></th>
+						<th><g:message code="activity.activityType.label" default="Activity Type" /></th>
 					
-						<th><g:message code="activity.owner.label" default="Owner" /></th>
+						<th><g:message code="activity.approval.label" default="Approval" /></th>
 					
-						<g:sortableColumn property="status" title="${message(code: 'activity.status.label', default: 'Status')}" />
+						<th><g:message code="activity.dataContainer.label" default="Data Container" /></th>
 					
 					</tr>
 				</thead>
@@ -42,17 +42,17 @@
 				<g:each in="${activityInstanceList}" status="i" var="activityInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${activityInstance.id}">${fieldValue(bean: activityInstance, field: "approver")}</g:link></td>
+						<td><g:link action="show" id="${activityInstance.id}">${fieldValue(bean: activityInstance, field: "description")}</g:link></td>
 					
-						<td><g:formatDate date="${activityInstance.created}" /></td>
+						<td>${fieldValue(bean: activityInstance, field: "contact")}</td>
 					
-						<td><g:formatDate date="${activityInstance.dateApproved}" /></td>
+						<td>${fieldValue(bean: activityInstance, field: "notes")}</td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "institution")}</td>
+						<td>${fieldValue(bean: activityInstance, field: "activityType")}</td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "owner")}</td>
+						<td>${fieldValue(bean: activityInstance, field: "approval")}</td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "status")}</td>
+						<td>${fieldValue(bean: activityInstance, field: "dataContainer")}</td>
 					
 					</tr>
 				</g:each>

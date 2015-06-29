@@ -1,5 +1,5 @@
 
-<%@ page import="com.guru.connectframework.activity.Activity" %>
+<%@ page import="com.guru.connectframework.Activity.Activity" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,49 +23,65 @@
 			</g:if>
 			<ol class="property-list activity">
 			
-				<g:if test="${activityInstance?.approver}">
+				<g:if test="${activityInstance?.description}">
 				<li class="fieldcontain">
-					<span id="approver-label" class="property-label"><g:message code="activity.approver.label" default="Approver" /></span>
+					<span id="description-label" class="property-label"><g:message code="activity.description.label" default="Description" /></span>
 					
-						<span class="property-value" aria-labelledby="approver-label"><g:link controller="user" action="show" id="${activityInstance?.approver?.id}">${activityInstance?.approver?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${activityInstance}" field="description"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.created}">
+				<g:if test="${activityInstance?.contact}">
 				<li class="fieldcontain">
-					<span id="created-label" class="property-label"><g:message code="activity.created.label" default="Created" /></span>
+					<span id="contact-label" class="property-label"><g:message code="activity.contact.label" default="Contact" /></span>
 					
-						<span class="property-value" aria-labelledby="created-label"><g:formatDate date="${activityInstance?.created}" /></span>
+						<span class="property-value" aria-labelledby="contact-label"><g:link controller="contact" action="show" id="${activityInstance?.contact?.id}">${activityInstance?.contact?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.criteriaData}">
+				<g:if test="${activityInstance?.notes}">
 				<li class="fieldcontain">
-					<span id="criteriaData-label" class="property-label"><g:message code="activity.criteriaData.label" default="Criteria Data" /></span>
+					<span id="notes-label" class="property-label"><g:message code="activity.notes.label" default="Notes" /></span>
 					
-						<g:each in="${activityInstance.criteriaData}" var="c">
-						<span class="property-value" aria-labelledby="criteriaData-label"><g:link controller="activityCriteriaData" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${activityInstance}" field="notes"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.dateApproved}">
+				<g:if test="${activityInstance?.activityType}">
 				<li class="fieldcontain">
-					<span id="dateApproved-label" class="property-label"><g:message code="activity.dateApproved.label" default="Date Approved" /></span>
+					<span id="activityType-label" class="property-label"><g:message code="activity.activityType.label" default="Activity Type" /></span>
 					
-						<span class="property-value" aria-labelledby="dateApproved-label"><g:formatDate date="${activityInstance?.dateApproved}" /></span>
+						<span class="property-value" aria-labelledby="activityType-label"><g:link controller="activityType" action="show" id="${activityInstance?.activityType?.id}">${activityInstance?.activityType?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.institution}">
+				<g:if test="${activityInstance?.approval}">
 				<li class="fieldcontain">
-					<span id="institution-label" class="property-label"><g:message code="activity.institution.label" default="Institution" /></span>
+					<span id="approval-label" class="property-label"><g:message code="activity.approval.label" default="Approval" /></span>
 					
-						<span class="property-value" aria-labelledby="institution-label"><g:link controller="institution" action="show" id="${activityInstance?.institution?.id}">${activityInstance?.institution?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="approval-label"><g:link controller="approval" action="show" id="${activityInstance?.approval?.id}">${activityInstance?.approval?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityInstance?.dataContainer}">
+				<li class="fieldcontain">
+					<span id="dataContainer-label" class="property-label"><g:message code="activity.dataContainer.label" default="Data Container" /></span>
+					
+						<span class="property-value" aria-labelledby="dataContainer-label"><g:link controller="criteriaDataContainer" action="show" id="${activityInstance?.dataContainer?.id}">${activityInstance?.dataContainer?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="activity.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${activityInstance}" field="name"/></span>
 					
 				</li>
 				</g:if>
@@ -79,29 +95,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.status}">
+				<g:if test="${activityInstance?.partnership}">
 				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="activity.status.label" default="Status" /></span>
+					<span id="partnership-label" class="property-label"><g:message code="activity.partnership.label" default="Partnership" /></span>
 					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${activityInstance}" field="status"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${activityInstance?.type}">
-				<li class="fieldcontain">
-					<span id="type-label" class="property-label"><g:message code="activity.type.label" default="Type" /></span>
-					
-						<span class="property-value" aria-labelledby="type-label"><g:link controller="activityType" action="show" id="${activityInstance?.type?.id}">${activityInstance?.type?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${activityInstance?.validUntil}">
-				<li class="fieldcontain">
-					<span id="validUntil-label" class="property-label"><g:message code="activity.validUntil.label" default="Valid Until" /></span>
-					
-						<span class="property-value" aria-labelledby="validUntil-label"><g:formatDate date="${activityInstance?.validUntil}" /></span>
+						<span class="property-value" aria-labelledby="partnership-label"><g:link controller="partnership" action="show" id="${activityInstance?.partnership?.id}">${activityInstance?.partnership?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

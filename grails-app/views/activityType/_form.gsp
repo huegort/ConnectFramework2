@@ -1,58 +1,49 @@
-<%@ page import="com.guru.connectframework.activity.ActivityType" %>
+<%@ page import="com.guru.connectframework.Activity.ActivityType" %>
 
 
+
+<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'description', 'error')} ">
+	<label for="description">
+		<g:message code="activityType.description.label" default="Description" />
+		
+	</label>
+	<g:textField name="description" value="${activityTypeInstance?.description}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'urlToDoc', 'error')} ">
+	<label for="urlToDoc">
+		<g:message code="activityType.urlToDoc.label" default="Url To Doc" />
+		
+	</label>
+	<g:textField name="urlToDoc" value="${activityTypeInstance?.urlToDoc}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'document', 'error')} ">
+	<label for="document">
+		<g:message code="activityType.document.label" default="Document" />
+		
+	</label>
+	<g:select id="document" name="document.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" value="${activityTypeInstance?.document?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'category', 'error')} required">
 	<label for="category">
 		<g:message code="activityType.category.label" default="Category" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="category" name="category.id" from="${com.guru.connectframework.activity.ActivityCategory.list()}" optionKey="id" required="" value="${activityTypeInstance?.category?.id}" class="many-to-one"/>
+	<g:select id="category" name="category.id" from="${com.guru.connectframework.Activity.ActivityCategory.list()}" optionKey="id" required="" value="${activityTypeInstance?.category?.id}" class="many-to-one"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'criteria', 'error')} ">
-	<label for="criteria">
-		<g:message code="activityType.criteria.label" default="Criteria" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${activityTypeInstance?.criteria?}" var="c">
-    <li><g:link controller="activityCriteria" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="activityCriteria" action="create" params="['activityType.id': activityTypeInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'activityCriteria.label', default: 'ActivityCriteria')])}</g:link>
-</li>
-</ul>
-
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'descritption', 'error')} required">
-	<label for="descritption">
-		<g:message code="activityType.descritption.label" default="Descritption" />
+<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'criteriaContainer', 'error')} required">
+	<label for="criteriaContainer">
+		<g:message code="activityType.criteriaContainer.label" default="Criteria Container" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="descritption" required="" value="${activityTypeInstance?.descritption}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'explainationURL', 'error')} required">
-	<label for="explainationURL">
-		<g:message code="activityType.explainationURL.label" default="Explaination URL" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="explainationURL" required="" value="${activityTypeInstance?.explainationURL}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'levelRequired', 'error')} required">
-	<label for="levelRequired">
-		<g:message code="activityType.levelRequired.label" default="Level Required" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="levelRequired" name="levelRequired.id" from="${com.guru.connectframework.partnership.PartnershipLevel.list()}" optionKey="id" required="" value="${activityTypeInstance?.levelRequired?.id}" class="many-to-one"/>
+	<g:select id="criteriaContainer" name="criteriaContainer.id" from="${com.guru.connectframework.criteria.CriteriaContainer.list()}" optionKey="id" required="" value="${activityTypeInstance?.criteriaContainer?.id}" class="many-to-one"/>
 
 </div>
 
@@ -62,6 +53,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="name" required="" value="${activityTypeInstance?.name}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: activityTypeInstance, field: 'requiredLevel', 'error')} required">
+	<label for="requiredLevel">
+		<g:message code="activityType.requiredLevel.label" default="Required Level" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="requiredLevel" name="requiredLevel.id" from="${com.guru.connectframework.partnership.PartnershipLevel.list()}" optionKey="id" required="" value="${activityTypeInstance?.requiredLevel?.id}" class="many-to-one"/>
 
 </div>
 

@@ -1,5 +1,5 @@
 
-<%@ page import="com.guru.connectframework.activity.ActivityType" %>
+<%@ page import="com.guru.connectframework.Activity.ActivityType" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,13 +24,15 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="description" title="${message(code: 'activityType.description.label', default: 'Description')}" />
+					
+						<g:sortableColumn property="urlToDoc" title="${message(code: 'activityType.urlToDoc.label', default: 'Url To Doc')}" />
+					
+						<th><g:message code="activityType.document.label" default="Document" /></th>
+					
 						<th><g:message code="activityType.category.label" default="Category" /></th>
 					
-						<g:sortableColumn property="descritption" title="${message(code: 'activityType.descritption.label', default: 'Descritption')}" />
-					
-						<g:sortableColumn property="explainationURL" title="${message(code: 'activityType.explainationURL.label', default: 'Explaination URL')}" />
-					
-						<th><g:message code="activityType.levelRequired.label" default="Level Required" /></th>
+						<th><g:message code="activityType.criteriaContainer.label" default="Criteria Container" /></th>
 					
 						<g:sortableColumn property="name" title="${message(code: 'activityType.name.label', default: 'Name')}" />
 					
@@ -40,13 +42,15 @@
 				<g:each in="${activityTypeInstanceList}" status="i" var="activityTypeInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${activityTypeInstance.id}">${fieldValue(bean: activityTypeInstance, field: "category")}</g:link></td>
+						<td><g:link action="show" id="${activityTypeInstance.id}">${fieldValue(bean: activityTypeInstance, field: "description")}</g:link></td>
 					
-						<td>${fieldValue(bean: activityTypeInstance, field: "descritption")}</td>
+						<td>${fieldValue(bean: activityTypeInstance, field: "urlToDoc")}</td>
 					
-						<td>${fieldValue(bean: activityTypeInstance, field: "explainationURL")}</td>
+						<td>${fieldValue(bean: activityTypeInstance, field: "document")}</td>
 					
-						<td>${fieldValue(bean: activityTypeInstance, field: "levelRequired")}</td>
+						<td>${fieldValue(bean: activityTypeInstance, field: "category")}</td>
+					
+						<td>${fieldValue(bean: activityTypeInstance, field: "criteriaContainer")}</td>
 					
 						<td>${fieldValue(bean: activityTypeInstance, field: "name")}</td>
 					
