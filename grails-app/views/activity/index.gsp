@@ -1,5 +1,5 @@
 
-<%@ page import="com.guru.connectframework.Activity.Activity" %>
+<%@ page import="com.guru.connectframework.activity.Activity" %>
 <!DOCTYPE html>
 <html>
 	<head>
