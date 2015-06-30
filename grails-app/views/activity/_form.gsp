@@ -34,7 +34,7 @@
 		<g:message code="activity.activityType.label" default="Activity Type" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="activityType" name="activityType.id" from="${com.guru.connectframework.Activity.ActivityType.list()}" optionKey="id" required="" value="${activityInstance?.activityType?.id}" class="many-to-one"/>
+	<g:select id="activityType" name="activityType.id" from="${com.guru.connectframework.activity.ActivityType.list()}" optionKey="id" required="" value="${activityInstance?.activityType?.id}" class="many-to-one"/>
 
 </div>
 

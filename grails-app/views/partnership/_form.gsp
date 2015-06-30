@@ -31,7 +31,7 @@
     <li><g:link controller="activity" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="activity" action="create" params="['partnership.id': partnershipInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'activity.label', default: 'Activity')])}</g:link>
+<g:link controller="activity" action="create" params="['partnership.id': partnershipInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'activity.label', default: 'activity')])}</g:link>
 </li>
 </ul>
 
