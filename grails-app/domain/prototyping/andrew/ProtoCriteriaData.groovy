@@ -2,7 +2,8 @@ package prototyping.andrew
 
 class ProtoCriteriaData {
 
-    static belongsTo = [dataOwner:DataOwner]
+
+    static belongsTo = [container: ProtoDataContainer]
     String data
     static constraints = {
     }

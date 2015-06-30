@@ -1,5 +1,5 @@
 
-<%@ page import="com.guru.connectframework.activity.ActivityType" %>
+<%@ page import="com.guru.connectframework.Activity.ActivityType" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,6 +23,33 @@
 			</g:if>
 			<ol class="property-list activityType">
 			
+				<g:if test="${activityTypeInstance?.description}">
+				<li class="fieldcontain">
+					<span id="description-label" class="property-label"><g:message code="activityType.description.label" default="Description" /></span>
+					
+						<span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${activityTypeInstance}" field="description"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityTypeInstance?.urlToDoc}">
+				<li class="fieldcontain">
+					<span id="urlToDoc-label" class="property-label"><g:message code="activityType.urlToDoc.label" default="Url To Doc" /></span>
+					
+						<span class="property-value" aria-labelledby="urlToDoc-label"><g:fieldValue bean="${activityTypeInstance}" field="urlToDoc"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityTypeInstance?.document}">
+				<li class="fieldcontain">
+					<span id="document-label" class="property-label"><g:message code="activityType.document.label" default="Document" /></span>
+					
+						<span class="property-value" aria-labelledby="document-label"><g:link controller="document" action="show" id="${activityTypeInstance?.document?.id}">${activityTypeInstance?.document?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${activityTypeInstance?.category}">
 				<li class="fieldcontain">
 					<span id="category-label" class="property-label"><g:message code="activityType.category.label" default="Category" /></span>
@@ -32,40 +59,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${activityTypeInstance?.criteria}">
+				<g:if test="${activityTypeInstance?.criteriaContainer}">
 				<li class="fieldcontain">
-					<span id="criteria-label" class="property-label"><g:message code="activityType.criteria.label" default="Criteria" /></span>
+					<span id="criteriaContainer-label" class="property-label"><g:message code="activityType.criteriaContainer.label" default="Criteria Container" /></span>
 					
-						<g:each in="${activityTypeInstance.criteria}" var="c">
-						<span class="property-value" aria-labelledby="criteria-label"><g:link controller="activityCriteria" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${activityTypeInstance?.descritption}">
-				<li class="fieldcontain">
-					<span id="descritption-label" class="property-label"><g:message code="activityType.descritption.label" default="Descritption" /></span>
-					
-						<span class="property-value" aria-labelledby="descritption-label"><g:fieldValue bean="${activityTypeInstance}" field="descritption"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${activityTypeInstance?.explainationURL}">
-				<li class="fieldcontain">
-					<span id="explainationURL-label" class="property-label"><g:message code="activityType.explainationURL.label" default="Explaination URL" /></span>
-					
-						<span class="property-value" aria-labelledby="explainationURL-label"><g:fieldValue bean="${activityTypeInstance}" field="explainationURL"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${activityTypeInstance?.levelRequired}">
-				<li class="fieldcontain">
-					<span id="levelRequired-label" class="property-label"><g:message code="activityType.levelRequired.label" default="Level Required" /></span>
-					
-						<span class="property-value" aria-labelledby="levelRequired-label"><g:link controller="partnershipLevel" action="show" id="${activityTypeInstance?.levelRequired?.id}">${activityTypeInstance?.levelRequired?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="criteriaContainer-label"><g:link controller="criteriaContainer" action="show" id="${activityTypeInstance?.criteriaContainer?.id}">${activityTypeInstance?.criteriaContainer?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -75,6 +73,15 @@
 					<span id="name-label" class="property-label"><g:message code="activityType.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${activityTypeInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${activityTypeInstance?.requiredLevel}">
+				<li class="fieldcontain">
+					<span id="requiredLevel-label" class="property-label"><g:message code="activityType.requiredLevel.label" default="Required Level" /></span>
+					
+						<span class="property-value" aria-labelledby="requiredLevel-label"><g:link controller="partnershipLevel" action="show" id="${activityTypeInstance?.requiredLevel?.id}">${activityTypeInstance?.requiredLevel?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

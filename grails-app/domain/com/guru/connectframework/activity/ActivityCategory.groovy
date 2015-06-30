@@ -1,7 +1,6 @@
-package com.guru.connectframework.activity
+package com.guru.connectframework.Activity
 
 class ActivityCategory {
-
     String name
 
     static constraints = {

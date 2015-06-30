@@ -1,4 +1,4 @@
-package com.guru.connectframework.activity
+package com.guru.connectframework.Activity
 
 
 import static org.springframework.http.HttpStatus.*

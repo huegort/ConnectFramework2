@@ -1,4 +1,4 @@
-<%@ page import="com.guru.connectframework.activity.ActivityCategory" %>
+<%@ page import="com.guru.connectframework.Activity.ActivityCategory" %>
 
 
 
