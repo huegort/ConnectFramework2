@@ -1,4 +1,4 @@
-package com.guru.connectframework.Activity
+package com.guru.connectframework.activity
 
 class ActivityCategory {
     String name
