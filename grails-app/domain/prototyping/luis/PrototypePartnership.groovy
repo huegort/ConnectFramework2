@@ -1,10 +1,10 @@
 package prototyping.luis
 
-class ProtoPartnership {
+class PrototypePartnership {
     String name
     String institute
 
-    static hasMany = [activities:ProtoActivity]
+    static hasMany = [activities:PrototypeActivity]
     static constraints = {
     }
 }

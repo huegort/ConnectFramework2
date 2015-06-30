@@ -1,10 +1,10 @@
 package prototyping.luis
 
-class ProtoActivity {
+class PrototypeActivity {
     String name
     String description
 
-    static belongsTo = [partner:ProtoPartnership]
+    static belongsTo = [partner:PrototypePartnership]
     static constraints = {
     }
 }

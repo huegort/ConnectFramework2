@@ -1,59 +1,16 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: lmanuelcb
+  Date: 06/30/2015
+  Time: 10:51
+--%>
+
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <link rel="stylesheet"
-          href="../../assets/stylesheets/grid.css">
-    <link rel="stylesheet"
-          href="css/main.css">
-    <link rel="stylesheet" href="../../../web-app/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-        function showActivitiesField() {
-            $('#activity').removeAttr('style');
-        }
-
-        function getActivityValues() {
-            //Shows the Institute Fields
-            $('#institute').removeClass('hidden');
-
-            //Gets the Selected Value of the Activity
-            var e = document.getElementById("Activities");
-            var strUser = $("#Activities").val();
-            console.log(strUser);
-
-            //Sets the value of the Institute available for the activity
-            //$("Institutes").val(srtUser);
-
-            //Updates description
-        }
-
-        function setInstituteValues() {
-            //Get JSON request Activities
-            var activities;
-            //Adds options values to the select id="Activities"
-            $.each(activities, function (i, item) {
-                $('#Activities').append($('<option>', {
-                    value: item.value,
-                    text: item.text
-                }));
-            });
-            console.log(activities)
-        }
-
-        function getDescriptionContent() {
-            $('<p>This is a description of the Activity</p>').appendTo('#description');
-        }
-
-        function clearInput(value) {
-            $(value).val(' ');
-        }
-
-        function showDescription() {
-            $('#descriptionField').removeClass('hidden');
-        }
-
-
-    </script>
+    <meta name="layout" content="bootstrap">
 </head>
+
 <body>
 <div class="main-body">
     <div class="grid">
@@ -287,6 +244,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

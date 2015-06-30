@@ -1,6 +1,6 @@
 package com.guru.connectframework.partnership
 
-import com.guru.connectframework.Activity.Activity
+import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaDataContainer
 import com.guru.connectframework.institution.Contact
