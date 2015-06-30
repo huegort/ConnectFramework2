@@ -1,7 +1,6 @@
 package com.guru.connectframework.criteria
 
 
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -12,7 +11,7 @@ class ApprovalController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Approval.list(params), model:[approvalInstanceCount: Approval.count()]
+        respond Approval.list(params), model: [approvalInstanceCount: Approval.count()]
     }
 
     def show(Approval approvalInstance) {
@@ -31,11 +30,11 @@ class ApprovalController {
         }
 
         if (approvalInstance.hasErrors()) {
-            respond approvalInstance.errors, view:'create'
+            respond approvalInstance.errors, view: 'create'
             return
         }
 
-        approvalInstance.save flush:true
+        approvalInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -58,18 +57,18 @@ class ApprovalController {
         }
 
         if (approvalInstance.hasErrors()) {
-            respond approvalInstance.errors, view:'edit'
+            respond approvalInstance.errors, view: 'edit'
             return
         }
 
-        approvalInstance.save flush:true
+        approvalInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Approval.label', default: 'Approval'), approvalInstance.id])
                 redirect approvalInstance
             }
-            '*'{ respond approvalInstance, [status: OK] }
+            '*' { respond approvalInstance, [status: OK] }
         }
     }
 
@@ -81,14 +80,14 @@ class ApprovalController {
             return
         }
 
-        approvalInstance.delete flush:true
+        approvalInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Approval.label', default: 'Approval'), approvalInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +97,7 @@ class ApprovalController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'approval.label', default: 'Approval'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

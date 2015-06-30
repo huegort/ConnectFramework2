@@ -20,21 +20,21 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'notes', 'error')} ">
-	<label for="notes">
-		<g:message code="activity.notes.label" default="Notes" />
-		
-	</label>
-	<g:textField name="notes" value="${activityInstance?.notes}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'activityType', 'error')} required">
 	<label for="activityType">
 		<g:message code="activity.activityType.label" default="Activity Type" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="activityType" name="activityType.id" from="${com.guru.connectframework.activity.ActivityType.list()}" optionKey="id" required="" value="${activityInstance?.activityType?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'agreementTemplate', 'error')} required">
+	<label for="agreementTemplate">
+		<g:message code="activity.agreementTemplate.label" default="Agreement Template" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="agreementTemplate" name="agreementTemplate.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" required="" value="${activityInstance?.agreementTemplate?.id}" class="many-to-one"/>
 
 </div>
 
@@ -47,12 +47,30 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'current', 'error')} ">
+	<label for="current">
+		<g:message code="activity.current.label" default="Current" />
+		
+	</label>
+	<g:checkBox name="current" value="${activityInstance?.current}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'dataContainer', 'error')} required">
 	<label for="dataContainer">
 		<g:message code="activity.dataContainer.label" default="Data Container" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="dataContainer" name="dataContainer.id" from="${com.guru.connectframework.criteria.CriteriaDataContainer.list()}" optionKey="id" required="" value="${activityInstance?.dataContainer?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'finalAgreement', 'error')} required">
+	<label for="finalAgreement">
+		<g:message code="activity.finalAgreement.label" default="Final Agreement" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="finalAgreement" name="finalAgreement.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" required="" value="${activityInstance?.finalAgreement?.id}" class="many-to-one"/>
 
 </div>
 

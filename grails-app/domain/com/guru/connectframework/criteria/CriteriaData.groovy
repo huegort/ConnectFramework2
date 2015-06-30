@@ -12,10 +12,13 @@ class CriteriaData {
 
     Approval approval
 
+    String notes
+
 
     static constraints = {
         valueString nullable: true
         valueDocument nullable: true
         valueDate nullable: true
+        notes nullable: true
     }
 }

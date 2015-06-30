@@ -11,15 +11,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: partnershipInstance, field: 'notes', 'error')} ">
-	<label for="notes">
-		<g:message code="partnership.notes.label" default="Notes" />
-		
-	</label>
-	<g:textField name="notes" value="${partnershipInstance?.notes}"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: partnershipInstance, field: 'activities', 'error')} ">
 	<label for="activities">
 		<g:message code="partnership.activities.label" default="Activities" />
@@ -31,7 +22,7 @@
     <li><g:link controller="activity" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="activity" action="create" params="['partnership.id': partnershipInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'activity.label', default: 'activity')])}</g:link>
+<g:link controller="activity" action="create" params="['partnership.id': partnershipInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'activity.label', default: 'Activity')])}</g:link>
 </li>
 </ul>
 
@@ -44,6 +35,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="approval" name="approval.id" from="${com.guru.connectframework.criteria.Approval.list()}" optionKey="id" required="" value="${partnershipInstance?.approval?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: partnershipInstance, field: 'current', 'error')} ">
+	<label for="current">
+		<g:message code="partnership.current.label" default="Current" />
+		
+	</label>
+	<g:checkBox name="current" value="${partnershipInstance?.current}" />
 
 </div>
 

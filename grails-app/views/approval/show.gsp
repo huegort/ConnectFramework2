@@ -32,11 +32,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${approvalInstance?.approvedBy}">
+				<g:if test="${approvalInstance?.approver}">
 				<li class="fieldcontain">
-					<span id="approvedBy-label" class="property-label"><g:message code="approval.approvedBy.label" default="Approved By" /></span>
+					<span id="approver-label" class="property-label"><g:message code="approval.approver.label" default="Approver" /></span>
 					
-						<span class="property-value" aria-labelledby="approvedBy-label"><g:link controller="user" action="show" id="${approvalInstance?.approvedBy?.id}">${approvalInstance?.approvedBy?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="approver-label"><g:link controller="user" action="show" id="${approvalInstance?.approver?.id}">${approvalInstance?.approver?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -64,6 +64,24 @@
 					<span id="dateApproved-label" class="property-label"><g:message code="approval.dateApproved.label" default="Date Approved" /></span>
 					
 						<span class="property-value" aria-labelledby="dateApproved-label"><g:formatDate date="${approvalInstance?.dateApproved}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${approvalInstance?.dateEndorsed}">
+				<li class="fieldcontain">
+					<span id="dateEndorsed-label" class="property-label"><g:message code="approval.dateEndorsed.label" default="Date Endorsed" /></span>
+					
+						<span class="property-value" aria-labelledby="dateEndorsed-label"><g:formatDate date="${approvalInstance?.dateEndorsed}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${approvalInstance?.endorser}">
+				<li class="fieldcontain">
+					<span id="endorser-label" class="property-label"><g:message code="approval.endorser.label" default="Endorser" /></span>
+					
+						<span class="property-value" aria-labelledby="endorser-label"><g:link controller="user" action="show" id="${approvalInstance?.endorser?.id}">${approvalInstance?.endorser?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

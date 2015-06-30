@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'activity.label', default: 'activity')}" />
+		<g:set var="entityName" value="${message(code: 'activity.label', default: 'Activity')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -28,13 +28,13 @@
 					
 						<th><g:message code="activity.contact.label" default="Contact" /></th>
 					
-						<g:sortableColumn property="notes" title="${message(code: 'activity.notes.label', default: 'Notes')}" />
-					
 						<th><g:message code="activity.activityType.label" default="Activity Type" /></th>
+					
+						<th><g:message code="activity.agreementTemplate.label" default="Agreement Template" /></th>
 					
 						<th><g:message code="activity.approval.label" default="Approval" /></th>
 					
-						<th><g:message code="activity.dataContainer.label" default="Data Container" /></th>
+						<g:sortableColumn property="current" title="${message(code: 'activity.current.label', default: 'Current')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: activityInstance, field: "contact")}</td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "notes")}</td>
-					
 						<td>${fieldValue(bean: activityInstance, field: "activityType")}</td>
+					
+						<td>${fieldValue(bean: activityInstance, field: "agreementTemplate")}</td>
 					
 						<td>${fieldValue(bean: activityInstance, field: "approval")}</td>
 					
-						<td>${fieldValue(bean: activityInstance, field: "dataContainer")}</td>
+						<td><g:formatBoolean boolean="${activityInstance.current}" /></td>
 					
 					</tr>
 				</g:each>
