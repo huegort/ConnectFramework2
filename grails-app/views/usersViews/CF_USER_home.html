@@ -15,7 +15,7 @@
             //Shows the Institute Fields
             $('#institute').removeClass('hidden');
 
-            //Gets the Selected Value of the Activity
+            //Gets the Selected Value of the activity
             var e = document.getElementById("Activities");
             var strUser = $("#Activities").val();
             console.log(strUser);
@@ -65,16 +65,16 @@
         <div class="grid__col grid__col--6-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Create Activity</h3>
+                    <h3 class="panel-title">Request approval for an Activity</h3>
                 </div>
                 <div class="panel-body">
                     <form>
                         <div id="category">
                             <h4>Please Select Category</h4>
                             <select id="Categories" class="form-control" onchange="showActivitiesField()">
-                                <option>Category One</option>
-                                <option>Category Two</option>
-                                <option>Category Three</option>
+                                <option>Student Exchange</option>
+                                <option>Research activity</option>
+                                <option>Qualification validation</option>
                             </select>
                         </div>
                         <div id="activity" style="display: none;">
@@ -82,9 +82,10 @@
                             <select id="Activities" class="form-control"
                                     onchange="getActivityValues();getDescriptionContent();showDescription();">
                                 <option>Request Activity</option>
-                                <option>Activity One</option>
-                                <option>Activity Two</option>
-                                <option>Activity Three</option>
+                                <option>One off student exchange</option>
+                                <option>Recurring Exchange</option>
+                                <option>Module validation</option>
+                                <option>program validation</option>
                             </select>
                         </div>
 
@@ -103,13 +104,14 @@
                             <h4>Please Select Institute</h4>
                             <select id="Institutes" class="form-control" onchange="">
                                 <option>Request Institute</option>
-                                <option>Institute One</option>
-                                <option>Institute Two</option>
-                                <option>Institute Three</option>
+                                <option>The institute is not on this list</option>
+                                <option>TCD - Dublin </option>
+                                <option>UCD - Dublin</option>
+                                <option>MIT - Boston</option>
                             </select>
                         </div>
                         <div style="text-align: right;">
-                            <input class="btn btn-default" id="createbutton" type="button" value="Create" onclick=""
+                            <input class="btn btn-default" id="createbutton" type="button" value="Create" onclick="location.href='CF_USER_createInstituteRequest.html'"
                                    style="margin-top: 15px;">
                         </div>
                     </form>

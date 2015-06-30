@@ -14,11 +14,13 @@
 </head>
 <body>
 <div class="main-body">
+    <h3> You need to request approval for this institution before you request approval for your activity</h3>
+    <h6> please give supply some details about this institution</h6>
     <div class="grid">
         <div class="grid__col grid__col--12-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title">Create a New Institute Request</h2>
+                    <h2 class="panel-title">Request Approval for Institution</h2>
                 </div>
                 <div class="panel-body">
                     <form>
@@ -31,10 +33,62 @@
                                        onclick="clearInput('#enterNameBox')">
                             </div>
                         </div>
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Country</h4>
+                            </div>
+                            <div class="grid__col grid__col--9-of-12">
+                                <input class="form-control" id="enterNameBox" type="text" value="Enter Name"
+                                       onclick="clearInput('#enterNameBox')">
+                            </div>
+                        </div>
 
                         <div class="grid">
                             <div class="grid__col grid__col--3-of-12">
                                 <h4>Enter Main Contact</h4>
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                <select id="contact" class="form-control" onchange="">
+                                    <option>pick contact for institution</option>
+                                    <option></option>
+                                    <option>Joe bloggs </option>
+                                    <option>Mary mine</option>
+                                    <option>Fred Astair</option>
+                                </select>
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                <input class="form-control" id="enterNameBox" type="text" value="create new contact"
+                                       onclick="clearInput('#enterNameBox')">
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                The main Contact for this institution
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>MOU</h4>
+                            </div>
+                            <div class="grid__col grid__col--6-of-12">
+                                <input id="fileuploadBox" type="file" value="Enter Name"
+                                       style="vertical-align: -webkit-baseline-middle;">
+                            </div>
+                            <div class="grid__col grid__col--3-of-12">
+                                Memorandum of understanding
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Student Conduct handbook</h4>
+                            </div>
+                            <div class="grid__col grid__col--9-of-12">
+                                <input id="fileuploadBox" type="file" value="Enter Name"
+                                       style="vertical-align: -webkit-baseline-middle;">
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="grid__col grid__col--3-of-12">
+                                <h4>Number of students</h4>
                             </div>
                             <div class="grid__col grid__col--9-of-12">
                                 <input class="form-control" id="enterContactBox" type="text" value="Contact Details"
@@ -44,19 +98,9 @@
 
                         <div class="grid">
                             <div class="grid__col grid__col--3-of-12">
-                                <h4>File Upload</h4>
-                            </div>
-                            <div class="grid__col grid__col--9-of-12">
-                                <input id="fileuploadBox" type="file" value="Enter Name"
-                                       style="vertical-align: -webkit-baseline-middle;">
-                            </div>
-                        </div>
-
-                        <div class="grid">
-                            <div class="grid__col grid__col--3-of-12">
                             </div>
                             <div class="grid__col grid__col--9-of-12" style="text-align: right">
-                                <input class="btn btn-default" id="enterForm" type="button" value="Request">
+                                <input class="btn btn-default" id="enterForm" type="button" value="Request" onclick="location.href='CF_USER_createActivityRequest.html'">
                             </div>
                         </div>
                     </form>

@@ -1,5 +1,5 @@
 
-<%@ page import="com.guru.connectframework.Activity.ActivityCategory" %>
+<%@ page import="com.guru.connectframework.activity.ActivityCategory" %>
 <!DOCTYPE html>
 <html>
 	<head>

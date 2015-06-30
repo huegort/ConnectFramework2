@@ -39,7 +39,7 @@ class ActivityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label', default: 'Activity'), activityInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'activity.label', default: 'activity'), activityInstance.id])
                 redirect activityInstance
             }
             '*' { respond activityInstance, [status: CREATED] }
@@ -66,7 +66,7 @@ class ActivityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'activity.label', default: 'activity'), activityInstance.id])
                 redirect activityInstance
             }
             '*'{ respond activityInstance, [status: OK] }
@@ -85,7 +85,7 @@ class ActivityController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'activity.label', default: 'activity'), activityInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -95,7 +95,7 @@ class ActivityController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'activity'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

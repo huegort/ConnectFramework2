@@ -1,4 +1,4 @@
-<%@ page import="com.guru.connectframework.Activity.ActivityType" %>
+<%@ page import="com.guru.connectframework.activity.ActivityType" %>
 
 
 
@@ -34,7 +34,7 @@
 		<g:message code="activityType.category.label" default="Category" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="category" name="category.id" from="${com.guru.connectframework.Activity.ActivityCategory.list()}" optionKey="id" required="" value="${activityTypeInstance?.category?.id}" class="many-to-one"/>
+	<g:select id="category" name="category.id" from="${com.guru.connectframework.activity.ActivityCategory.list()}" optionKey="id" required="" value="${activityTypeInstance?.category?.id}" class="many-to-one"/>
 
 </div>
 
