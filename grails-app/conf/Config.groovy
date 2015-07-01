@@ -114,4 +114,8 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    debug  'com.guru.connectframework'  //  all the connect framework project
+
+
 }
