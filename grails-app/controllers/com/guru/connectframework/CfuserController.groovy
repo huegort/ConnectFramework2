@@ -1,5 +1,6 @@
 package com.guru.connectframework
 
+import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.institution.Institution
 import grails.converters.JSON
 
@@ -15,6 +16,11 @@ class CfuserController {
         def institutionList = Institution.findAllByNameLike("%${q}%")
 
         render institutionList as JSON
+    }
+
+    def getCategories = {
+        def categoriesList = ActivityCategory.getAll()
+        render categoriesList as JSON
     }
 
 }

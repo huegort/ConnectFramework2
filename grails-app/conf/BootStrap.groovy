@@ -1,3 +1,4 @@
+import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.institution.Country
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.institution.Region
@@ -39,6 +40,13 @@ class BootStrap {
             return returnArray
         }
         JSON.registerObjectMarshaller(Region) {
+            def returnArray =[:]
+            returnArray['id'] = it.id
+            returnArray['name'] = it.name
+            return returnArray
+        }
+
+        JSON.registerObjectMarshaller(ActivityCategory) {
             def returnArray =[:]
             returnArray['id'] = it.id
             returnArray['name'] = it.name

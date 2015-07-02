@@ -13,23 +13,41 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            /*  Searches institutions when user types into textfield '#institutes' */
             $.ajax({
-                    type: 'POST',
-                    url: 'institutionsList',
-                    dataType: 'json',
-                    data: {
-                        q: $('#institutes').val()
-                    },
-                    success: function (data) {
-                        var a = []
-                        for (i=0; i<data.length; i++){
-                            a.push(data[i].name)
-                        }
-                        $('#institutes').autocomplete({
-                            source: a
-                        })
+                type: 'POST',
+                url: 'institutionsList',
+                dataType: 'json',
+                data: {
+                    q: $('#institutes').val()
+                },
+                success: function (data) {
+                    var a = []
+                    for (i = 0; i < data.length; i++) {
+                        a.push(data[i].name)
                     }
-                });
+                    $('#institutes').autocomplete({
+                        source: a
+                    })
+                }
+            })
+
+            /* Sets the values to the select tag '#categories'*/
+            $.ajax({
+                type:'POST',
+                url: 'getCategories',
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function(i,item){
+                        $('#Categories').append($('<option>', {
+                            value: item.id,
+                            text: item.name
+                        }))
+                    })
+                }
+            })
+
+
         });
 
         function institutionData(data) {
@@ -109,9 +127,7 @@
                         <div id="category">
                             <h4>Please Select Category</h4>
                             <select id="Categories" class="form-control" onchange="showActivitiesField();">
-                                <option>Student Exchange</option>
-                                <option>Research activity</option>
-                                <option>Qualification validation</option>
+
                             </select>
                         </div>
 
