@@ -30,11 +30,11 @@
 					
 						<g:sortableColumn property="valueDate" title="${message(code: 'criteriaData.valueDate.label', default: 'Value Date')}" />
 					
+						<g:sortableColumn property="notes" title="${message(code: 'criteriaData.notes.label', default: 'Notes')}" />
+					
 						<th><g:message code="criteriaData.approval.label" default="Approval" /></th>
 					
 						<th><g:message code="criteriaData.container.label" default="Container" /></th>
-					
-						<th><g:message code="criteriaData.criteria.label" default="Criteria" /></th>
 					
 					</tr>
 				</thead>
@@ -48,11 +48,11 @@
 					
 						<td><g:formatDate date="${criteriaDataInstance.valueDate}" /></td>
 					
+						<td>${fieldValue(bean: criteriaDataInstance, field: "notes")}</td>
+					
 						<td>${fieldValue(bean: criteriaDataInstance, field: "approval")}</td>
 					
 						<td>${fieldValue(bean: criteriaDataInstance, field: "container")}</td>
-					
-						<td>${fieldValue(bean: criteriaDataInstance, field: "criteria")}</td>
 					
 					</tr>
 				</g:each>

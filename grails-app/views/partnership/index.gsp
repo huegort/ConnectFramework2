@@ -26,9 +26,9 @@
 					
 						<th><g:message code="partnership.contact.label" default="Contact" /></th>
 					
-						<g:sortableColumn property="notes" title="${message(code: 'partnership.notes.label', default: 'Notes')}" />
-					
 						<th><g:message code="partnership.approval.label" default="Approval" /></th>
+					
+						<g:sortableColumn property="current" title="${message(code: 'partnership.current.label', default: 'Current')}" />
 					
 						<th><g:message code="partnership.dataContainer.label" default="Data Container" /></th>
 					
@@ -44,9 +44,9 @@
 					
 						<td><g:link action="show" id="${partnershipInstance.id}">${fieldValue(bean: partnershipInstance, field: "contact")}</g:link></td>
 					
-						<td>${fieldValue(bean: partnershipInstance, field: "notes")}</td>
-					
 						<td>${fieldValue(bean: partnershipInstance, field: "approval")}</td>
+					
+						<td><g:formatBoolean boolean="${partnershipInstance.current}" /></td>
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "dataContainer")}</td>
 					

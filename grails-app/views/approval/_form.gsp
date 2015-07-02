@@ -11,12 +11,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: approvalInstance, field: 'approvedBy', 'error')} required">
-	<label for="approvedBy">
-		<g:message code="approval.approvedBy.label" default="Approved By" />
+<div class="fieldcontain ${hasErrors(bean: approvalInstance, field: 'approver', 'error')} required">
+	<label for="approver">
+		<g:message code="approval.approver.label" default="Approver" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="approvedBy" name="approvedBy.id" from="${com.guru.connectframework.User.list()}" optionKey="id" required="" value="${approvalInstance?.approvedBy?.id}" class="many-to-one"/>
+	<g:select id="approver" name="approver.id" from="${com.guru.connectframework.User.list()}" optionKey="id" required="" value="${approvalInstance?.approver?.id}" class="many-to-one"/>
 
 </div>
 
@@ -44,6 +44,24 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker name="dateApproved" precision="day"  value="${approvalInstance?.dateApproved}"  />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: approvalInstance, field: 'dateEndorsed', 'error')} required">
+	<label for="dateEndorsed">
+		<g:message code="approval.dateEndorsed.label" default="Date Endorsed" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:datePicker name="dateEndorsed" precision="day"  value="${approvalInstance?.dateEndorsed}"  />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: approvalInstance, field: 'endorser', 'error')} required">
+	<label for="endorser">
+		<g:message code="approval.endorser.label" default="Endorser" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="endorser" name="endorser.id" from="${com.guru.connectframework.User.list()}" optionKey="id" required="" value="${approvalInstance?.endorser?.id}" class="many-to-one"/>
 
 </div>
 

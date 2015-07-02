@@ -29,6 +29,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: criteriaDataInstance, field: 'notes', 'error')} ">
+	<label for="notes">
+		<g:message code="criteriaData.notes.label" default="Notes" />
+		
+	</label>
+	<g:textField name="notes" value="${criteriaDataInstance?.notes}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: criteriaDataInstance, field: 'approval', 'error')} required">
 	<label for="approval">
 		<g:message code="criteriaData.approval.label" default="Approval" />

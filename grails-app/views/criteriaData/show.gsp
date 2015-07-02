@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${criteriaDataInstance?.notes}">
+				<li class="fieldcontain">
+					<span id="notes-label" class="property-label"><g:message code="criteriaData.notes.label" default="Notes" /></span>
+					
+						<span class="property-value" aria-labelledby="notes-label"><g:fieldValue bean="${criteriaDataInstance}" field="notes"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${criteriaDataInstance?.approval}">
 				<li class="fieldcontain">
 					<span id="approval-label" class="property-label"><g:message code="criteriaData.approval.label" default="Approval" /></span>

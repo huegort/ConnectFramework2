@@ -5,7 +5,11 @@ import com.guru.connectframework.User
 
 class Approval {
     User createdBy
-    User approvedBy
+
+    User endorser
+    Date dateEndorsed
+
+    User approver
     Date created
     Date dateApproved
     Date validTo

@@ -28,6 +28,10 @@
 					
 						<g:sortableColumn property="notes" title="${message(code: 'institution.notes.label', default: 'Notes')}" />
 					
+						<g:sortableColumn property="address1" title="${message(code: 'institution.address1.label', default: 'Address1')}" />
+					
+						<g:sortableColumn property="address2" title="${message(code: 'institution.address2.label', default: 'Address2')}" />
+					
 						<th><g:message code="institution.country.label" default="Country" /></th>
 					
 						<g:sortableColumn property="name" title="${message(code: 'institution.name.label', default: 'Name')}" />
@@ -41,6 +45,10 @@
 						<td><g:link action="show" id="${institutionInstance.id}">${fieldValue(bean: institutionInstance, field: "description")}</g:link></td>
 					
 						<td>${fieldValue(bean: institutionInstance, field: "notes")}</td>
+					
+						<td>${fieldValue(bean: institutionInstance, field: "address1")}</td>
+					
+						<td>${fieldValue(bean: institutionInstance, field: "address2")}</td>
 					
 						<td>${fieldValue(bean: institutionInstance, field: "country")}</td>
 					

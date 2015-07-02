@@ -5,6 +5,7 @@ import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaDataContainer
 import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.partnership.Partnership
+import com.guru.connectframework.util.Document
 
 class Activity {
 
@@ -19,11 +20,16 @@ class Activity {
 
     CriteriaDataContainer dataContainer
 
-    String notes
+    boolean current
+
+    Document agreementTemplate
+    Document finalAgreement
+
+
 
     static constraints = {
         description nullable: true
         contact nullable: true
-        notes nullable: true
+
     }
 }

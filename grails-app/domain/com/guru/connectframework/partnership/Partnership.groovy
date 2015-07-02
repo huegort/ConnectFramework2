@@ -15,7 +15,8 @@ class Partnership {
     Contact contact
 
     CriteriaDataContainer dataContainer
-    String notes
+
+    boolean current
 
     static hasMany = [activities : Activity]
 
@@ -23,6 +24,6 @@ class Partnership {
 
     static constraints = {
         contact nullable: true
-        notes nullable: true
+
     }
 }
