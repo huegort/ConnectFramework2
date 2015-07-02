@@ -34,11 +34,11 @@
 
             /* Sets the values to the select tag '#categories'*/
             $.ajax({
-                type:'POST',
+                type: 'POST',
                 url: 'getCategories',
                 dataType: 'json',
                 success: function (data) {
-                    $.each(data, function(i,item){
+                    $.each(data, function (i, item) {
                         $('#Categories').append($('<option>', {
                             value: item.id,
                             text: item.name
@@ -47,50 +47,41 @@
                 }
             })
 
+            /* Gets the category types*/
+            $.ajax({
+                type: 'POST',
+                url: 'getActivityTypes',
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                        $('#activities').append($('<option>', {
+                            value: item.id,
+                            text: item.name
+                        }))
+                    })
+                }
+            })
 
         });
-
-        function institutionData(data) {
-            $("#institutes").autocomplete({
-                source: data,
-                minLenght: 3
-            });
-        }
-
-        function showActivitiesField() {
-            $('#activity').removeAttr('style');
-        }
-
-        function getActivityValues() {
-            //Shows the Institute Fields
-            $('#institute').removeClass('hidden');
-
-            //Gets the Selected Value of the activity
-            var e = document.getElementById("Activities");
-            var strUser = $("#Activities").val();
-            console.log(strUser);
-
-            //Sets the value of the Institute available for the activity
-            //$("Institutes").val(srtUser);
-
-            //Updates description
-        }
-
-        function setInstituteValues() {
-            //Get JSON request Activities
-            var activities;
-            //Adds options values to the select id="Activities"
-            $.each(activities, function (i, item) {
-                $('#Activities').append($('<option>', {
-                    value: item.value,
-                    text: item.text
-                }));
-            });
-            console.log(activities)
-        }
-
+        /* Adds description when user chooses an activty */
         function getDescriptionContent() {
-            $('<p>This is a description of the Activity</p>').appendTo('#description');
+            $.ajax({
+                type: 'POST',
+                url: 'getActivityTypes',
+                dataType: 'json',
+                success: function (data) {
+                    $('#description').append($('<p>', {
+                        value: data[$('#activities').val()-1].id,
+                        text: data[$('#activities').val()-1].description
+                    }))
+                }
+            })
+        }
+
+        /* Clears description when user clicks on a different activity*/
+        function clearDescription() {
+            $('#description').empty();
+            //jQuery('#description p').html('');
         }
 
         function clearInput(value) {
@@ -126,7 +117,7 @@
 
                         <div id="category">
                             <h4>Please Select Category</h4>
-                            <select id="Categories" class="form-control" onchange="showActivitiesField();">
+                            <select id="Categories" class="form-control">
 
                             </select>
                         </div>
@@ -137,13 +128,9 @@
                             <div class="panel-body">
                                 <div id="activity">
                                     <h4>Please Select Activity</h4>
-                                    <select id="activities" multiple class="form-control" onchange="getActivityValues();
-                                    getDescriptionContent()">
-                                        <option>Request Activity</option>
-                                        <option>One off student exchange</option>
-                                        <option>Recurring Exchange</option>
-                                        <option>Module validation</option>
-                                        <option>program validation</option>
+                                    <select id="activities" multiple class="form-control" onclick="clearDescription()" onchange="
+                                    getDescriptionContent();">
+
                                     </select>
                                 </div>
 
