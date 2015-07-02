@@ -12,5 +12,6 @@ class Institution {
     static constraints = {
         description nullable: true
         notes nullable: true
+        address2 nullable: true
     }
 }
