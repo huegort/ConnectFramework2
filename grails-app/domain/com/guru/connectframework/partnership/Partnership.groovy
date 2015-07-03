@@ -20,8 +20,6 @@ class Partnership {
 
     static hasMany = [activities : Activity]
 
-
-
     static constraints = {
         contact nullable: true
 

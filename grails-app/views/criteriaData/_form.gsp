@@ -16,7 +16,7 @@
 		<g:message code="criteriaData.valueDocument.label" default="Value Document" />
 		
 	</label>
-	<g:select id="valueDocument" name="valueDocument.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" value="${criteriaDataInstance?.valueDocument?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="valueDocument" name="valueDocument.id" from="${com.guru.connectframework.Document.list()}" optionKey="id" value="${criteriaDataInstance?.valueDocument?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 

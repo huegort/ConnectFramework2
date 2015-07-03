@@ -1,6 +1,6 @@
 package com.guru.connectframework.criteria
 
-import com.guru.connectframework.util.Document
+import com.guru.connectframework.Document
 
 
 class CriteriaData {

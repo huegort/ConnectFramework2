@@ -25,7 +25,7 @@
 		<g:message code="activityType.document.label" default="Document" />
 		
 	</label>
-	<g:select id="document" name="document.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" value="${activityTypeInstance?.document?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="document" name="document.id" from="${com.guru.connectframework.Document.list()}" optionKey="id" value="${activityTypeInstance?.document?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 

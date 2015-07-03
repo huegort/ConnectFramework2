@@ -1,5 +1,6 @@
 package com.guru.connectframework
 
+import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.institution.Institution
@@ -13,9 +14,7 @@ class CfuserController {
 
     def institutionsList = {
         def q = params['q']
-
         def institutionList = Institution.findAllByNameLike("%${q}%")
-
         render institutionList as JSON
     }
 
@@ -27,6 +26,14 @@ class CfuserController {
     def getActivityTypes = {
         def activityTypesList = ActivityType.getAll()
         render activityTypesList as JSON
+    }
+
+    def getActivitiesOForUser = {
+        def userId = params['user']
+        def currentUser = User.findById(userId)
+        def activityUserList = Activity.findAllByOwner(currentUser)
+        render activityUserList as JSON
+
     }
 
 }

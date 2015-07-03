@@ -34,7 +34,7 @@
 		<g:message code="activity.agreementTemplate.label" default="Agreement Template" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="agreementTemplate" name="agreementTemplate.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" required="" value="${activityInstance?.agreementTemplate?.id}" class="many-to-one"/>
+	<g:select id="agreementTemplate" name="agreementTemplate.id" from="${com.guru.connectframework.Document.list()}" optionKey="id" required="" value="${activityInstance?.agreementTemplate?.id}" class="many-to-one"/>
 
 </div>
 
@@ -70,7 +70,7 @@
 		<g:message code="activity.finalAgreement.label" default="Final Agreement" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="finalAgreement" name="finalAgreement.id" from="${com.guru.connectframework.util.Document.list()}" optionKey="id" required="" value="${activityInstance?.finalAgreement?.id}" class="many-to-one"/>
+	<g:select id="finalAgreement" name="finalAgreement.id" from="${com.guru.connectframework.Document.list()}" optionKey="id" required="" value="${activityInstance?.finalAgreement?.id}" class="many-to-one"/>
 
 </div>
 

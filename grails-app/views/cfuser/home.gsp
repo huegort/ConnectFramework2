@@ -84,6 +84,8 @@
             //jQuery('#description p').html('');
         }
 
+
+
         function clearInput(value) {
             $(value).val(' ');
         }
@@ -267,8 +269,6 @@
                         <article>
                             <details>
                                 <summary class="h4">Institute One</summary>
-                                <details>
-                                    <summary class="h5">Activities</summary>
 
                                     <p>1. Activity
                                         <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
@@ -284,14 +284,11 @@
                                         <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
                                                                               aria-hidden="true"></span></button>
                                     </p>
-                                </details>
+
                             </details>
 
                             <details>
                                 <summary class="h4">Institute Two</summary>
-                                <details>
-                                    <summary class="h5">Activities</summary>
-
                                     <p>1. Activity
                                         <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
                                                                               aria-hidden="true"></span></button>
@@ -306,14 +303,10 @@
                                         <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
                                                                               aria-hidden="true"></span></button>
                                     </p>
-                                </details>
                             </details>
 
                             <details>
                                 <summary class="h4">Institute Three</summary>
-                                <details>
-                                    <summary class="h5">Activities</summary>
-
                                     <p>1. Activity
                                         <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
                                                                               aria-hidden="true"></span></button>
@@ -328,7 +321,6 @@
                                         <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
                                                                               aria-hidden="true"></span></button>
                                     </p>
-                                </details>
                             </details>
                         </article>
                     </section>
