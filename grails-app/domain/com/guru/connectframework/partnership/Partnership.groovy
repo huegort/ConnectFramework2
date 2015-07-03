@@ -26,4 +26,7 @@ class Partnership {
         contact nullable: true
 
     }
+    String toString() {
+        return name
+    }
 }

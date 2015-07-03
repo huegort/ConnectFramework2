@@ -15,4 +15,7 @@ class PartnershipLevel {
         urlToDoc nullable:  true
 
     }
+    String toString() {
+        return name
+    }
 }

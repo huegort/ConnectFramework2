@@ -20,4 +20,7 @@ class ActivityType {
         urlToDoc nullable: true
         document nullable: true
     }
+    String toString() {
+        return name
+    }
 }

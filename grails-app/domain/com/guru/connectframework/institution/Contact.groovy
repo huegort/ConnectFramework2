@@ -10,4 +10,7 @@ class Contact {
         email nullable: true
 
     }
+    String toString() {
+        return name
+    }
 }

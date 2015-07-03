@@ -14,4 +14,7 @@ class Institution {
         notes nullable: true
         address2 nullable: true
     }
+    String toString() {
+        return name
+    }
 }

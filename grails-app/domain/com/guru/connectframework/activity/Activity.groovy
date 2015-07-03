@@ -32,4 +32,7 @@ class Activity {
         contact nullable: true
 
     }
+    String toString() {
+        return name
+    }
 }

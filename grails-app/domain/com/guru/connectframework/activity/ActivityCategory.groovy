@@ -5,4 +5,7 @@ class ActivityCategory {
 
     static constraints = {
     }
+    String toString() {
+        return name
+    }
 }

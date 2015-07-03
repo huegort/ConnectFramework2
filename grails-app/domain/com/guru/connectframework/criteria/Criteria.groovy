@@ -15,4 +15,7 @@ class Criteria {
         description nullable: true
         notes nullable: true
     }
+    String toString() {
+        return name
+    }
 }

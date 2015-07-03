@@ -5,4 +5,7 @@ class Country {
     Region region
     static constraints = {
     }
+    String toString() {
+        return name
+    }
 }
