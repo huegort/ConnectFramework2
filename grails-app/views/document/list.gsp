@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="nav" role="navigation">
-    <ul><li><g:link class="create" action="create">Upload New Document</g:link></li></ul>
+    <ul><li><g:link class="create" action="uploadForm">Upload New Document</g:link></li></ul>
 </div>
 <div class="content scaffold-list" role="main">
     <h1>Document List</h1>
