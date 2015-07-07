@@ -62,6 +62,26 @@
                 }
             })
 
+            /* Gets User Activities*/
+            $.ajax({
+                type: 'POST',
+                url: 'getUserActivities',
+                dataType: 'json',
+                data: {
+                    q: '1'
+                },
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                        var c = ''
+                        $.each(item, function (a,b){
+                            c = c + '<p id=\'' + a + '\'>' + b.name + '</p>'
+                        })
+                        $('#myActivitiesArticle').append('<details><summary class="h4">'+i+'</summary>' + c + '</details>')
+                    })
+                }
+            })
+
+
         });
         /* Adds description when user chooses an activty */
         function getDescriptionContent() {
@@ -266,62 +286,9 @@
 
                 <div class="panel-body">
                     <section>
-                        <article>
-                            <details>
-                                <summary class="h4">Institute One</summary>
+                        <article id="myActivitiesArticle">
 
-                                    <p>1. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
 
-                                    <p>2. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-
-                                    <p>3. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-
-                            </details>
-
-                            <details>
-                                <summary class="h4">Institute Two</summary>
-                                    <p>1. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-
-                                    <p>2. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-
-                                    <p>3. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-                            </details>
-
-                            <details>
-                                <summary class="h4">Institute Three</summary>
-                                    <p>1. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-
-                                    <p>2. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-
-                                    <p>3. Activity
-                                        <button class="btn btn-default"><span class="glyphicon glyphicon-edit"
-                                                                              aria-hidden="true"></span></button>
-                                    </p>
-                            </details>
                         </article>
                     </section>
                 </div>
