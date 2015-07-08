@@ -9,6 +9,9 @@
 //= require jquery-ui
 //= require_tree .
 //= require_self
+//= require jquery.serializejson.min
+
+
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {

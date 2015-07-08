@@ -28,13 +28,13 @@
 					
 						<g:sortableColumn property="notes" title="${message(code: 'institution.notes.label', default: 'Notes')}" />
 					
+						<th><g:message code="institution.currentHighest.label" default="Current Highest" /></th>
+					
 						<g:sortableColumn property="address1" title="${message(code: 'institution.address1.label', default: 'Address1')}" />
 					
 						<g:sortableColumn property="address2" title="${message(code: 'institution.address2.label', default: 'Address2')}" />
 					
-						<th><g:message code="institution.country.label" default="Country" /></th>
-					
-						<g:sortableColumn property="name" title="${message(code: 'institution.name.label', default: 'Name')}" />
+						<g:sortableColumn property="provence" title="${message(code: 'institution.provence.label', default: 'Provence')}" />
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: institutionInstance, field: "notes")}</td>
 					
+						<td>${fieldValue(bean: institutionInstance, field: "currentHighest")}</td>
+					
 						<td>${fieldValue(bean: institutionInstance, field: "address1")}</td>
 					
 						<td>${fieldValue(bean: institutionInstance, field: "address2")}</td>
 					
-						<td>${fieldValue(bean: institutionInstance, field: "country")}</td>
-					
-						<td>${fieldValue(bean: institutionInstance, field: "name")}</td>
+						<td>${fieldValue(bean: institutionInstance, field: "provence")}</td>
 					
 					</tr>
 				</g:each>

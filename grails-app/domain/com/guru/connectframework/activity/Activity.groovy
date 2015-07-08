@@ -8,6 +8,7 @@ import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.partnership.Partnership
 
 
+
 class Activity {
 
     String name
@@ -21,7 +22,7 @@ class Activity {
 
     CriteriaDataContainer dataContainer
 
-    boolean current
+   
 
     Document agreementTemplate
     Document finalAgreement

@@ -18,4 +18,10 @@ class PartnershipLevel {
     String toString() {
         return name
     }
+    def getCriteria(){
+        if (criteriaContainer == null){
+            criteriaContainer = new CriteriaContainer()
+        }
+        return criteriaContainer.setOfCriteria
+    }
 }
