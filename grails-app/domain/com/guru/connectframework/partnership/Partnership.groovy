@@ -10,7 +10,7 @@ import com.guru.connectframework.institution.Institution
 class Partnership {
     String name
 
-    User Owner
+    User owner
     Institution institution
     PartnershipLevel partnershipLevel
 
