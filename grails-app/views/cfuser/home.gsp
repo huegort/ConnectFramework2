@@ -13,6 +13,10 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+            //init settings
+            $('#activityRequestPanel').hide()
+            $('#partnershipRequestPanel').hide()
+
             /*  Searches institutions when user types into textfield '#institutes' */
             $.ajax({
                 type: 'POST',
@@ -40,21 +44,6 @@
                 success: function (data) {
                     $.each(data, function (i, item) {
                         $('#Categories').append($('<option>', {
-                            value: item.id,
-                            text: item.name
-                        }))
-                    })
-                }
-            })
-
-            /* Gets the category types*/
-            $.ajax({
-                type: 'POST',
-                url: 'getActivityTypes',
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function (i, item) {
-                        $('#activities').append($('<option>', {
                             value: item.id,
                             text: item.name
                         }))
@@ -90,14 +79,32 @@
                     q: '1'
                 },
                 success: function (data) {
-                    $.each(data, function (i, item) {
-                        $('#activityRequestTable').append('<tr><td>' + '<a href=\"${createLink(uri: '/cfuser/show/')}' + item.id + '\">' + item.name + '</a>' + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
-                    })
+                    if (data.length > 0) {
+                        $('#activityRequestPanel').show()
+                        $.each(data, function (i, item) {
+                            $('#activityRequestTable').append('<tr><td>' + '<a href=\"${createLink(uri: '/cfuser/show/')}' + item.id + '\">' + item.name + '</a>' + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                        })
+                    }
                 }
             })
 
             /* Get Institute Request*/
-
+            $.ajax({
+                type: 'POST',
+                url: 'getPartnershipRequest',
+                dataType: 'json',
+                data: {
+                    q: '1'
+                },
+                success: function (data) {
+                    if (data.length > 0) {
+                        $('#partnershipRequestPanel').show()
+                        $.each(data, function (i, item) {
+                            $('#partnershipRequestTable').append('<tr><td>' + '<a href=\"${createLink(uri: '/cfuser/show/')}' + item.id + '\">' + item.name + '</a>' + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                        })
+                    }
+                }
+            })
 
         });
         /* Adds description when user chooses an activty */
@@ -121,9 +128,33 @@
             //jQuery('#description p').html('');
         }
 
+        /*Gets activities for activity category*/
+        function getActivitiesForCategory() {
+            /* Gets the category types*/
+            $.ajax({
+                type: 'POST',
+                url: 'getActivityTypes',
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                        if ($("#category option:selected").text() == item.category.name) {
+                            $('#activities').append($('<option>', {
+                                value: item.id,
+                                text: item.name
+                            }))
+                        }
+                    })
+                }
+            })
+        }
+
 
         function clearInput(value) {
             $(value).val(' ');
+        }
+
+        function removeOptions(value) {
+            $(value).find('option').remove()
         }
 
     </script>
@@ -155,7 +186,9 @@
 
                         <div id="category">
                             <h4>Please Select Category</h4>
-                            <select id="Categories" class="form-control">
+                            <select id="Categories" class="form-control" onchange="getActivitiesForCategory()"
+                                    onclick="removeOptions('#activities');
+                                    clearDescription()">
 
                             </select>
                         </div>
@@ -242,19 +275,18 @@
         </div>
 
         <div class="grid__col grid__col--6-of-12">
-            <div class="panel panel-default">
+            <div id="partnershipRequestPanel" class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Institute Request Status</h3>
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table id="" class="table">
+                        <table id="partnershipRequestTable" class="table">
                             <tr>
                                 <th>Institute Name</th>
                                 <th>Date Created</th>
                                 <th>Status</th>
-                                <th>Options</th>
                             </tr>
 
                         </table>

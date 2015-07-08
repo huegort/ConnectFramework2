@@ -1,13 +1,15 @@
 package com.guru.connectframework
+
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
-import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.partnership.Partnership
 import grails.converters.JSON
+import org.apache.commons.logging.LogFactory
 
 class CfuserController {
+    private static final log = LogFactory.getLog(this)
 
     def home() {}
 
@@ -42,19 +44,21 @@ class CfuserController {
         for (int i = 0; i < activities.size(); i++) {
             def currentActivity = activities.get(i)
 
-            def institution = currentActivity.partnership.institution
+            if (currentActivity.approval.status == CriteriaStatus.APPROVED) {
+                def institution = currentActivity.partnership.institution
 
-            if (institutionMap.get(institution) == null) {
+                if (institutionMap.get(institution) == null) {
 
-                institutionMap.put(institution, [])
+                    institutionMap.put(institution, [])
+                }
+
+                //TODO does groovy make a new object each time we add to this set
+                // is there any way of passing this set by reference in groovy
+
+                def mySet = institutionMap.get(institution)
+                mySet += currentActivity
+                institutionMap.put(institution, mySet)
             }
-
-            //TODO does groovy make a new object each time we add to this set
-            // is there any way of passing this set by reference in groovy
-
-            def mySet = institutionMap.get(institution)
-            mySet += currentActivity
-            institutionMap.put(institution, mySet)
         }
 
         render institutionMap as JSON
@@ -72,7 +76,7 @@ class CfuserController {
             def currentActivity = activities.get(i)
 
             if (currentActivity.approval.status == CriteriaStatus.PENDING || currentActivity.approval.status == CriteriaStatus.DECLINED) {
-                activitiesList += activities.get(i)
+                activitiesList += currentActivity
             }
 
         }
@@ -88,18 +92,17 @@ class CfuserController {
         def pending = CriteriaStatus.PENDING
         def declined = CriteriaStatus.DECLINED
 
-        def approval = Approval.findAllByCreatedBy(current)
-        List<Approval> approvalList = []
-        for (int i = 0; i < approval.size(); i++) {
-            def currentApproval = approval.get(i)
-            if (currentApproval.status == CriteriaStatus.PENDING || currentApproval.status == CriteriaStatus.DECLINED) {
-                approvalList += currentApproval
-            }
-        }
-        //TODO get the request partnerships with the approval
+        def partnerships = Partnership.findAllByOwner(current)
         def partnershipList = []
-        for (int i = 0; i < approvalList.size(); i++) {
-            partnershipList += Partnership.findAllByApproval(approvalList.get(i))
+
+        for (int i = 0; i < partnerships.size(); i++) {
+            def currentPartnership = partnerships.get(i)
+            log.debug("Current Partnership" + currentPartnership)
+            if (currentPartnership.approval.status == pending || currentPartnership.approval.status == declined){
+                partnershipList += currentPartnership
+                log.debug(partnershipList)
+            }
+
         }
 
         render partnershipList as JSON
