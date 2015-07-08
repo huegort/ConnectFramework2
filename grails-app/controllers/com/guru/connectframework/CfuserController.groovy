@@ -68,6 +68,8 @@ class CfuserController {
         def user = params['user']
         user = 1
         User current = User.findById(user)
+        def pending = CriteriaStatus.PENDING
+        def declined = CriteriaStatus.DECLINED
 
         def activities = Activity.findAllByOwner(current)
         def activitiesList = []
@@ -75,7 +77,7 @@ class CfuserController {
         for (int i = 0; i < activities.size(); i++) {
             def currentActivity = activities.get(i)
 
-            if (currentActivity.approval.status == CriteriaStatus.PENDING || currentActivity.approval.status == CriteriaStatus.DECLINED) {
+            if (currentActivity.approval.status == pending || currentActivity.approval.status == declined) {
                 activitiesList += currentActivity
             }
 
