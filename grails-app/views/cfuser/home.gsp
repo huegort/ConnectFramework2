@@ -177,11 +177,11 @@
                 </div>
 
                 <div class="panel-body">
-                    <g:form>
+                    <g:form action="createActivityRequest">
 
                         <div id="institute">
                             <h4>Please Select Institute</h4>
-                            <input id="institutes" type="text" class="form-control" value="">
+                            <input id="institutes" type="text" class="form-control" value="" name="institute">
                         </div>
 
                         <div id="category">
@@ -199,7 +199,7 @@
                             <div class="panel-body">
                                 <div id="activity">
                                     <h4>Please Select Activity</h4>
-                                    <select id="activities" multiple class="form-control" onclick="clearDescription()"
+                                    <select id="activities" multiple class="form-control" name="category" onclick="clearDescription()"
                                             onchange="
                                                 getDescriptionContent();">
 
@@ -221,8 +221,8 @@
                         </div>
 
                         <div style="text-align: right;">
-                            <input class="btn btn-default" id="createbutton" type="button" value="Create"
-                                   onclick="location.href = 'CF_USER_createInstituteRequest.html'"
+                            <input class="btn btn-default" id="createbutton" type="submit" value="Create"
+
                                    style="margin-top: 15px;">
                         </div>
                     </g:form>

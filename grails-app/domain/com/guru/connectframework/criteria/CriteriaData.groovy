@@ -3,7 +3,7 @@ package com.guru.connectframework.criteria
 import com.guru.connectframework.Document
 
 
-class CriteriaData {
+class CriteriaData implements Comparable<CriteriaData>{
     static belongsTo = [container: CriteriaDataContainer]
     Criteria criteria
     String valueString
@@ -20,5 +20,10 @@ class CriteriaData {
         valueDocument nullable: true
         valueDate nullable: true
         notes nullable: true
+    }
+
+    @Override
+    int compareTo(CriteriaData o) {
+        return this.criteria.sequenceNumber - o.criteria.sequenceNumber
     }
 }

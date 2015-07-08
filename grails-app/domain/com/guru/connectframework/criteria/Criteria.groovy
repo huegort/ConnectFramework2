@@ -1,8 +1,8 @@
 package com.guru.connectframework.criteria
 
-import com.guru.connectframework.CriteriaType
+import com.guru.connectframework.criteriatype.CriteriaType
 
-class Criteria {
+class Criteria implements Comparable<Criteria>{
     static belongsTo = [container: CriteriaContainer]
     String name
     CriteriaContainer container
@@ -17,5 +17,10 @@ class Criteria {
     }
     String toString() {
         return name
+    }
+
+    @Override
+    int compareTo(Criteria o) {
+        return this.sequenceNumber - o.sequenceNumber
     }
 }

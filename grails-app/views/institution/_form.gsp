@@ -20,21 +20,48 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'address1', 'error')} required">
-	<label for="address1">
-		<g:message code="institution.address1.label" default="Address1" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'currentHighest', 'error')} ">
+	<label for="currentHighest">
+		<g:message code="institution.currentHighest.label" default="Current Highest" />
+		
 	</label>
-	<g:textField name="address1" required="" value="${institutionInstance?.address1}"/>
+	<g:select id="currentHighest" name="currentHighest.id" from="${com.guru.connectframework.partnership.Partnership.list()}" optionKey="id" value="${institutionInstance?.currentHighest?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'address2', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'address1', 'error')} ">
+	<label for="address1">
+		<g:message code="institution.address1.label" default="Address1" />
+		
+	</label>
+	<g:textField name="address1" value="${institutionInstance?.address1}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'address2', 'error')} ">
 	<label for="address2">
 		<g:message code="institution.address2.label" default="Address2" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textField name="address2" required="" value="${institutionInstance?.address2}"/>
+	<g:textField name="address2" value="${institutionInstance?.address2}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'provence', 'error')} ">
+	<label for="provence">
+		<g:message code="institution.provence.label" default="Provence" />
+		
+	</label>
+	<g:textField name="provence" value="${institutionInstance?.provence}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'postcode', 'error')} ">
+	<label for="postcode">
+		<g:message code="institution.postcode.label" default="Postcode" />
+		
+	</label>
+	<g:textField name="postcode" value="${institutionInstance?.postcode}"/>
 
 </div>
 
@@ -53,24 +80,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="name" required="" value="${institutionInstance?.name}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'postcode', 'error')} required">
-	<label for="postcode">
-		<g:message code="institution.postcode.label" default="Postcode" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="postcode" required="" value="${institutionInstance?.postcode}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: institutionInstance, field: 'provence', 'error')} required">
-	<label for="provence">
-		<g:message code="institution.provence.label" default="Provence" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="provence" required="" value="${institutionInstance?.provence}"/>
 
 </div>
 

@@ -41,6 +41,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${institutionInstance?.currentHighest}">
+				<li class="fieldcontain">
+					<span id="currentHighest-label" class="property-label"><g:message code="institution.currentHighest.label" default="Current Highest" /></span>
+					
+						<span class="property-value" aria-labelledby="currentHighest-label"><g:link controller="partnership" action="show" id="${institutionInstance?.currentHighest?.id}">${institutionInstance?.currentHighest?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${institutionInstance?.address1}">
 				<li class="fieldcontain">
 					<span id="address1-label" class="property-label"><g:message code="institution.address1.label" default="Address1" /></span>
@@ -59,6 +68,24 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${institutionInstance?.provence}">
+				<li class="fieldcontain">
+					<span id="provence-label" class="property-label"><g:message code="institution.provence.label" default="Provence" /></span>
+					
+						<span class="property-value" aria-labelledby="provence-label"><g:fieldValue bean="${institutionInstance}" field="provence"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${institutionInstance?.postcode}">
+				<li class="fieldcontain">
+					<span id="postcode-label" class="property-label"><g:message code="institution.postcode.label" default="Postcode" /></span>
+					
+						<span class="property-value" aria-labelledby="postcode-label"><g:fieldValue bean="${institutionInstance}" field="postcode"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${institutionInstance?.country}">
 				<li class="fieldcontain">
 					<span id="country-label" class="property-label"><g:message code="institution.country.label" default="Country" /></span>
@@ -73,24 +100,6 @@
 					<span id="name-label" class="property-label"><g:message code="institution.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${institutionInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${institutionInstance?.postcode}">
-				<li class="fieldcontain">
-					<span id="postcode-label" class="property-label"><g:message code="institution.postcode.label" default="Postcode" /></span>
-					
-						<span class="property-value" aria-labelledby="postcode-label"><g:fieldValue bean="${institutionInstance}" field="postcode"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${institutionInstance?.provence}">
-				<li class="fieldcontain">
-					<span id="provence-label" class="property-label"><g:message code="institution.provence.label" default="Provence" /></span>
-					
-						<span class="property-value" aria-labelledby="provence-label"><g:fieldValue bean="${institutionInstance}" field="provence"/></span>
 					
 				</li>
 				</g:if>
