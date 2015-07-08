@@ -1,5 +1,6 @@
 package com.guru.connectframework.partnership
 
+import com.guru.connectframework.User
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaDataContainer
@@ -8,6 +9,8 @@ import com.guru.connectframework.institution.Institution
 
 class Partnership {
     String name
+
+    User Owner
     Institution institution
     PartnershipLevel partnershipLevel
 
@@ -16,12 +19,13 @@ class Partnership {
 
     CriteriaDataContainer dataContainer
 
-    boolean current
+
 
     static hasMany = [activities : Activity]
 
     static constraints = {
         contact nullable: true
+
 
     }
     String toString() {
