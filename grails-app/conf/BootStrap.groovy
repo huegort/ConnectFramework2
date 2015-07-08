@@ -62,7 +62,7 @@ class BootStrap {
         JSON.registerObjectMarshaller(ActivityType) {
             def returnArray =[:]
             returnArray['id'] = it.id
-            returnArray['category'] = ["id": it.category.id]
+            returnArray['category'] = ["id": it.category.id, "name": it.category.name]
             returnArray['criteriaContainer'] = ["id": it.criteriaContainer.id]
             returnArray['description'] = it.description
             returnArray['document'] = it.document
@@ -116,20 +116,19 @@ class BootStrap {
         }
 
         JSON.registerObjectMarshaller(Partnership) {
-            def returnArray =[:]
+            def returnArray = [:]
             returnArray['id'] = it.id
-            returnArray['activities'] = ["id": it.activities.id]
-            returnArray['approval'] = ["id": it.approval.id]
+            returnArray['activities'] = it.activities
+            returnArray['approval'] = ["id": it.approval.id,"status": it.approval.status, "dateCreated": it.approval.created]
             returnArray['contact'] = ["id": it.contact.id]
-            returnArray['current'] = it.current
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
-            returnArray['institution'] = ["id": it.institution.id]
+            returnArray['institution'] = ["id": it.institution.id, "name": it.institution.name]
             returnArray['name'] = it.name
+            returnArray['owner'] = ["id": it.owner.id]
             returnArray['partnershipLevel'] = ["id": it.partnershipLevel.id]
-
             return returnArray
-        }
 
+        }
     }
     def destroy = {
     }

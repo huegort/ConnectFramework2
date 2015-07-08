@@ -28,13 +28,13 @@
 					
 						<th><g:message code="partnership.approval.label" default="Approval" /></th>
 					
-						<g:sortableColumn property="current" title="${message(code: 'partnership.current.label', default: 'Current')}" />
-					
 						<th><g:message code="partnership.dataContainer.label" default="Data Container" /></th>
 					
 						<th><g:message code="partnership.institution.label" default="Institution" /></th>
 					
 						<g:sortableColumn property="name" title="${message(code: 'partnership.name.label', default: 'Name')}" />
+					
+						<th><g:message code="partnership.owner.label" default="Owner" /></th>
 					
 					</tr>
 				</thead>
@@ -46,13 +46,13 @@
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "approval")}</td>
 					
-						<td><g:formatBoolean boolean="${partnershipInstance.current}" /></td>
-					
 						<td>${fieldValue(bean: partnershipInstance, field: "dataContainer")}</td>
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "institution")}</td>
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "name")}</td>
+					
+						<td>${fieldValue(bean: partnershipInstance, field: "owner")}</td>
 					
 					</tr>
 				</g:each>

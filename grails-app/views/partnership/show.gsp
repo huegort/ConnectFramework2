@@ -52,15 +52,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${partnershipInstance?.current}">
-				<li class="fieldcontain">
-					<span id="current-label" class="property-label"><g:message code="partnership.current.label" default="Current" /></span>
-					
-						<span class="property-value" aria-labelledby="current-label"><g:formatBoolean boolean="${partnershipInstance?.current}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${partnershipInstance?.dataContainer}">
 				<li class="fieldcontain">
 					<span id="dataContainer-label" class="property-label"><g:message code="partnership.dataContainer.label" default="Data Container" /></span>
@@ -84,6 +75,15 @@
 					<span id="name-label" class="property-label"><g:message code="partnership.name.label" default="Name" /></span>
 					
 						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${partnershipInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${partnershipInstance?.owner}">
+				<li class="fieldcontain">
+					<span id="owner-label" class="property-label"><g:message code="partnership.owner.label" default="Owner" /></span>
+					
+						<span class="property-value" aria-labelledby="owner-label"><g:link controller="user" action="show" id="${partnershipInstance?.owner?.id}">${partnershipInstance?.owner?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
