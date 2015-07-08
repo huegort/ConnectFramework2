@@ -2,6 +2,7 @@ import com.guru.connectframework.CriteriaStatus
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
+import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaContainer
 import com.guru.connectframework.institution.Country
 import com.guru.connectframework.institution.Institution
@@ -119,7 +120,7 @@ class BootStrap {
             def returnArray = [:]
             returnArray['id'] = it.id
             returnArray['activities'] = it.activities
-            returnArray['approval'] = ["id": it.approval.id,"status": it.approval.status, "dateCreated": it.approval.created]
+            returnArray['approval'] = ["id": it.approval.id,"status": it.approval.status, "dateCreated": it.approval.created, "approver": ["id": it.approval.approver.id , "name": it.approval.approver.name]]
             returnArray['contact'] = ["id": it.contact.id]
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['institution'] = ["id": it.institution.id, "name": it.institution.name]
@@ -128,6 +129,21 @@ class BootStrap {
             returnArray['partnershipLevel'] = ["id": it.partnershipLevel.id]
             return returnArray
 
+        }
+
+        JSON.registerObjectMarshaller(Approval) {
+            def returnArray = [:]
+            returnArray['id'] = it.id
+            returnArray['approver'] = ["id": it.approver.id, "name": it.approver.name]
+            returnArray['created'] = it.created
+            returnArray['createdBy'] = ["id": it.createdBy.id]
+            returnArray['dateApproved'] = it.dateApproved
+            returnArray['dateEndorsed'] = it.dateEndorsed
+            returnArray['endorser'] = ["id": it.endorser.id]
+            returnArray['notes'] = it.notes
+            returnArray['status'] = it.status
+            returnArray['validTo'] = it.validTo
+            return returnArray
         }
     }
     def destroy = {
