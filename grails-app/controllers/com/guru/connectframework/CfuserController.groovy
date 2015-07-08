@@ -1,5 +1,6 @@
 package com.guru.connectframework
 
+import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
@@ -114,6 +115,7 @@ class CfuserController {
         // 2. the current one is not approved at this level -> deepen current institution
         // 3. intitution exist and is approved -> go straight to create activity
         log.debug(params)
+
 
         log.debug("in createActivityRequest")
         redirect (controller: 'CreatePartnershipRequest', action: 'test')
