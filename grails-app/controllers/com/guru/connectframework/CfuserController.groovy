@@ -99,10 +99,8 @@ class CfuserController {
 
         for (int i = 0; i < partnerships.size(); i++) {
             def currentPartnership = partnerships.get(i)
-            log.debug("Current Partnership" + currentPartnership)
             if (currentPartnership.approval.status == pending || currentPartnership.approval.status == declined){
                 partnershipList += currentPartnership
-                log.debug(partnershipList)
             }
 
         }
