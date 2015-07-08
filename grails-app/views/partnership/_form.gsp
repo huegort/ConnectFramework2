@@ -38,15 +38,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: partnershipInstance, field: 'current', 'error')} ">
-	<label for="current">
-		<g:message code="partnership.current.label" default="Current" />
-		
-	</label>
-	<g:checkBox name="current" value="${partnershipInstance?.current}" />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: partnershipInstance, field: 'dataContainer', 'error')} required">
 	<label for="dataContainer">
 		<g:message code="partnership.dataContainer.label" default="Data Container" />
@@ -71,6 +62,15 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="name" required="" value="${partnershipInstance?.name}"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: partnershipInstance, field: 'owner', 'error')} required">
+	<label for="owner">
+		<g:message code="partnership.owner.label" default="Owner" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="owner" name="owner.id" from="${com.guru.connectframework.User.list()}" optionKey="id" required="" value="${partnershipInstance?.owner?.id}" class="many-to-one"/>
 
 </div>
 
