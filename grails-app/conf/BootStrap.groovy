@@ -1,3 +1,4 @@
+import com.guru.connectframework.CriteriaStatus
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
@@ -5,6 +6,7 @@ import com.guru.connectframework.criteria.CriteriaContainer
 import com.guru.connectframework.institution.Country
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.institution.Region
+import com.guru.connectframework.partnership.Partnership
 import com.guru.connectframework.partnership.PartnershipLevel
 import grails.converters.JSON
 import prototyping.luis.PrototypeActivity
@@ -93,7 +95,7 @@ class BootStrap {
             returnArray['id'] = it.id
             returnArray['activityType'] = ["id": it.activityType.id]
             returnArray['agreementTemplate'] = ["id": it.agreementTemplate.id]
-            returnArray['approval'] = ["id": it.approval.id]
+            returnArray['approval'] = ["id": it.approval.id, "status": it.approval.status, "dateCreated": it.approval.created]
             returnArray['contact'] = ["id": it.contact.id]
             returnArray['current'] = it.current
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
@@ -102,8 +104,28 @@ class BootStrap {
             returnArray['name'] = it.name
             returnArray['owner'] = ["id": it.owner.id]
             returnArray['finalAgreement'] = ["id": it.finalAgreement.id]
-            returnArray['partnership'] = ["id": it.partnership.id]
+            returnArray['partnership'] = ["id": it.partnership.id, "institution": it.partnership.institution]
 
+            return returnArray
+        }
+
+        JSON.registerObjectMarshaller(CriteriaStatus) {
+            def returnArray =[:]
+            returnArray['name'] = it.toString()
+            return returnArray
+        }
+
+        JSON.registerObjectMarshaller(Partnership) {
+            def returnArray =[:]
+            returnArray['id'] = it.id
+            returnArray['activities'] = ["id": it.activities.id]
+            returnArray['approval'] = ["id": it.approval.id]
+            returnArray['contact'] = ["id": it.contact.id]
+            returnArray['current'] = it.current
+            returnArray['dataContainer'] = ["id": it.dataContainer.id]
+            returnArray['institution'] = ["id": it.institution.id]
+            returnArray['name'] = it.name
+            returnArray['partnershipLevel'] = ["id": it.partnershipLevel.id]
 
             return returnArray
         }

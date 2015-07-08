@@ -65,7 +65,7 @@
             /* Gets User Activities*/
             $.ajax({
                 type: 'POST',
-                url: 'getUserActivities',
+                url: 'getActivities',
                 dataType: 'json',
                 data: {
                     q: '1'
@@ -73,13 +73,30 @@
                 success: function (data) {
                     $.each(data, function (i, item) {
                         var c = ''
-                        $.each(item, function (a,b){
-                            c = c + '<p id=\'' + a + '\'>' + b.name + '</p>'
+                        $.each(item, function (a, b) {
+                            c = c + '<p><a href=\"${createLink(uri: '/cfuser/show/')}' + b.id + '\">' + b.name + '</a></p>'
                         })
-                        $('#myActivitiesArticle').append('<details><summary class="h4">'+i+'</summary>' + c + '</details>')
+                        $('#myActivitiesArticle').append('<details><summary class="h4">' + i + '</summary>' + c + '</details>')
                     })
                 }
             })
+
+            /* Get Activities Request */
+            $.ajax({
+                type: 'POST',
+                url: 'getActivitiesRequest',
+                dataType: 'json',
+                data: {
+                    q: '1'
+                },
+                success: function (data) {
+                    $.each(data, function (i, item) {
+                        $('#activityRequestTable').append('<tr><td>' + '<a href=\"${createLink(uri: '/cfuser/show/')}' + item.id + '\">' + item.name + '</a>' + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                    })
+                }
+            })
+
+            /* Get Institute Request*/
 
 
         });
@@ -91,8 +108,8 @@
                 dataType: 'json',
                 success: function (data) {
                     $('#description').append($('<p>', {
-                        value: data[$('#activities').val()-1].id,
-                        text: data[$('#activities').val()-1].description
+                        value: data[$('#activities').val() - 1].id,
+                        text: data[$('#activities').val() - 1].description
                     }))
                 }
             })
@@ -103,7 +120,6 @@
             $('#description').empty();
             //jQuery('#description p').html('');
         }
-
 
 
         function clearInput(value) {
@@ -150,8 +166,9 @@
                             <div class="panel-body">
                                 <div id="activity">
                                     <h4>Please Select Activity</h4>
-                                    <select id="activities" multiple class="form-control" onclick="clearDescription()" onchange="
-                                    getDescriptionContent();">
+                                    <select id="activities" multiple class="form-control" onclick="clearDescription()"
+                                            onchange="
+                                                getDescriptionContent();">
 
                                     </select>
                                 </div>
@@ -232,48 +249,33 @@
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="" class="table">
                             <tr>
                                 <th>Institute Name</th>
                                 <th>Date Created</th>
                                 <th>Status</th>
                                 <th>Options</th>
                             </tr>
-                            <tr>
-                                <td>Institute D</td>
-                                <td>12/08/2014</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="Edit">Edit</button>
-                                </td>
-                            </tr>
+
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div id="activityRequestPanel" class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Activity Request Status</h3>
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="activityRequestTable" class="table">
                             <tr>
                                 <th>Activity Name</th>
                                 <th>Date Created</th>
                                 <th>Status</th>
-                                <th>Options</th>
                             </tr>
-                            <tr>
-                                <td>Activity D</td>
-                                <td>12/08/2014</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="Edit">Edit</button>
-                                </td>
-                            </tr>
+
                         </table>
                     </div>
                 </div>
@@ -287,7 +289,6 @@
                 <div class="panel-body">
                     <section>
                         <article id="myActivitiesArticle">
-
 
                         </article>
                     </section>

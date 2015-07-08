@@ -15,7 +15,7 @@
     <asset:javascript src="application.js"/>
     <g:layoutHead/>
 </head>
-<body class="container">
+<body>
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
