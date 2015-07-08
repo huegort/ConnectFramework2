@@ -186,7 +186,7 @@
 
                         <div id="category">
                             <h4>Please Select Category</h4>
-                            <select id="Categories" class="form-control" onchange="getActivitiesForCategory()"
+                            <select id="Categories" class="form-control" onchange="getActivitiesForCategory()" name="category"
                                     onclick="removeOptions('#activities');
                                     clearDescription()">
 
@@ -199,7 +199,7 @@
                             <div class="panel-body">
                                 <div id="activity">
                                     <h4>Please Select Activity</h4>
-                                    <select id="activities" multiple class="form-control" name="category" onclick="clearDescription()"
+                                    <select id="activities" multiple class="form-control" name="activity" onclick="clearDescription()"
                                             onchange="
                                                 getDescriptionContent();">
 
