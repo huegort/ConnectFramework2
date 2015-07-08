@@ -107,5 +107,17 @@ class CfuserController {
 
         render partnershipList as JSON
     }
+    def createActivityRequest(){
+        // there are three states this can come in
+        // 0. activityType and or intitution now selected -> error back to page
+        // 1. request to create new Institution -> create institution
+        // 2. the current one is not approved at this level -> deepen current institution
+        // 3. intitution exist and is approved -> go straight to create activity
+        log.debug(params)
+
+        log.debug("in createActivityRequest")
+        redirect (controller: 'CreatePartnershipRequest', action: 'test')
+
+    }
 
 }
