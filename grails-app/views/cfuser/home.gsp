@@ -131,6 +131,9 @@
         /*Gets activities for activity category*/
         function getActivitiesForCategory() {
             /* Gets the category types*/
+            removeOptions('#activities')
+            clearDescription()
+            $('#removeCategory').prop('disabled', true)
             $.ajax({
                 type: 'POST',
                 url: 'getActivityTypes',
@@ -156,6 +159,8 @@
         function removeOptions(value) {
             $(value).find('option').remove()
         }
+
+
 
     </script>
 
@@ -187,9 +192,8 @@
                         <div id="category">
                             <h4>Please Select Category</h4>
                             <select id="Categories" class="form-control" onchange="getActivitiesForCategory()" name="category"
-                                    onclick="removeOptions('#activities');
-                                    clearDescription()">
-
+                                    onclick="">
+                            <option id="removeCategory">Please Select Category</option>
                             </select>
                         </div>
 

@@ -89,17 +89,6 @@
                     </dl>
                 </g:if>
 
-                <g:if test="${activityInstance?.current}">
-                    <dl class="dl-horizontal">
-                        <dt id="current-label" class="property-label"><g:message code="activity.current.label"
-                                                                                 default="Current"/></dt>
-
-                        <dd class="property-value" aria-labelledby="current-label"><g:formatBoolean
-                                boolean="${activityInstance?.current}"/></dd>
-
-                    </dl>
-                </g:if>
-
                 <g:if test="${activityInstance?.dataContainer}">
                     <dl class="dl-horizontal">
                         <dt id="dataContainer-label" class="property-label"><g:message
