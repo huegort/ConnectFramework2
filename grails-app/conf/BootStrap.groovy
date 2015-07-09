@@ -96,15 +96,12 @@ class BootStrap {
             def returnArray =[:]
             returnArray['id'] = it.id
             returnArray['activityType'] = ["id": it.activityType.id]
-            returnArray['agreementTemplate'] = ["id": it.agreementTemplate.id]
             returnArray['approval'] = ["id": it.approval.id, "status": it.approval.status, "dateCreated": it.approval.created, "dateEndorsed": it.approval.dateEndorsed]
             returnArray['contact'] = ["id": it.contact.id]
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['description'] = it.description
-            returnArray['finalAgreement'] = ["id": it.finalAgreement.id]
             returnArray['name'] = it.name
             returnArray['owner'] = ["id": it.owner.id]
-            returnArray['finalAgreement'] = ["id": it.finalAgreement.id]
             returnArray['partnership'] = ["id": it.partnership.id, "institution": it.partnership.institution]
 
             return returnArray
