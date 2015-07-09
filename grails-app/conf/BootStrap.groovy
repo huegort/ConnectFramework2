@@ -1,4 +1,4 @@
-import com.guru.connectframework.CriteriaStatus
+import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
@@ -98,7 +98,6 @@ class BootStrap {
             returnArray['agreementTemplate'] = ["id": it.agreementTemplate.id]
             returnArray['approval'] = ["id": it.approval.id, "status": it.approval.status, "dateCreated": it.approval.created]
             returnArray['contact'] = ["id": it.contact.id]
-            returnArray['current'] = it.current
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['description'] = it.description
             returnArray['finalAgreement'] = ["id": it.finalAgreement.id]

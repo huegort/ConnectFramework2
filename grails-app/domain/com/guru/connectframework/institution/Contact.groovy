@@ -16,6 +16,9 @@ class Contact {
 
     }
     String toString() {
-        return name
+        return getName()
+    }
+    String getName(){
+        return firstName + " " + lastName
     }
 }
