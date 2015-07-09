@@ -16,6 +16,13 @@ class ActivityType {
     String urlToDoc
     Document document
 
+    def getCriteria(){
+        if (criteriaContainer == null){
+            criteriaContainer = new CriteriaContainer()
+        }
+        return criteriaContainer.setOfCriteria
+    }
+
     static constraints = {
         description nullable: true
         urlToDoc nullable: true
