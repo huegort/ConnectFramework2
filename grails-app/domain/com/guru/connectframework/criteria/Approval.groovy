@@ -24,6 +24,7 @@ class Approval {
     public Approval(){
     }
 
+
     static Approval fromBase(Approval baseApproval){
         Approval approval = new Approval()
         approval = new Approval()
@@ -35,6 +36,9 @@ class Approval {
         return approval
     }
 
+    public boolean isEndorsed(){
+        return (dateEndorsed != null)
+    }
     static constraints = {
         notes nullable: true
         dateArchived nullable: true
@@ -42,4 +46,6 @@ class Approval {
         dateEndorsed nullable: true
         validTo nullable: true
     }
+
+
 }
