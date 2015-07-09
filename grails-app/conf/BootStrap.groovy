@@ -4,6 +4,7 @@ import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaContainer
+import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.institution.Country
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.institution.Region
@@ -96,7 +97,7 @@ class BootStrap {
             returnArray['id'] = it.id
             returnArray['activityType'] = ["id": it.activityType.id]
             returnArray['agreementTemplate'] = ["id": it.agreementTemplate.id]
-            returnArray['approval'] = ["id": it.approval.id, "status": it.approval.status, "dateCreated": it.approval.created]
+            returnArray['approval'] = ["id": it.approval.id, "status": it.approval.status, "dateCreated": it.approval.created, "dateEndorsed": it.approval.dateEndorsed]
             returnArray['contact'] = ["id": it.contact.id]
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['description'] = it.description
@@ -119,7 +120,7 @@ class BootStrap {
             def returnArray = [:]
             returnArray['id'] = it.id
             returnArray['activities'] = it.activities
-            returnArray['approval'] = ["id": it.approval.id,"status": it.approval.status, "dateCreated": it.approval.created, "approver": ["id": it.approval.approver.id , "name": it.approval.approver.name]]
+            returnArray['approval'] = ["id": it.approval.id,"status": it.approval.status, "dateCreated": it.approval.created, "dateEndorsed": it.approval.dateEndorsed, "approver": ["id": it.approval.approver.id , "name": it.approval.approver.name]]
             returnArray['contact'] = ["id": it.contact.id]
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['institution'] = ["id": it.institution.id, "name": it.institution.name]
@@ -142,6 +143,13 @@ class BootStrap {
             returnArray['notes'] = it.notes
             returnArray['status'] = it.status
             returnArray['validTo'] = it.validTo
+            return returnArray
+        }
+
+        JSON.registerObjectMarshaller(Contact) {
+            def returnArray = [:]
+            returnArray['id'] = it.id
+            returnArray['name'] = it.toString()
             return returnArray
         }
     }

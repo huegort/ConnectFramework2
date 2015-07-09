@@ -1,13 +1,25 @@
 package com.guru.connectframework
 
+import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.partnership.Partnership
 import grails.converters.JSON
+import grails.transaction.Transactional
 import org.apache.commons.logging.LogFactory
 
+@Transactional(readOnly = true)
 class CfapproverController {
+    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     private static final log = LogFactory.getLog(this)
 
-    def home() { }
+    def approverHome() {
+        params.max = 10
+        log.debug(params)
+        respond Partnership.list(params), model: [partnershipInstanceCount: Partnership.count()]
+    }
+
+    def endorserHome() {
+
+    }
 
     def getInstitutions = {
         def user = params['q']
@@ -35,6 +47,48 @@ class CfapproverController {
 
     def getActivities = {
 
+    }
+
+    def getEndorseActivities = {
+        def user = params['currentUser']
+        user = ''
+
+        long tempUser = 2
+
+        def c = Activity.createCriteria()
+        def result = c.list {
+            approval {
+                and {
+                    approver {
+                        eq("id", tempUser)
+                    }
+                    isNull('dateEndorsed')
+                }
+            }
+        }
+
+        render result as JSON
+    }
+
+    def getEndorseInstitutions = {
+        def user = params['q']
+        user = ''
+
+        long tempUser = 2
+
+        def c = Partnership.createCriteria()
+        def results = c.list {
+            approval {
+                and {
+                    approver {
+                        eq("id", tempUser)
+                    }
+                    isNull('dateEndorsed')
+                }
+            }
+        }
+
+        render results as JSON
     }
 
 
