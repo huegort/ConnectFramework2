@@ -24,13 +24,17 @@
 			<thead>
 					<tr>
 					
+						<g:sortableColumn property="title" title="${message(code: 'contact.title.label', default: 'Title')}" />
+					
+						<g:sortableColumn property="roleInInstitution" title="${message(code: 'contact.roleInInstitution.label', default: 'Role In Institution')}" />
+					
 						<g:sortableColumn property="phone" title="${message(code: 'contact.phone.label', default: 'Phone')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'contact.email.label', default: 'Email')}" />
 					
-						<th><g:message code="contact.institution.label" default="Institution" /></th>
+						<g:sortableColumn property="firstName" title="${message(code: 'contact.firstName.label', default: 'First Name')}" />
 					
-						<g:sortableColumn property="name" title="${message(code: 'contact.name.label', default: 'Name')}" />
+						<th><g:message code="contact.institution.label" default="Institution" /></th>
 					
 					</tr>
 				</thead>
@@ -38,13 +42,17 @@
 				<g:each in="${contactInstanceList}" status="i" var="contactInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${contactInstance.id}">${fieldValue(bean: contactInstance, field: "phone")}</g:link></td>
+						<td><g:link action="show" id="${contactInstance.id}">${fieldValue(bean: contactInstance, field: "title")}</g:link></td>
+					
+						<td>${fieldValue(bean: contactInstance, field: "roleInInstitution")}</td>
+					
+						<td>${fieldValue(bean: contactInstance, field: "phone")}</td>
 					
 						<td>${fieldValue(bean: contactInstance, field: "email")}</td>
 					
-						<td>${fieldValue(bean: contactInstance, field: "institution")}</td>
+						<td>${fieldValue(bean: contactInstance, field: "firstName")}</td>
 					
-						<td>${fieldValue(bean: contactInstance, field: "name")}</td>
+						<td>${fieldValue(bean: contactInstance, field: "institution")}</td>
 					
 					</tr>
 				</g:each>

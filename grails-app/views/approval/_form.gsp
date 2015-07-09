@@ -43,7 +43,7 @@
 		<g:message code="approval.dateApproved.label" default="Date Approved" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="dateApproved" precision="day"  value="${approvalInstance?.dateApproved}"  />
+	<g:datePicker default="none" noSelection="['':'']" name="dateApproved" precision="day"  value="${approvalInstance?.dateApproved}"  />
 
 </div>
 
@@ -52,7 +52,7 @@
 		<g:message code="approval.dateEndorsed.label" default="Date Endorsed" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="dateEndorsed" precision="day"  value="${approvalInstance?.dateEndorsed}"  />
+	<g:datePicker default="none" noSelection="['':'']" name="dateEndorsed" precision="day"  value="${approvalInstance?.dateEndorsed}"  />
 
 </div>
 

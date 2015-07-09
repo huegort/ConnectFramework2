@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list contact">
 			
+				<g:if test="${contactInstance?.title}">
+				<li class="fieldcontain">
+					<span id="title-label" class="property-label"><g:message code="contact.title.label" default="Title" /></span>
+					
+						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${contactInstance}" field="title"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${contactInstance?.roleInInstitution}">
+				<li class="fieldcontain">
+					<span id="roleInInstitution-label" class="property-label"><g:message code="contact.roleInInstitution.label" default="Role In Institution" /></span>
+					
+						<span class="property-value" aria-labelledby="roleInInstitution-label"><g:fieldValue bean="${contactInstance}" field="roleInInstitution"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${contactInstance?.phone}">
 				<li class="fieldcontain">
 					<span id="phone-label" class="property-label"><g:message code="contact.phone.label" default="Phone" /></span>
@@ -41,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${contactInstance?.firstName}">
+				<li class="fieldcontain">
+					<span id="firstName-label" class="property-label"><g:message code="contact.firstName.label" default="First Name" /></span>
+					
+						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${contactInstance}" field="firstName"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${contactInstance?.institution}">
 				<li class="fieldcontain">
 					<span id="institution-label" class="property-label"><g:message code="contact.institution.label" default="Institution" /></span>
@@ -50,11 +77,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${contactInstance?.name}">
+				<g:if test="${contactInstance?.lastName}">
 				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="contact.name.label" default="Name" /></span>
+					<span id="lastName-label" class="property-label"><g:message code="contact.lastName.label" default="Last Name" /></span>
 					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${contactInstance}" field="name"/></span>
+						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${contactInstance}" field="lastName"/></span>
 					
 				</li>
 				</g:if>

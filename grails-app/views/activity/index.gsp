@@ -34,7 +34,7 @@
 					
 						<th><g:message code="activity.approval.label" default="Approval" /></th>
 					
-						<g:sortableColumn property="current" title="${message(code: 'activity.current.label', default: 'Current')}" />
+						<th><g:message code="activity.dataContainer.label" default="Data Container" /></th>
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td>${fieldValue(bean: activityInstance, field: "approval")}</td>
 					
-						<td><g:formatBoolean boolean="${activityInstance.current}" /></td>
+						<td>${fieldValue(bean: activityInstance, field: "dataContainer")}</td>
 					
 					</tr>
 				</g:each>

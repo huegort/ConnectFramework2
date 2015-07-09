@@ -1,7 +1,6 @@
 package com.guru.connectframework.institution
 
 
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -12,7 +11,7 @@ class ContactController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Contact.list(params), model:[contactInstanceCount: Contact.count()]
+        respond Contact.list(params), model: [contactInstanceCount: Contact.count()]
     }
 
     def show(Contact contactInstance) {
@@ -31,11 +30,11 @@ class ContactController {
         }
 
         if (contactInstance.hasErrors()) {
-            respond contactInstance.errors, view:'create'
+            respond contactInstance.errors, view: 'create'
             return
         }
 
-        contactInstance.save flush:true
+        contactInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -58,18 +57,18 @@ class ContactController {
         }
 
         if (contactInstance.hasErrors()) {
-            respond contactInstance.errors, view:'edit'
+            respond contactInstance.errors, view: 'edit'
             return
         }
 
-        contactInstance.save flush:true
+        contactInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
                 redirect contactInstance
             }
-            '*'{ respond contactInstance, [status: OK] }
+            '*' { respond contactInstance, [status: OK] }
         }
     }
 
@@ -81,14 +80,14 @@ class ContactController {
             return
         }
 
-        contactInstance.delete flush:true
+        contactInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Contact.label', default: 'Contact'), contactInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +97,7 @@ class ContactController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'contact.label', default: 'Contact'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

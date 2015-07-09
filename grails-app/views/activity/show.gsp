@@ -68,15 +68,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${activityInstance?.current}">
-				<li class="fieldcontain">
-					<span id="current-label" class="property-label"><g:message code="activity.current.label" default="Current" /></span>
-					
-						<span class="property-value" aria-labelledby="current-label"><g:formatBoolean boolean="${activityInstance?.current}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${activityInstance?.dataContainer}">
 				<li class="fieldcontain">
 					<span id="dataContainer-label" class="property-label"><g:message code="activity.dataContainer.label" default="Data Container" /></span>

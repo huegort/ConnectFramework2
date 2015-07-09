@@ -1,6 +1,7 @@
 package com.guru.connectframework.partnership
 
 
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -11,7 +12,7 @@ class PartnershipController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Partnership.list(params), model: [partnershipInstanceCount: Partnership.count()]
+        respond Partnership.list(params), model:[partnershipInstanceCount: Partnership.count()]
     }
 
     def show(Partnership partnershipInstance) {
@@ -30,11 +31,11 @@ class PartnershipController {
         }
 
         if (partnershipInstance.hasErrors()) {
-            respond partnershipInstance.errors, view: 'create'
+            respond partnershipInstance.errors, view:'create'
             return
         }
 
-        partnershipInstance.save flush: true
+        partnershipInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -57,18 +58,18 @@ class PartnershipController {
         }
 
         if (partnershipInstance.hasErrors()) {
-            respond partnershipInstance.errors, view: 'edit'
+            respond partnershipInstance.errors, view:'edit'
             return
         }
 
-        partnershipInstance.save flush: true
+        partnershipInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Partnership.label', default: 'Partnership'), partnershipInstance.id])
                 redirect partnershipInstance
             }
-            '*' { respond partnershipInstance, [status: OK] }
+            '*'{ respond partnershipInstance, [status: OK] }
         }
     }
 
@@ -80,14 +81,14 @@ class PartnershipController {
             return
         }
 
-        partnershipInstance.delete flush: true
+        partnershipInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Partnership.label', default: 'Partnership'), partnershipInstance.id])
-                redirect action: "index", method: "GET"
+                redirect action:"index", method:"GET"
             }
-            '*' { render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -97,7 +98,7 @@ class PartnershipController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'partnership.label', default: 'Partnership'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*' { render status: NOT_FOUND }
+            '*'{ render status: NOT_FOUND }
         }
     }
 }

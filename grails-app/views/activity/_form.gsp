@@ -47,15 +47,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'current', 'error')} ">
-	<label for="current">
-		<g:message code="activity.current.label" default="Current" />
-		
-	</label>
-	<g:checkBox name="current" value="${activityInstance?.current}" />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: activityInstance, field: 'dataContainer', 'error')} required">
 	<label for="dataContainer">
 		<g:message code="activity.dataContainer.label" default="Data Container" />

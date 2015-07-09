@@ -1,6 +1,7 @@
 package com.guru.connectframework.activity
 
 
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -11,7 +12,7 @@ class ActivityController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Activity.list(params), model: [activityInstanceCount: Activity.count()]
+        respond Activity.list(params), model:[activityInstanceCount: Activity.count()]
     }
 
     def show(Activity activityInstance) {
@@ -30,11 +31,11 @@ class ActivityController {
         }
 
         if (activityInstance.hasErrors()) {
-            respond activityInstance.errors, view: 'create'
+            respond activityInstance.errors, view:'create'
             return
         }
 
-        activityInstance.save flush: true
+        activityInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -57,18 +58,18 @@ class ActivityController {
         }
 
         if (activityInstance.hasErrors()) {
-            respond activityInstance.errors, view: 'edit'
+            respond activityInstance.errors, view:'edit'
             return
         }
 
-        activityInstance.save flush: true
+        activityInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.id])
                 redirect activityInstance
             }
-            '*' { respond activityInstance, [status: OK] }
+            '*'{ respond activityInstance, [status: OK] }
         }
     }
 
@@ -80,14 +81,14 @@ class ActivityController {
             return
         }
 
-        activityInstance.delete flush: true
+        activityInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Activity.label', default: 'Activity'), activityInstance.id])
-                redirect action: "index", method: "GET"
+                redirect action:"index", method:"GET"
             }
-            '*' { render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -97,7 +98,7 @@ class ActivityController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'activity.label', default: 'Activity'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*' { render status: NOT_FOUND }
+            '*'{ render status: NOT_FOUND }
         }
     }
 }

@@ -15,10 +15,10 @@ class Contact {
         email nullable: true
 
     }
-    String toString() {
-        return getName()
-    }
     String getName(){
         return firstName + " " + lastName
+    }
+    String toString() {
+        return getName()
     }
 }
