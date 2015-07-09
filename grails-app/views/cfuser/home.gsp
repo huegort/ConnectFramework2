@@ -186,7 +186,16 @@
 
                         <div id="institute">
                             <h4>Please Select Institute</h4>
-                            <input id="institutes" type="text" class="form-control" value="" name="institute">
+                            <input id="institutes" type="text" class="form-control" value="" name="institutionId">
+                            <div class="fieldcontain ">
+                                <label for="createNewInstitution">
+                                    Create New Institution
+                                    <span class="required-indicator">*</span>
+                                </label>
+                                <g:checkBox id="createNewInstitution" name="createNewInstitution" />
+
+                            </div>
+
                         </div>
 
                         <div id="category">
@@ -202,8 +211,8 @@
                         <div id="categoryDescriptionField" class="panel panel-default">
                             <div class="panel-body">
                                 <div id="activity">
-                                    <h4>Please Select Activity</h4>
-                                    <select id="activities" multiple class="form-control" name="activity" onclick="clearDescription()"
+                                    <h4>Please Select Activity Type</h4>
+                                    <select id="activities" multiple class="form-control" name="activityTypeId" onclick="clearDescription()"
                                             onchange="
                                                 getDescriptionContent();">
 

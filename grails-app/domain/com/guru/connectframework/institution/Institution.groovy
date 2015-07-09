@@ -12,6 +12,11 @@ class Institution {
     Country country
     String notes
 
+    Set<Partnership> partnerships
+
+    static hasMany = [partnerships : Partnership]
+
+    // only to make queries quicker
     Partnership currentHighest
 
     static constraints = {
@@ -25,6 +30,16 @@ class Institution {
         postcode nullable: true
 
     }
+    Set<Partnership> getPartnerships(){
+        //TODO look at this this should not be needed
+        log.debug("in get partnerships")
+        if (this.partnerships==null){
+            log.debug("in instution creating the set of partnerships")
+            this.partnerships = new HashSet<Partnership>()
+        }
+        return this.partnerships
+    }
+
     String toString() {
         return name
     }

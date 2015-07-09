@@ -30,6 +30,9 @@ class Activity {
     static constraints = {
         description nullable: true
         contact nullable: true
+        agreementTemplate nullable: true
+        finalAgreement nullable: true
+
     }
     String toString() {
         return name

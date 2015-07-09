@@ -2,6 +2,7 @@ package com.guru.connectframework
 
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaDataContainer
+import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.partnership.Partnership
 import com.guru.connectframework.partnership.PartnershipLevel
@@ -13,42 +14,54 @@ import org.grails.datastore.mapping.validation.ValidationException
 @Transactional
 class PartnershipService {
     private static final log = LogFactory.getLog(this)
-    def approvalService
+    def userService
 
 
-    def createPartnership(JSONElement approvalJSON, Institution institution, PartnershipLevel partnershipLevel, JSONElement partnershipJSON ,JSONElement criteriaDataJSON) {
+    def createPartnership(Approval approval , Institution institution, PartnershipLevel partnershipLevel, JSONElement partnershipJSON ,JSONElement criteriaDataJSON) {
         Partnership partnership = new Partnership(partnershipJSON)
 
-
-        log.debug("approval: "+ approvalJSON)
-        //TODO get the owner from the secrurity framework
-        partnership.owner = User.get(1)
-        partnership.approval= approvalService.createApprovalFromJSON(approvalJSON)
+        partnership.owner = userService.currentUser
+        partnership.approval= approval
         partnership.partnershipLevel = partnershipLevel
-        log.debug("Institution:"+ institution)
         partnership.institution = institution
         partnership.dataContainer = new CriteriaDataContainer()
 
 
+        // todo sort this out
+        partnership.contact = Contact.get(1)
 
         partnershipLevel.criteria.each {criteria ->
-            //log.debug(criteriaDataJSON)
-
             partnership.dataContainer.setOfCriteriaData.add( criteria.dataType.getData(criteria,criteriaDataJSON, partnership.approval, partnership.dataContainer))
         }
-
 
         try {
             partnership.approval.save(flush: true, failOnError: true)
             partnership.dataContainer.save(flush:true, failOnError: true)
             partnership.dataContainer.save(flush: true, failOnError: true)
-            log.debug("partner intst: "+ partnership.institution)
             partnership.save(flush: true, failOnError: true)
+            log.debug(institution.partnerships)
+            institution.partnerships += partnership
+            institution.save(flush: true, failOnError: true)
         }catch (ValidationException e) {
             e.printStackTrace()
         }
-            log.debug("5well I think that should be saved now")
+            log.debug("partnership saved")
+        return partnership
+    }
+    Partnership getHighest(Institution institution){
+        int currentHighestLevel = 0
+        log.debug("institution :"+ institution)
+        log.debug("the partnerships for this institution :"+institution.partnerships)
 
+        institution.partnerships.each {partnership ->
+            if (partnership.partnershipLevel.level > currentHighestLevel && partnership.approval.validTo >  new Date() ){
+                institution.currentHighest = partnership
+                currentHighestLevel = partnership.partnershipLevel.level
+            }
+
+        }
+        institution.save(flush: true, failOnError: true)
+        return institution.currentHighest
 
     }
 }

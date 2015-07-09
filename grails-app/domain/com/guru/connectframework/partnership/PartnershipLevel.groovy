@@ -1,5 +1,7 @@
 package com.guru.connectframework.partnership
 
+import com.guru.connectframework.Role
+import com.guru.connectframework.User
 import com.guru.connectframework.criteria.CriteriaContainer
 
 class PartnershipLevel {
@@ -8,7 +10,7 @@ class PartnershipLevel {
     String urlToDoc
     CriteriaContainer criteriaContainer
     int level
-
+    int defaultDurationInYears = 5
 
     static constraints = {
         description nullable: true
@@ -23,5 +25,21 @@ class PartnershipLevel {
             criteriaContainer = new CriteriaContainer()
         }
         return criteriaContainer.setOfCriteria
+    }
+    def getPossibleEndorsers(){
+        //TODO get this from the roles for this partnership level
+        Set<User> endorsers = new HashSet<User>()
+        endorsers.add(User.get(1))
+        endorsers.add(User.get(2))
+        return endorsers
+
+    }
+    def getPossibleApprovers(){
+        //TODO get this from the roles for this partnership level
+        Set<User> approvers = new HashSet<User>()
+        approvers.add(User.get(1))
+        approvers.add(User.get(2))
+        return approvers
+
     }
 }

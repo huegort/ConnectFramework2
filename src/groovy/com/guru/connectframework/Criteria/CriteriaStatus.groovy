@@ -9,16 +9,14 @@ public enum CriteriaStatus{
     DECLINED(3,"Declined"),
     INCOMPLETE(4,"Incomplete"),
 
-    int id
+    int blah
     String display
 
     public CriteriaStatus(int id, String display){
-        this.id = id
+        this.blah= id
         this.display = display
     }
-    public int getId(){
-        return id
-    }
+
     public String getName(){
         return display
     }

@@ -6,11 +6,13 @@ import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.partnership.Partnership
+import com.guru.connectframework.partnership.PartnershipLevel
 import grails.converters.JSON
 import org.apache.commons.logging.LogFactory
 
 class CfuserController {
     private static final log = LogFactory.getLog(this)
+    def partnershipService
 
     def home() {}
 
@@ -105,20 +107,54 @@ class CfuserController {
             }
 
         }
+        log.debug(partnershipList)
+        Partnership partnership = partnershipList.toArray()[0]
+
+
 
         render partnershipList as JSON
     }
     def createActivityRequest(){
+
+        log.debug(params)
         // there are three states this can come in
         // 0. activityType and or intitution now selected -> error back to page
         // 1. request to create new Institution -> create institution
         // 2. the current one is not approved at this level -> deepen current institution
         // 3. intitution exist and is approved -> go straight to create activity
-        log.debug(params)
+        boolean createNewInstitution = params.createNewInstitution
+        // TODO errors
+
+        //long activityTypeId = ActivityType.get()
+        ActivityType activityType = ActivityType.get(params.activityTypeId)
+
+        Institution institution
+
+        if (createNewInstitution){
+            institution = new Institution()
+            // goto create instution and partnership first
+            redirect(controller: "createPartnershipRequest", action: "createInsitutionAndPartnershipFirst", params: [ activityTypeId: activityType.id])
+
+        }else{
+            log.debug("institionID :"+params.institutionId)
+            //long instituteId = Integer.parseInt(params.institutionId)
+            institution = Institution.findByName(params.institutionId)
+            log.debug("institution :"+institution)
 
 
-        log.debug("in createActivityRequest")
-        redirect (controller: 'CreatePartnershipRequest', action: 'test')
+            log.debug(params.activityTypeId)
+            Partnership institutionsHighest = partnershipService.getHighest(institution)
+            if (institutionsHighest == null || activityType.requiredLevel.level >  institutionsHighest.partnershipLevel.level){
+                // goto create new Level with instituion
+                redirect(controller: "createPartnershipRequest", action: "createInsitutionAndPartnershipFirst", params: [ activityTypeId: activityType.id,institutionId: institution.id])
+
+            }else{
+                // go straight to create activity
+                redirect(controller: "createActivityRequest", action: "createActivityCh", params: [partnershipId: institutionsHighest.id, activityTypeId: activityType.id, institution: institution])
+
+            }
+
+        }
 
     }
 

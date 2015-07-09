@@ -3,12 +3,14 @@ package com.guru.connectframework
 import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.criteria.Approval
 import grails.transaction.Transactional
+import groovy.time.TimeCategory
 import org.apache.commons.logging.LogFactory
 import org.codehaus.groovy.grails.web.json.JSONElement
 
 @Transactional
 class ApprovalService {
     private static final log = LogFactory.getLog(this)
+    def userService
 
     Approval createApprovalFromJSON(JSONElement approvalJSON) {
         //log.debug("in approval Service****: "+ approvalJSON)
@@ -17,8 +19,8 @@ class ApprovalService {
         Approval approval = new Approval(approvalJSON)
 
         if (approval.createdBy == null){
-            //TODO get from security
-            approval.createdBy = User.get(1)
+
+            approval.createdBy = userService.currentUser
             approval.created = new Date()
         }
 
@@ -40,4 +42,34 @@ class ApprovalService {
 
 
     }
+    Approval createDefaultApproval(int duration, Set<User> possibleApprovers,Set<User> possibleEndorsers){
+        User self = userService.currentUser
+        User headOfSchool = userService.headOfSchool
+        User headOfFaculty = userService.headOfFaculty
+        Approval approval = new Approval()
+        approval.createdBy = self
+        approval.created = new Date()
+        approval.status = CriteriaStatus.PENDING
+        use (TimeCategory) {
+            approval.validTo = duration.years.from.now
+        }
+
+
+        // TODO we need to think about this
+        if (headOfSchool != null)(
+            approval.endorser = headOfSchool
+        )else{
+            approval.endorser = self
+        }
+        if (headOfFaculty != null && headOfFaculty in possibleApprovers){
+            approval.approver = headOfFaculty
+
+        }else{
+            approval.approver =  userService.universityRepresentative
+        }
+
+        return approval
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.guru.connectframework
 
+import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.institution.Institution
@@ -15,15 +16,40 @@ class CreatePartnershipRequestController {
     private static final log = LogFactory.getLog(this)
     def partnershipService
     def institutionService
+    def approvalService
+
+
 
     def index() {
         //log.debug(params.partnershipLevel.id)
+        def institution
         def partnershipLevel = PartnershipLevel.get(params.partnershipLevel.id)
         //def activityType = new ActivityType(params.activityType.ie)
         System.out.println(partnershipLevel)
         log.debug(partnershipLevel)
 
         [ partnershipLevel : partnershipLevel ]
+
+    }
+    def createInsitutionAndPartnershipFirst(){
+        log.debug("creating instution first")
+       // long activityTypeId = ActivityType.get(params.activityTypeId)
+        ActivityType activityType = ActivityType.get(params.activityTypeId)
+        PartnershipLevel partnershipLevel = activityType.requiredLevel
+
+        render (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : true , instition: new Institution()])
+    }
+    def createPartnershipFirst(){
+        //long activityTypeId = ActivityType.get(params.activityTypeId)
+        ActivityType activityType = ActivityType.get(params.activityTypeId)
+        PartnershipLevel partnershipLevel = activityType.requiredLevel
+
+        //long institutionId = ActivityType.get(params.institutionId)
+        Institution institution = ActivityType.get(params.institutionId)
+
+
+        render  (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : false], institution : institution)
+
 
     }
     def saveInstitution(Institution institution){
@@ -44,29 +70,24 @@ class CreatePartnershipRequestController {
     @Transactional
     def createPartnershipRequest( ){
         //log.debug("sanity9 " + params.partnershipLevelId)
+        // TODO get this from the params
+        ActivityType activityType = ActivityType.get(1)
+
+
+
         def partnershipLevel = PartnershipLevel.get(params.partnershipLevelId)
-        //log.debug("PL: "+partnershipLevel)
         def data = JSON.parse(params.sendData)
-        log.debug("all: "+data)
-        log.debug("institution: "+data.institution)
-        log.debug("approval: "+data.approval)
+        def approvalJSON =data.approval
+        def parnershipJSON = data.partnership
+        def criteriaDataJSON = data.criteriaData
+
         Institution institution1 = institutionService.createInstitutionFromJSON(data.institution)
+        Approval approval = approvalService.createApprovalFromJSON(approvalJSON)
+
+        Partnership partnership = partnershipService.createPartnership(approval,institution1,partnershipLevel,parnershipJSON , criteriaDataJSON)
 
 
-        log.debug("institution:"+institution1)
-
-
-
-
-        User fred = new User()
-        fred.name = "joe2"
-        fred.save(flush: true)
-
-        partnershipService.createPartnership(data.approval,institution1,partnershipLevel, data.partnership, data.criteriaData)
-
-
-        log.debug("5out in create partnership controler")
-
+        redirect(controller: "createActivityRequest", action: "createActivityCh", params: [partnershipId: partnership.id, activityTypeId: activityType.id, institution: institution1])
     }
     def test(){
         log.debug("sanity")
