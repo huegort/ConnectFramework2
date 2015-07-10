@@ -1,11 +1,10 @@
-<tr>
-    <td>
-        ${criteriaData.criteria.name}
-    </td>
-    <td>
-        <g:render template="${criteriaData.criteria.dataType.displayRenderer}" model="[criteriaData: criteriaData]"/>
+<td>
+    ${criteriaData.criteria.name}
+</td>
+<td>
+    <g:render template="${criteriaData.criteria.dataType.displayRenderer}" model="[criteriaData: criteriaData]"/>
 
-    </td>
+</td>
     <td>
         ${criteriaData.approval.status}
     </td>
@@ -23,4 +22,6 @@
         ${criteriaData.criteria.description}
     </td>
 
-</tr>
+    
+       
+

@@ -41,12 +41,9 @@
                 </div>
             </div>
         </div>
-        <div class="grid__col grid__col--9-of-12">
-
-        </div>
-        <div class="grid__col grid__col--3-of-12 text-right">
-                <h4>Overall Approval</h4>
-
+        <div class="grid__col grid__col--12-of-12">
+                <H3>Overall Aprroval</H3>
+            <div>
                 <button class="btn btn-default btn-width-30">
                     <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span>
                 </button>
@@ -56,6 +53,7 @@
                     <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
                 </button>
 
+            </div>
         </div>
     </div>
 
