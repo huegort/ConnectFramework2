@@ -14,8 +14,12 @@ class CfuserController {
 
     def home() {}
 
-    def show(Activity activityInstance) {
+    def showActivity(Activity activityInstance) {
         respond activityInstance
+    }
+
+    def showPartnership(Partnership partnershipInstance) {
+        respond partnershipInstance
     }
 
     def institutionsList() {

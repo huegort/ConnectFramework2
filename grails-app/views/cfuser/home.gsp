@@ -16,6 +16,7 @@
             //init settings
             $('#activityRequestPanel').hide()
             $('#partnershipRequestPanel').hide()
+            $('#currentActivitiesPanel').hide()
 
             /*  Searches institutions when user types into textfield '#institutes' */
             $.ajax({
@@ -66,6 +67,7 @@
                             c = c + '<p><a href=\"${createLink(uri: '/cfuser/show/')}' + b.id + '\">' + b.name + '</a></p>'
                         })
                         $('#myActivitiesArticle').append('<details><summary class="h4">' + i + '</summary>' + c + '</details>')
+                        $('#currentActivitiesPanel').show()
                     })
                 }
             })
@@ -80,10 +82,18 @@
                 },
                 success: function (data) {
                     if (data.length > 0) {
-                        $('#activityRequestPanel').show()
                         $.each(data, function (i, item) {
-                            $('#activityRequestTable').append('<tr><td>' + '<a href=\"${createLink(uri: '/cfuser/show/')}' + item.id + '\">' + item.name + '</a>' + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                            $('#activityRequestTable').append('<tr><td>'+ item.id +'</td><td>' +  item.name + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
                         })
+                        $("#activityRequestTable").bootgrid({
+                            formatters: {
+                                "link": function(column, row)
+                                {
+                                    return '<a href=\"${createLink(uri: '/cfuser/showActivity/')}'+ row.id +'\">' + row.activityName + '</a>'
+                                }
+                            }
+                        });
+                        $('#activityRequestPanel').show()
                     }
                 }
             })
@@ -98,10 +108,18 @@
                 },
                 success: function (data) {
                     if (data.length > 0) {
-                        $('#partnershipRequestPanel').show()
                         $.each(data, function (i, item) {
-                            $('#partnershipRequestTable').append('<tr><td>' + '<a href=\"${createLink(uri: '/cfuser/show/')}' + item.id + '\">' + item.name + '</a>' + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                            $('#partnershipRequestTable tbody').append('<tr><td>'+ item.id +'</td><td>' +  item.institution.name + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
                         })
+                        $("#partnershipRequestTable").bootgrid({
+                            formatters: {
+                                "link": function(column, row)
+                                {
+                                    return '<a href=\"${createLink(uri: '/cfuser/showPartnership/')}'+ row.id +'\">' + row.institution + '</a>'
+                                }
+                            }
+                        });
+                        $('#partnershipRequestPanel').show()
                     }
                 }
             })
@@ -295,13 +313,18 @@
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table id="partnershipRequestTable" class="table">
+                        <table id="partnershipRequestTable" class="table table-condensed table-hover table-striped">
+                            <thead>
                             <tr>
-                                <th>Institute Name</th>
-                                <th>Date Created</th>
-                                <th>Status</th>
+                                <th data-column-id="id" datatype="numeric">ID</th>
+                                <th data-column-id="institution" data-formatter="link">Institute Name</th>
+                                <th data-column-id="dateCreated">Date Created</th>
+                                <th data-column-id="statusName">Status</th>
                             </tr>
+                            </thead>
+                            <tbody>
 
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -315,18 +338,24 @@
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table id="activityRequestTable" class="table">
+                            <thead>
                             <tr>
-                                <th>Activity Name</th>
-                                <th>Date Created</th>
-                                <th>Status</th>
+                                <th data-column-id="id" datatype="numeric">ID</th>
+                                <th data-column-id="activityName" data-formatter="link">Activity Name</th>
+                                <th data-column-id="dateCreated">Date Created</th>
+                                <th data-column-id="statusName">Status</th>
                             </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
 
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <div id="CurrentActivitiesPanel" class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Current Activitites</h3>
                 </div>
