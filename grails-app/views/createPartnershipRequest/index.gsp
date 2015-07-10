@@ -78,8 +78,7 @@
                 <div class="panel-body">
                     <div id="institutionDiv" >
                         <fieldset class="form">
-                            ${createNewIntitute}
-                            <g:if test="${createNewInstitution}">
+                            <g:if test="${createNewInstitution == true}">
                                 <g:render template="instituteform"/>
                             </g:if>
                             <g:else>

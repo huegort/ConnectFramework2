@@ -37,7 +37,7 @@ class CreatePartnershipRequestController {
         ActivityType activityType = ActivityType.get(params.activityTypeId)
         PartnershipLevel partnershipLevel = activityType.requiredLevel
 
-        render (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : true , instition: new Institution()])
+        render (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewInstitution : true , instition: new Institution()])
     }
     def createPartnershipFirst(){
         //long activityTypeId = ActivityType.get(params.activityTypeId)
