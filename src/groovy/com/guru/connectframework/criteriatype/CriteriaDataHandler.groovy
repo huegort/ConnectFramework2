@@ -26,5 +26,8 @@ abstract class CriteriaDataHandler {
     }
 
    abstract CriteriaData handleData(Criteria criteria, JSONElement jsonElement)
+    abstract String getDisplayRenderer()
+    abstract String getFormInput()
+
 
 }

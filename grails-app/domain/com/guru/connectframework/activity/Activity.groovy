@@ -27,6 +27,10 @@ class Activity {
     Document agreementTemplate
     Document finalAgreement
 
+    def getCriteriaData(){
+        return dataContainer.setOfCriteriaData
+    }
+
     static constraints = {
         description nullable: true
         contact nullable: true

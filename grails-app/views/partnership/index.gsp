@@ -23,7 +23,8 @@
 			<table>
 			<thead>
 					<tr>
-					
+						<g:sortableColumn property="name" title="${message(code: 'partnership.name.label', default: 'Name')}" />
+
 						<th><g:message code="partnership.contact.label" default="Contact" /></th>
 					
 						<th><g:message code="partnership.approval.label" default="Approval" /></th>
@@ -32,8 +33,7 @@
 					
 						<th><g:message code="partnership.institution.label" default="Institution" /></th>
 					
-						<g:sortableColumn property="name" title="${message(code: 'partnership.name.label', default: 'Name')}" />
-					
+
 						<th><g:message code="partnership.owner.label" default="Owner" /></th>
 					
 					</tr>
@@ -41,7 +41,9 @@
 				<tbody>
 				<g:each in="${partnershipInstanceList}" status="i" var="partnershipInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
+						<td><g:link controller="CfApproval" action="approvePartnership" params="[partnershipId : ${fieldValue(bean: partnershipInstance, field: "id")}"></g:link>  ${fieldValue(bean: partnershipInstance, field: "name")}</td>
+
+
 						<td><g:link action="show" id="${partnershipInstance.id}">${fieldValue(bean: partnershipInstance, field: "contact")}</g:link></td>
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "approval")}</td>
@@ -50,8 +52,7 @@
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "institution")}</td>
 					
-						<td>${fieldValue(bean: partnershipInstance, field: "name")}</td>
-					
+
 						<td>${fieldValue(bean: partnershipInstance, field: "owner")}</td>
 					
 					</tr>

@@ -1,26 +1,37 @@
-package com.guru.connectframework.criteriatype
+package com.guru.connectframework.criteriatype.datahandler
 
+import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.Criteria
 import com.guru.connectframework.criteria.CriteriaData
+import com.guru.connectframework.criteriatype.CriteriaDataHandler
 import org.apache.commons.logging.LogFactory
 import org.codehaus.groovy.grails.web.json.JSONElement
 
 /**
  * Created by andrewbeatty on 07/07/15.
  */
-class FileDataHandler extends  CriteriaDataHandler{
+class StringDataHandler extends CriteriaDataHandler {
     private static final log = LogFactory.getLog(this)
 
     @Override
     CriteriaData handleData(Criteria criteria, JSONElement jsonElement) {
-        //log.debug("in string handler2")
+        log.debug("in string handler2")
         CriteriaData criteriaData = new CriteriaData()
 
         try {
-            //criteriaData.valueString=jsonElement["data_" + criteria.id]
+            criteriaData.valueString=jsonElement["data_" + criteria.id]
         }catch (Exception e){
             log.debug("no such criteria")
         }
         return criteriaData
+    }
+    @Override
+    String getDisplayRenderer() {
+        return  "/cfcriteriadata/renderers/stringrenderer"
+    }
+
+    @Override
+    String getFormInput() {
+        return "/cfcriteriadata/renderers/stringforminput"
     }
 }

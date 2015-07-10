@@ -1,7 +1,8 @@
-package com.guru.connectframework.criteriatype
+package com.guru.connectframework.criteriatype.datahandler
 
 import com.guru.connectframework.criteria.Criteria
 import com.guru.connectframework.criteria.CriteriaData
+import com.guru.connectframework.criteriatype.CriteriaDataHandler
 import org.apache.commons.logging.LogFactory
 import org.codehaus.groovy.grails.web.json.JSONElement
 
@@ -34,5 +35,15 @@ class DateDataHandler extends CriteriaDataHandler {
             log.debug("no such criteria")
         }
         return criteriaData
+    }
+
+    @Override
+    String getDisplayRenderer() {
+       return  "/cfcriteriadata/renderers/daterenderer"
+    }
+
+    @Override
+    String getFormInput() {
+        return "/cfcriteriadata/renderers/dateforminput"
     }
 }

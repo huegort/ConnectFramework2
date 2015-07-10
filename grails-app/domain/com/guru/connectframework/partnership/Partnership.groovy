@@ -20,6 +20,10 @@ class Partnership {
     CriteriaDataContainer dataContainer
 
 
+    def getCriteriaData(){
+        return dataContainer.setOfCriteriaData
+    }
+
 
     static hasMany = [activities : Activity]
 
