@@ -8,12 +8,13 @@ public enum CriteriaStatus{
     APPROVED(2,"Approved"),
     DECLINED(3,"Declined"),
     INCOMPLETE(4,"Incomplete"),
+    ENDORSED(5,"Endorsed")
 
-    int blah
+
     String display
 
     public CriteriaStatus(int id, String display){
-        this.blah= id
+
         this.display = display
     }
 
