@@ -48,9 +48,13 @@
 
                             </tr>
                             </thead>
+
                             <tbody>
                             <g:each in="${partnershipInstanceList}" status="i" var="partnershipInstance">
                                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+                                    <td><g:link controller="CfProcessApproval" action="approvePartnership" params="[partnershipId : partnershipInstance.id]">  ${fieldValue(bean: partnershipInstance, field: "name")}</g:link>  </td>
+
 
                                     <td><g:link action="show" id="${partnershipInstance.id}">${fieldValue(bean: partnershipInstance, field: "contact")}</g:link></td>
 
@@ -60,10 +64,8 @@
 
                                     <td>${fieldValue(bean: partnershipInstance, field: "institution")}</td>
 
-                                    <td>${fieldValue(bean: partnershipInstance, field: "name")}</td>
 
                                     <td>${fieldValue(bean: partnershipInstance, field: "owner")}</td>
-
                                 </tr>
                             </g:each>
                             </tbody>

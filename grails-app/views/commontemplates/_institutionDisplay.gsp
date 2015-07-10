@@ -1,3 +1,4 @@
 <div>
-    isn't this a nice institution
+    ${institution.name}
+    <g:hiddenField name="id" value="${institution.id}"></g:hiddenField>
 </div>
