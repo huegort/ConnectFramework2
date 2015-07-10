@@ -5,7 +5,7 @@ import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaData
 import com.guru.connectframework.partnership.Partnership
 
-class CfApprovalController {
+class CfProcessApprovalController {
 
     def approvePartnership() {
         Partnership partnership = Partnership.get(params.partnershipId)
