@@ -1,12 +1,10 @@
 package com.guru.connectframework
-
 import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.partnership.Partnership
-import com.guru.connectframework.partnership.PartnershipLevel
 import grails.converters.JSON
 import org.apache.commons.logging.LogFactory
 
@@ -20,23 +18,23 @@ class CfuserController {
         respond activityInstance
     }
 
-    def institutionsList = {
+    def institutionsList() {
         def q = params['q']
         def institutionList = Institution.findAllByNameLike("%${q}%")
         render institutionList as JSON
     }
 
-    def getCategories = {
+    def getCategories() {
         def categoriesList = ActivityCategory.getAll()
         render categoriesList as JSON
     }
 
-    def getActivityTypes = {
+    def getActivityTypes() {
         def activityTypesList = ActivityType.getAll()
         render activityTypesList as JSON
     }
 
-    def getActivities = {
+    def getActivities() {
 
         def q = params['q']
 
@@ -67,7 +65,7 @@ class CfuserController {
         render institutionMap as JSON
     }
 
-    def getActivitiesRequest = {
+    def getActivitiesRequest() {
         def user = params['user']
         user = 1
         User current = User.findById(user)
@@ -90,7 +88,7 @@ class CfuserController {
 
     }
 
-    def getPartnershipRequest = {
+    def getPartnershipRequest() {
         def user = params['user']
         user = 1
         User current = User.findById(user)

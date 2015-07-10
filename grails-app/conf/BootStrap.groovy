@@ -97,7 +97,7 @@ class BootStrap {
             returnArray['id'] = it.id
             returnArray['activityType'] = ["id": it.activityType.id]
             returnArray['approval'] = ["id": it.approval.id, "status": it.approval.status, "dateCreated": it.approval.created, "dateEndorsed": it.approval.dateEndorsed]
-            returnArray['contact'] = ["id": it.contact.id]
+            returnArray['contact'] = it.contact
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['description'] = it.description
             returnArray['name'] = it.name
@@ -118,7 +118,7 @@ class BootStrap {
             returnArray['id'] = it.id
             returnArray['activities'] = it.activities
             returnArray['approval'] = ["id": it.approval.id,"status": it.approval.status, "dateCreated": it.approval.created, "dateEndorsed": it.approval.dateEndorsed, "approver": ["id": it.approval.approver.id , "name": it.approval.approver.name]]
-            returnArray['contact'] = ["id": it.contact.id]
+            returnArray['contact'] = it.contact
             returnArray['dataContainer'] = ["id": it.dataContainer.id]
             returnArray['institution'] = ["id": it.institution.id, "name": it.institution.name]
             returnArray['name'] = it.name

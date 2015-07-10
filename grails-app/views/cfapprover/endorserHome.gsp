@@ -1,10 +1,10 @@
 <%--
   Created by IntelliJ IDEA.
   User: lmanuelcb
-  Date: 07/08/2015
-  Time: 16:02
+  Date: 07/07/2015
+  Time: 10:33
 --%>
-
+<%@ page import="com.guru.connectframework.partnership.Partnership" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -15,7 +15,7 @@
 <div class="main-body">
     <div class="grid">
         <div class="grid__col grid__col--12-of-12">
-            <h1>CF_Approver Interface</h1>
+            <h1>CF_Endorser Interface</h1>
         </div>
     </div>
 
@@ -23,57 +23,48 @@
         <div class="grid__col grid__col--9-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Institutions Requests</h3>
+                    <h3 class="panel-title">Institutions</h3>
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table">
+                            <thead>
                             <tr>
-                                <th>Institute Name</th>
-                                <th>Request Date</th>
-                                <th>User</th>
-                                <th>Status</th>
-                                <th>Options</th>
+
+                                <th><g:message code="partnership.approval.status.label" default="Status"/></th>
+
+                                <th><g:message code="partnership.institution.label" default="Institution"/></th>
+
+                                <g:sortableColumn property="name"
+                                                  title="${message(code: 'partnership.name.label', default: 'Name')}"/>
+
+                                <th><g:message code="partnership.owner.label" default="Owner"/></th>
+
+                                <th>Option</th>
+
                             </tr>
-                            <tr>
-                                <td>Institution A</td>
-                                <td>20/06/2015</td>
-                                <td>User A</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button type="button" class="btn btn-default btn-sm" value="View"
-                                            onclick="location.reload();
-                                            location.href = 'CF_APPROVER_reviewInstituteRequest.html'">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Institution B</td>
-                                <td>19/06/2015</td>
-                                <td>User B</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="View">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Institution C</td>
-                                <td>21/06/2015</td>
-                                <td>User A</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="View">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Institution A</td>
-                                <td>18/05/2015</td>
-                                <td>User C</td>
-                                <td>Rejected</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="View">View</button>
-                                </td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                            <g:each in="${resultsPartnership}" var="result">
+                                <tr>
+
+                                    <td>${result.approval.status.name}</td>
+
+                                    <td>${result.institution}</td>
+
+                                    <td>${result.name}</td>
+
+                                    <td>${result.owner}</td>
+
+                                    <td><button type="button"
+                                                class="btn btn-default btn-sm"
+                                                value="View"
+                                                onclick="location.reload();location.href = '${createLink(uri: '/cfapprover/showPartnership/')}${result.id}'">View</button></td>
+
+                                </tr>
+                            </g:each>
+                            </tbody>
                         </table>
 
                         <div style="text-align: right;">
@@ -85,62 +76,48 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Activities Requests</h3>
+                    <h3 class="panel-title">Activities</h3>
                 </div>
 
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table">
+                            <thead>
                             <tr>
-                                <th>Activity Name</th>
-                                <th>Institute Name</th>
-                                <th>Request Date</th>
-                                <th>User</th>
-                                <th>Status</th>
-                                <th>Options</th>
+
+                                <th><g:message code="partnership.approval.status.label" default="Status"/></th>
+
+                                <th><g:message code="partnership.institution.label" default="Institution"/></th>
+
+                                <g:sortableColumn property="name"
+                                                  title="${message(code: 'partnership.name.label', default: 'Name')}"/>
+
+                                <th><g:message code="partnership.owner.label" default="Owner"/></th>
+
+                                <th>Option</th>
+
                             </tr>
-                            <tr>
-                                <td>Activity D</td>
-                                <td>Institution A</td>
-                                <td>20/06/2015</td>
-                                <td>User A</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button type="button" class="btn btn-default btn-sm" value="View"
-                                            onclick="location.reload();
-                                            location.href = 'CF_APPROVER_reviewInstituteRequest.html'">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Activity B</td>
-                                <td>Institution D</td>
-                                <td>19/06/2015</td>
-                                <td>User B</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="View">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Activity C</td>
-                                <td>Institution B</td>
-                                <td>21/06/2015</td>
-                                <td>User A</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="View">View</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Activity A</td>
-                                <td>Institution E</td>
-                                <td>18/05/2015</td>
-                                <td>User C</td>
-                                <td>Processing</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="View">View</button>
-                                </td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                            <g:each in="${resultsActivity}" var="result">
+                                <tr>
+
+                                    <td>${result.approval.status.name}</td>
+
+                                    <td>${result.partnership.institution}</td>
+
+                                    <td>${result.name}</td>
+
+                                    <td>${result.owner}</td>
+
+                                    <td><button type="button"
+                                                class="btn btn-default btn-sm"
+                                                value="View"
+                                                onclick="location.reload();location.href = '${createLink(uri: '/cfapprover/showPartnership/')}${result.id}'">View</button></td>
+
+                                </tr>
+                            </g:each>
+                            </tbody>
                         </table>
 
                         <div style="text-align: right;">

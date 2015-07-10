@@ -28,7 +28,7 @@
 						<th><g:message code="partnership.contact.label" default="Contact" /></th>
 					
 						<th><g:message code="partnership.approval.label" default="Approval" /></th>
-					
+
 						<th><g:message code="partnership.dataContainer.label" default="Data Container" /></th>
 					
 						<th><g:message code="partnership.institution.label" default="Institution" /></th>
@@ -47,7 +47,7 @@
 						<td><g:link action="show" id="${partnershipInstance.id}">${fieldValue(bean: partnershipInstance, field: "contact")}</g:link></td>
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "approval")}</td>
-					
+
 						<td>${fieldValue(bean: partnershipInstance, field: "dataContainer")}</td>
 					
 						<td>${fieldValue(bean: partnershipInstance, field: "institution")}</td>

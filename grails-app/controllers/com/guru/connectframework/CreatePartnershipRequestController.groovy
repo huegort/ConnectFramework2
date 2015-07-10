@@ -1,6 +1,5 @@
 package com.guru.connectframework
 
-import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.institution.Institution
