@@ -4,8 +4,11 @@ import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaData
 import com.guru.connectframework.partnership.Partnership
+import grails.transaction.Transactional
+import org.apache.commons.logging.LogFactory
 
 class CfProcessApprovalController {
+    private static final log = LogFactory.getLog(this)
 
     def approvePartnership() {
         Partnership partnership = Partnership.get(params.partnershipId)
@@ -25,7 +28,10 @@ class CfProcessApprovalController {
 
     }
 
-    def changeApprovalSatus(){
+    @Transactional
+    def changeApprovalStatus(){
+        log.debug("in approve status2")
+
         CriteriaData criteriaData = CriteriaData.get(params.criteriaDataId)
         String criteriaStatusID = params.newCriteriaStatus
 
@@ -46,11 +52,16 @@ class CfProcessApprovalController {
                 approval.status = newCriteriaStatus}
             }
             criteriaData.approval = approval
-            approval.save()
-            criteriaData.save()
+            approval.save(flush: true, failOnError: true)
+            criteriaData.save(flush: true, failOnError: true)
+            log.debug("the status is:"+criteriaData.approval.status.display)
         }
         render  (view :"_criteriadataitem", model: [ criteriaData : criteriaData])
 
 
+    }
+    def test(){
+        log.debug("test worked")
+        render("yo mamma");
     }
 }
