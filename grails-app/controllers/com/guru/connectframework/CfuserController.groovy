@@ -146,7 +146,7 @@ class CfuserController {
             Partnership institutionsHighest = partnershipService.getHighest(institution)
             if (institutionsHighest == null || activityType.requiredLevel.level >  institutionsHighest.partnershipLevel.level){
                 // goto create new Level with instituion
-                redirect(controller: "createPartnershipRequest", action: "createInsitutionAndPartnershipFirst", params: [ activityTypeId: activityType.id,institutionId: institution.id])
+                redirect(controller: "createPartnershipRequest", action: "createPartnershipFirst", params: [ activityTypeId: activityType.id,institutionId: institution.id])
 
             }else{
                 // go straight to create activity
