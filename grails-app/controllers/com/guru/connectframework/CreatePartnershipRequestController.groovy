@@ -44,11 +44,12 @@ class CreatePartnershipRequestController {
         ActivityType activityType = ActivityType.get(params.activityTypeId)
         PartnershipLevel partnershipLevel = activityType.requiredLevel
 
-        //long institutionId = ActivityType.get(params.institutionId)
-        Institution institution = ActivityType.get(params.institutionId)
+
+        Institution institution = Institution.get(params.institutionId)
+        //log.debug("institution: "+institution)
 
 
-        render  (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : false], institution : institution)
+        render  (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : false,institution : institution])
 
 
     }
