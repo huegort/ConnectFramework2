@@ -47,15 +47,19 @@ class CfapproverController {
             }
         }
 
+        log.debug("Partnership Results: " + resultsPartnership)
+        log.debug("Activities Results: " + resultsActivity)
+
 
         render(view: "endorserHome", model: [resultsPartnership: resultsPartnership, resultsActivity: resultsActivity])
     }
 
     def showPartnership(Partnership partnershipInstance) {
+        log.debug("Partnership Instance :" + partnershipInstance)
         respond partnershipInstance
     }
 
-    def getInstitutions = {
+    def getInstitutions() {
         def user = params['q']
         user = ''
 
@@ -79,11 +83,11 @@ class CfapproverController {
         render results as JSON
     }
 
-    def getActivities = {
+    def getActivities() {
 
     }
 
-    def getEndorseActivities = {
+    def getEndorseActivities() {
         def user = params['currentUser']
         user = ''
 
@@ -104,7 +108,7 @@ class CfapproverController {
         render result as JSON
     }
 
-    def getEndorseInstitutions = {
+    def getEndorseInstitutions() {
         def user = params['q']
         user = ''
 

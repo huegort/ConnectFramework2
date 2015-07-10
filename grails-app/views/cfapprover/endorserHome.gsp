@@ -9,6 +9,36 @@
 <html>
 <head>
     <meta name="layout" content="bootstrap">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Init Values
+            $('#institutionEndorseTable').hide()
+            $('#institutionEndorseTable').bootgrid({
+                formatters: {
+                    "commands": function(column, row)
+                    {
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approvePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                    }
+                }
+            })
+            $('#institutionEndorseTable').show()
+
+            $('#activityEndorseTable').hide()
+            $('#activityEndorseTable').bootgrid({
+                formatters: {
+                    "commands": function(column, row)
+                    {
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approveActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                    }
+                }
+            })
+            $('#activityEndorseTable').show()
+
+
+
+        })
+    </script>
 </head>
 
 <body>
@@ -28,26 +58,27 @@
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="institutionEndorseTable" class="table table-condensed table-hover table-striped">
                             <thead>
                             <tr>
+                                <th data-column-id="id"><g:message code="partnership.approval.id.label" default="ID"/></th>
 
-                                <th><g:message code="partnership.approval.status.label" default="Status"/></th>
+                                <th data-column-id="status"><g:message code="partnership.approval.status.label" default="Status"/></th>
 
-                                <th><g:message code="partnership.institution.label" default="Institution"/></th>
+                                <th data-column-id="institution"><g:message code="partnership.institution.label" default="Institution"/></th>
 
-                                <g:sortableColumn property="name"
-                                                  title="${message(code: 'partnership.name.label', default: 'Name')}"/>
+                                <th data-column-id="partnershipName"><g:message code="partnership.name.label" default="Partnership Name"/></th>
 
-                                <th><g:message code="partnership.owner.label" default="Owner"/></th>
+                                <th data-column-id="owner"><g:message code="partnership.owner.label" default="Owner"/></th>
 
-                                <th>Option</th>
+                                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Options</th>
 
                             </tr>
                             </thead>
                             <tbody>
                             <g:each in="${resultsPartnership}" var="result">
                                 <tr>
+                                    <td>${result.id}</td>
 
                                     <td>${result.approval.status.name}</td>
 
@@ -57,19 +88,13 @@
 
                                     <td>${result.owner}</td>
 
-                                    <td><button type="button"
-                                                class="btn btn-default btn-sm"
-                                                value="View"
-                                                onclick="location.reload();location.href = '${createLink(uri: '/cfapprover/showPartnership/')}${result.id}'">View</button></td>
+                                    <td></td>
 
                                 </tr>
                             </g:each>
                             </tbody>
                         </table>
 
-                        <div style="text-align: right;">
-                            <a href="#">View All</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -81,26 +106,27 @@
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="activityEndorseTable" class="table table-condensed table-hover table-striped">
                             <thead>
                             <tr>
+                                <th data-column-id="id"><g:message code="partnership.approval.id.label" default="ID"/></th>
 
-                                <th><g:message code="partnership.approval.status.label" default="Status"/></th>
+                                <th data-column-id="status"><g:message code="partnership.approval.status.label" default="Status"/></th>
 
-                                <th><g:message code="partnership.institution.label" default="Institution"/></th>
+                                <th data-column-id="institution"><g:message code="partnership.institution.label" default="Institution"/></th>
 
-                                <g:sortableColumn property="name"
-                                                  title="${message(code: 'partnership.name.label', default: 'Name')}"/>
+                                <th data-column-id="activityName"><g:message code="partnership.name.label" default="Activity Name"/></th>
 
-                                <th><g:message code="partnership.owner.label" default="Owner"/></th>
+                                <th data-column-id="owner"><g:message code="partnership.owner.label" default="Owner"/></th>
 
-                                <th>Option</th>
+                                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Option</th>
 
                             </tr>
                             </thead>
                             <tbody>
                             <g:each in="${resultsActivity}" var="result">
                                 <tr>
+                                    <td>${result.id}</td>
 
                                     <td>${result.approval.status.name}</td>
 
@@ -120,9 +146,6 @@
                             </tbody>
                         </table>
 
-                        <div style="text-align: right;">
-                            <a href="#">View All</a>
-                        </div>
                     </div>
                 </div>
             </div>
