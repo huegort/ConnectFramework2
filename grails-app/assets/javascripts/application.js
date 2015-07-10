@@ -7,6 +7,7 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require jquery.bootgrid.js
 //= require_tree .
 //= require_self
 //= require jquery.serializejson.min
