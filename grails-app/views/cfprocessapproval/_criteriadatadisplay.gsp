@@ -1,13 +1,14 @@
-<table>
-    <thead>
-        <th> name</th>
-        <th> data</th>
-        <th> status</th>
-        <th> action</th>
-        <th> description of criteria</th>
-    </thead>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <th>Name</th>
+        <th>Data</th>
+        <th>Status</th>
+        <th>Action</th>
+        <th>Description Of Criteria</th>
+        </thead>
 
-    <g:render template="criteriadataitem"  var="criteriaData" collection="${partnership.criteriaData}"/>
+        <g:render template="criteriadataitem" var="criteriaData" collection="${partnership.criteriaData}"/>
 
-
-</table>
+    </table>
+</div>

@@ -28,39 +28,34 @@
                     <h3 class="panel-title">Partnership Information</h3>
                 </div>
                 <div class="panel-body">
-                    <g:render template="partnershipDisplay" model="[partnership: partnership]"/>        </div>
+                    <g:render template="partnershipDisplay" model="[partnership: partnership]"/></div>
                 </div>
         </div>
         <div class="grid__col grid__col--12-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Due Dillegence</h3>
+                    <h3 class="panel-title">Due Diligence</h3>
                 </div>
                 <div class="panel-body">
-
                         <g:render template="criteriadatadisplay"   model="[partnership: partnership]"/>
-
-
-
                 </div>
             </div>
         </div>
-        <div class="grid__col grid__col--12-of-12">
-                <H3>Overall Aprroval</H3>
-            <div>
-                <button class="btn btn-default btn-width-30"><span class="glyphicon glyphicon-ok-circle"
-                                                                   aria-hidden="true"
-                                                                   style="color:green; font-size: 20px;"></span>
+        <div class="grid__col grid__col--9-of-12">
+
+        </div>
+        <div class="grid__col grid__col--3-of-12 text-right">
+                <h4>Overall Approval</h4>
+
+                <button class="btn btn-default btn-width-30">
+                    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span>
                 </button>
-                <button class="btn btn-default btn-width-30"><span
-                        class="glyphicon glyphicon-remove-circle" aria-hidden="true"
-                        style="color: red; font-size: 20px;"></span></button>
-                <button class="btn btn-default btn-width-30"><span class="glyphicon glyphicon-edit"
-                                                                   aria-hidden="true"
-                                                                   style="font-size: 20px;"></span>
+                <button class="btn btn-default btn-width-30">
+                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="color: red; font-size: 20px;"></span></button>
+                <button class="btn btn-default btn-width-30">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
                 </button>
 
-            </div>
         </div>
     </div>
 
