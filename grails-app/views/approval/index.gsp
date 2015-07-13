@@ -26,15 +26,15 @@
 					
 						<g:sortableColumn property="notes" title="${message(code: 'approval.notes.label', default: 'Notes')}" />
 					
-						<th><g:message code="approval.approver.label" default="Approver" /></th>
-					
-						<g:sortableColumn property="created" title="${message(code: 'approval.created.label', default: 'Created')}" />
-					
-						<th><g:message code="approval.createdBy.label" default="Created By" /></th>
+						<g:sortableColumn property="dateArchived" title="${message(code: 'approval.dateArchived.label', default: 'Date Archived')}" />
 					
 						<g:sortableColumn property="dateApproved" title="${message(code: 'approval.dateApproved.label', default: 'Date Approved')}" />
 					
 						<g:sortableColumn property="dateEndorsed" title="${message(code: 'approval.dateEndorsed.label', default: 'Date Endorsed')}" />
+					
+						<g:sortableColumn property="validTo" title="${message(code: 'approval.validTo.label', default: 'Valid To')}" />
+					
+						<th><g:message code="approval.approver.label" default="Approver" /></th>
 					
 					</tr>
 				</thead>
@@ -44,15 +44,15 @@
 					
 						<td><g:link action="show" id="${approvalInstance.id}">${fieldValue(bean: approvalInstance, field: "notes")}</g:link></td>
 					
-						<td>${fieldValue(bean: approvalInstance, field: "approver")}</td>
-					
-						<td><g:formatDate date="${approvalInstance.created}" /></td>
-					
-						<td>${fieldValue(bean: approvalInstance, field: "createdBy")}</td>
+						<td><g:formatDate date="${approvalInstance.dateArchived}" /></td>
 					
 						<td><g:formatDate date="${approvalInstance.dateApproved}" /></td>
 					
 						<td><g:formatDate date="${approvalInstance.dateEndorsed}" /></td>
+					
+						<td><g:formatDate date="${approvalInstance.validTo}" /></td>
+					
+						<td>${fieldValue(bean: approvalInstance, field: "approver")}</td>
 					
 					</tr>
 				</g:each>

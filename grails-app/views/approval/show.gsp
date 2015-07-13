@@ -32,6 +32,42 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${approvalInstance?.dateArchived}">
+				<li class="fieldcontain">
+					<span id="dateArchived-label" class="property-label"><g:message code="approval.dateArchived.label" default="Date Archived" /></span>
+					
+						<span class="property-value" aria-labelledby="dateArchived-label"><g:formatDate date="${approvalInstance?.dateArchived}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${approvalInstance?.dateApproved}">
+				<li class="fieldcontain">
+					<span id="dateApproved-label" class="property-label"><g:message code="approval.dateApproved.label" default="Date Approved" /></span>
+					
+						<span class="property-value" aria-labelledby="dateApproved-label"><g:formatDate date="${approvalInstance?.dateApproved}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${approvalInstance?.dateEndorsed}">
+				<li class="fieldcontain">
+					<span id="dateEndorsed-label" class="property-label"><g:message code="approval.dateEndorsed.label" default="Date Endorsed" /></span>
+					
+						<span class="property-value" aria-labelledby="dateEndorsed-label"><g:formatDate date="${approvalInstance?.dateEndorsed}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${approvalInstance?.validTo}">
+				<li class="fieldcontain">
+					<span id="validTo-label" class="property-label"><g:message code="approval.validTo.label" default="Valid To" /></span>
+					
+						<span class="property-value" aria-labelledby="validTo-label"><g:formatDate date="${approvalInstance?.validTo}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${approvalInstance?.approver}">
 				<li class="fieldcontain">
 					<span id="approver-label" class="property-label"><g:message code="approval.approver.label" default="Approver" /></span>
@@ -59,24 +95,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${approvalInstance?.dateApproved}">
-				<li class="fieldcontain">
-					<span id="dateApproved-label" class="property-label"><g:message code="approval.dateApproved.label" default="Date Approved" /></span>
-					
-						<span class="property-value" aria-labelledby="dateApproved-label"><g:formatDate date="${approvalInstance?.dateApproved}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${approvalInstance?.dateEndorsed}">
-				<li class="fieldcontain">
-					<span id="dateEndorsed-label" class="property-label"><g:message code="approval.dateEndorsed.label" default="Date Endorsed" /></span>
-					
-						<span class="property-value" aria-labelledby="dateEndorsed-label"><g:formatDate date="${approvalInstance?.dateEndorsed}" /></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${approvalInstance?.endorser}">
 				<li class="fieldcontain">
 					<span id="endorser-label" class="property-label"><g:message code="approval.endorser.label" default="Endorser" /></span>
@@ -91,15 +109,6 @@
 					<span id="status-label" class="property-label"><g:message code="approval.status.label" default="Status" /></span>
 					
 						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${approvalInstance}" field="status"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${approvalInstance?.validTo}">
-				<li class="fieldcontain">
-					<span id="validTo-label" class="property-label"><g:message code="approval.validTo.label" default="Valid To" /></span>
-					
-						<span class="property-value" aria-labelledby="validTo-label"><g:formatDate date="${approvalInstance?.validTo}" /></span>
 					
 				</li>
 				</g:if>
