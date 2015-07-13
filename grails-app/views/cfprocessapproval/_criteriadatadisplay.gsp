@@ -8,7 +8,7 @@
         <th>Description Of Criteria</th>
         </thead>
 
-    <g:render template="criteriadataitem"  var="criteriaData" collection="${setOfCriteriaData}"/>
+    <g:render template="criteriadatarow"  var="criteriaData" collection="${setOfCriteriaData}"/>
 
     </table>
 </div>
@@ -31,13 +31,13 @@
     function callChangeStatus(newStatus, event) {
 
         var theButton = event.target
-        console.log(" clicked")
+        //console.log(" clicked")
 
         var criteriaDataId = $( theButton ).closest(".criteriaDataEdit").attr( "criteriaId" );
-        console.log(criteriaDataId)
+        //console.log(criteriaDataId)
         var theTargetRow = $( theButton ).closest("tr")
         var targetRowId = theTargetRow.attr("id")
-        console.log("target Row Id"+ targetRowId)
+        //console.log("target Row Id"+ targetRowId)
 
         var request = $.ajax({
             url: "changeApprovalStatus",
@@ -48,9 +48,9 @@
 
         request.done(function( msg ) {
 
-            console.log("back from server:");
-            console.log(targetRowId)
-            console.log( $("body").find('#' + targetRowId).html())
+            //console.log("back from server:");
+            //console.log(targetRowId)
+            //console.log( $("body").find('#' + targetRowId).html())
             $("body").find('#' + targetRowId).html(msg)
             // re bind the clicks
 
