@@ -92,7 +92,7 @@
                                         <g:render template="instituteform"/>
                                     </g:if>
                                     <g:else>
-                                        <g:render template="/commontemplates/institutionDisplay"
+                                        <g:render template="/cfcommontemplates/institutionDisplay"
                                                   model="[institution: institution]"/>
                                     </g:else>
 
@@ -124,7 +124,7 @@
                                     <div id="approvalDiv">
                                         <fieldset class="form">
 
-                                            <g:render template="/commontemplates/approvalform"
+                                            <g:render template="/cfcommontemplates/approvalform"
                                                       model="[approvers: partnershipLevel.possibleApprovers, endorsers: partnershipLevel.possibleEndorsers]"/>
 
                                         </fieldset>
@@ -142,7 +142,7 @@
                                     <div id="criteriaDiv">
 
                                         <fieldset class="form">
-                                            <g:render template="/commontemplates/criteriadataform" var="criteria"
+                                            <g:render template="/cfcommontemplates/criteriadataform" var="criteria"
                                                       collection="${partnershipLevel.criteria}"/>
                                         </fieldset>
 

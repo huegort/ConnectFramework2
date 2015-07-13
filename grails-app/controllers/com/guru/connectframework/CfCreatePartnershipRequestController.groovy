@@ -11,7 +11,7 @@ import org.apache.commons.logging.LogFactory
 import org.grails.datastore.mapping.validation.ValidationException
 
 @Transactional
-class CreatePartnershipRequestController {
+class CfCreatePartnershipRequestController {
     private static final log = LogFactory.getLog(this)
     def partnershipService
     def institutionService
@@ -87,7 +87,7 @@ class CreatePartnershipRequestController {
         Partnership partnership = partnershipService.createPartnership(approval,institution1,partnershipLevel,parnershipJSON , criteriaDataJSON)
 
 
-        redirect(controller: "createActivityRequest", action: "createActivityCh", params: [partnershipId: partnership.id, activityTypeId: activityType.id, institution: institution1])
+        redirect(controller: "cfCreateActivityRequest", action: "createActivityCh", params: [partnershipId: partnership.id, activityTypeId: activityType.id, institution: institution1])
     }
     def test(){
         log.debug("sanity")

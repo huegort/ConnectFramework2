@@ -135,7 +135,7 @@ class CfuserController {
         if (createNewInstitution){
             institution = new Institution()
             // goto create instution and partnership first
-            redirect(controller: "createPartnershipRequest", action: "createInsitutionAndPartnershipFirst", params: [ activityTypeId: activityType.id])
+            redirect(controller: "cfCreatePartnershipRequest", action: "createInsitutionAndPartnershipFirst", params: [ activityTypeId: activityType.id])
 
         }else{
             log.debug("institionID :"+params.institutionId)
@@ -148,11 +148,11 @@ class CfuserController {
             Partnership institutionsHighest = partnershipService.getHighest(institution)
             if (institutionsHighest == null || activityType.requiredLevel.level >  institutionsHighest.partnershipLevel.level){
                 // goto create new Level with instituion
-                redirect(controller: "createPartnershipRequest", action: "createPartnershipFirst", params: [ activityTypeId: activityType.id,institutionId: institution.id])
+                redirect(controller: "cfCreatePartnershipRequest", action: "createPartnershipFirst", params: [ activityTypeId: activityType.id,institutionId: institution.id])
 
             }else{
                 // go straight to create activity
-                redirect(controller: "createActivityRequest", action: "createActivityCh", params: [partnershipId: institutionsHighest.id, activityTypeId: activityType.id, institution: institution])
+                redirect(controller: "cfCreateActivityRequest", action: "createActivityCh", params: [partnershipId: institutionsHighest.id, activityTypeId: activityType.id, institution: institution])
 
             }
 
