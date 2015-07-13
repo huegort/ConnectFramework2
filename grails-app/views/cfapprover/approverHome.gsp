@@ -13,6 +13,26 @@
 
         $(document).ready(function () {
             //Init Values
+            $('#institutionApproverTable').hide()
+            $('#institutionApproverTable').bootgrid({
+                formatters: {
+                    "commands": function (column, row) {
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approvePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                    }
+                }
+            })
+            $('#institutionApproverTable').show()
+
+            $('#activityApproverTable').hide()
+            $('#activityApproverTable').bootgrid({
+                formatters: {
+                    "commands": function (column, row) {
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approveActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                    }
+                }
+            })
+            $('#activityApproverTable').show()
+
             $('#institutionEndorseTable').hide()
             $('#institutionEndorseTable').bootgrid({
                 formatters: {
@@ -67,7 +87,7 @@
 
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table id="institutionEndorseTable"
+                                        <table id="institutionApproverTable"
                                                class="table table-condensed table-hover table-striped">
                                             <thead>
                                             <tr>
@@ -125,7 +145,7 @@
 
                                 <div class="panel-body">
                                     <div class="table-responsive">
-                                        <table id="activityEndorseTable"
+                                        <table id="activityApproverTable"
                                                class="table table-condensed table-hover table-striped">
                                             <thead>
                                             <tr>
@@ -239,7 +259,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <g:each in="${resultsPartnership}" var="result">
+                                            <g:each in="${resultsPartnershipNotEndorse}" var="result">
                                                 <tr>
                                                     <td>${result.id}</td>
 
@@ -299,7 +319,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <g:each in="${resultsActivity}" var="result">
+                                            <g:each in="${resultsActivityNotEndorse}" var="result">
                                                 <tr>
                                                     <td>${result.id}</td>
 
