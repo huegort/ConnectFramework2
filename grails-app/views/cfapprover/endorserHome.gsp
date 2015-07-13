@@ -61,7 +61,7 @@
                         <table id="institutionEndorseTable" class="table table-condensed table-hover table-striped">
                             <thead>
                             <tr>
-                                <th data-column-id="id"><g:message code="partnership.approval.id.label" default="ID"/></th>
+                                <th data-column-id="id" data-visible="false"><g:message code="partnership.approval.id.label" default="ID"/></th>
 
                                 <th data-column-id="status"><g:message code="partnership.approval.status.label" default="Status"/></th>
 
@@ -109,7 +109,7 @@
                         <table id="activityEndorseTable" class="table table-condensed table-hover table-striped">
                             <thead>
                             <tr>
-                                <th data-column-id="id"><g:message code="partnership.approval.id.label" default="ID"/></th>
+                                <th data-column-id="id" data-visible="false"><g:message code="partnership.approval.id.label" default="ID"/></th>
 
                                 <th data-column-id="status"><g:message code="partnership.approval.status.label" default="Status"/></th>
 
@@ -150,7 +150,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-default">
+            <%--<div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Faculty Activities</h3>
                 </div>
@@ -210,7 +210,7 @@
             <a href="CF_USER_home.html">CF_USER HomePage</a> | <a href="CF_ADMIN_home.html">CF_ADMIN HomePage</a>
         </div>
 
-        <%--<div class="grid__col grid__col--3-of-12">
+        <div class="grid__col grid__col--3-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Menu</h3>
@@ -251,8 +251,8 @@
                         </span>
                     </div>
                 </div>
-            </div>
-        </div>--%>
+            </div>--%>
+        </div>
     </div>
 </div>
 </body>

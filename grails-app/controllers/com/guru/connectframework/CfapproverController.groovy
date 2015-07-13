@@ -12,12 +12,37 @@ class CfapproverController {
     private static final log = LogFactory.getLog(this)
 
     def approverHome() {
+        long tempUser = 3
+        //Gets the list of Institutions Approver
+        def criteriaPartnership = Partnership.createCriteria()
+        List<Partnership> resultsPartnership = criteriaPartnership.list {
+            approval {
+                and {
+                    endorser {
+                        eq("id", tempUser)
+                    }
+                    isNotNull('dateEndorsed')
+                }
+            }
+        }
 
+        def criteriaActivity = Activity.createCriteria()
+        List<Activity> resultsActivity = criteriaActivity.list {
+            approval {
+                and {
+                    endorser {
+                        eq("id", tempUser)
+                    }
+                    isNotNull('dateEndorsed')
+                }
+            }
+        }
+
+        render(view: "approverHome", model: [resultsPartnership: resultsPartnership, resultsActivity: resultsActivity])
+        //render resultsActivity as JSON
     }
 
     def endorserHome() {
-        params.max = 10
-        log.debug(params)
 
         long tempUser = 2
 
@@ -36,7 +61,7 @@ class CfapproverController {
 
 
         def criteriaActivity = Activity.createCriteria()
-        List<Partnership> resultsActivity = criteriaActivity.list {
+        List<Activity> resultsActivity = criteriaActivity.list {
             approval {
                 and {
                     approver {
