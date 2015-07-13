@@ -8,11 +8,15 @@ class Contact {
     String phone
     String email
     Institution institution
+    Date dateArchived
+
     static constraints = {
         title nullable: true
         roleInInstitution nullable: true
         phone nullable: true
         email nullable: true
+        dateArchived nullable: true
+
 
     }
     String getName(){
