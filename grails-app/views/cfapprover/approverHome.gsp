@@ -16,8 +16,7 @@
             $('#institutionEndorseTable').hide()
             $('#institutionEndorseTable').bootgrid({
                 formatters: {
-                    "commands": function(column, row)
-                    {
+                    "commands": function (column, row) {
                         return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/endorsePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
                     }
                 }
@@ -27,14 +26,12 @@
             $('#activityEndorseTable').hide()
             $('#activityEndorseTable').bootgrid({
                 formatters: {
-                    "commands": function(column, row)
-                    {
+                    "commands": function (column, row) {
                         return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/endorseActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
                     }
                 }
             })
             $('#activityEndorseTable').show()
-
 
 
         })
@@ -49,108 +46,295 @@
         </div>
     </div>
 
-    <div class="grid">
-        <div class="grid__col grid__col--12-of-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Institutions</h3>
-                </div>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h3 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                       aria-expanded="true" aria-controls="collapseOne">Endorsed</a>
+                </h3>
+            </div>
 
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="institutionEndorseTable" class="table table-condensed table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th data-column-id="id" data-visible="false"><g:message code="partnership.approval.id.label" default="ID"/></th>
 
-                                <th data-column-id="status"><g:message code="partnership.approval.status.label" default="Status"/></th>
+                    <div class="grid">
+                        <div class="grid__col grid__col--12-of-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Institutions</h3>
+                                </div>
 
-                                <th data-column-id="institution"><g:message code="partnership.institution.label" default="Institution"/></th>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table id="institutionEndorseTable"
+                                               class="table table-condensed table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th data-column-id="id" data-visible="false"><g:message
+                                                        code="partnership.approval.id.label" default="ID"/></th>
 
-                                <th data-column-id="partnershipName"><g:message code="partnership.name.label" default="Partnership Name"/></th>
+                                                <th data-column-id="status"><g:message
+                                                        code="partnership.approval.status.label"
+                                                        default="Status"/></th>
 
-                                <th data-column-id="owner"><g:message code="partnership.owner.label" default="Owner"/></th>
+                                                <th data-column-id="institution"><g:message
+                                                        code="partnership.institution.label"
+                                                        default="Institution"/></th>
 
-                                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Options</th>
+                                                <th data-column-id="partnershipName"><g:message
+                                                        code="partnership.name.label"
+                                                        default="Partnership Name"/></th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <g:each in="${resultsPartnership}" var="result">
-                                <tr>
-                                    <td>${result.id}</td>
+                                                <th data-column-id="owner"><g:message code="partnership.owner.label"
+                                                                                      default="Owner"/></th>
 
-                                    <td>${result.approval.status.name}</td>
+                                                <th data-column-id="commands" data-formatter="commands"
+                                                    data-sortable="false">Options</th>
 
-                                    <td>${result.institution}</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <g:each in="${resultsPartnership}" var="result">
+                                                <tr>
+                                                    <td>${result.id}</td>
 
-                                    <td>${result.name}</td>
+                                                    <td>${result.approval.status.name}</td>
 
-                                    <td>${result.owner}</td>
+                                                    <td>${result.institution}</td>
 
-                                    <td></td>
+                                                    <td>${result.name}</td>
 
-                                </tr>
-                            </g:each>
-                            </tbody>
-                        </table>
+                                                    <td>${result.owner}</td>
 
+                                                    <td></td>
+
+                                                </tr>
+                                            </g:each>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Activities</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table id="activityEndorseTable"
+                                               class="table table-condensed table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th data-column-id="id" data-visible="false"><g:message
+                                                        code="partnership.approval.id.label" default="ID"/></th>
+
+                                                <th data-column-id="status"><g:message
+                                                        code="partnership.approval.status.label"
+                                                        default="Status"/></th>
+
+                                                <th data-column-id="institution"><g:message
+                                                        code="partnership.institution.label"
+                                                        default="Institution"/></th>
+
+                                                <th data-column-id="activityName"><g:message
+                                                        code="partnership.name.label"
+                                                        default="Activity Name"/></th>
+
+                                                <th data-column-id="owner"><g:message code="partnership.owner.label"
+                                                                                      default="Owner"/></th>
+
+                                                <th data-column-id="commands" data-formatter="commands"
+                                                    data-sortable="false">Option</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <g:each in="${resultsActivity}" var="result">
+                                                <tr>
+                                                    <td>${result.id}</td>
+
+                                                    <td>${result.approval.status.name}</td>
+
+                                                    <td>${result.partnership.institution}</td>
+
+                                                    <td>${result.name}</td>
+
+                                                    <td>${result.owner}</td>
+
+                                                    <td><button type="button"
+                                                                class="btn btn-default btn-sm"
+                                                                value="View"
+                                                                onclick="location.reload();
+                                                                location.href = '${createLink(uri: '/cfapprover/showPartnership/')}${result.id}'">View</button>
+                                                    </td>
+
+                                                </tr>
+                                            </g:each>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Activities</h3>
-                </div>
 
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h3 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseTwo" aria-expanded="false"
+                       aria-controls="collapseTwo">Not Endorsed</a>
+                </h3>
+            </div>
+
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                 aria-labelledby="headingTwo">
                 <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="activityEndorseTable" class="table table-condensed table-hover table-striped">
-                            <thead>
-                            <tr>
-                                <th data-column-id="id" data-visible="false"><g:message code="partnership.approval.id.label" default="ID"/></th>
+                    <div class="grid">
+                        <div class="grid__col grid__col--12-of-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Institutions
+                                    </h3>
+                                </div>
 
-                                <th data-column-id="status"><g:message code="partnership.approval.status.label" default="Status"/></th>
 
-                                <th data-column-id="institution"><g:message code="partnership.institution.label" default="Institution"/></th>
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table id="institutionEndorseTable"
+                                               class="table table-condensed table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th data-column-id="id" data-visible="false"><g:message
+                                                        code="partnership.approval.id.label" default="ID"/></th>
 
-                                <th data-column-id="activityName"><g:message code="partnership.name.label" default="Activity Name"/></th>
+                                                <th data-column-id="status"><g:message
+                                                        code="partnership.approval.status.label"
+                                                        default="Status"/></th>
 
-                                <th data-column-id="owner"><g:message code="partnership.owner.label" default="Owner"/></th>
+                                                <th data-column-id="institution"><g:message
+                                                        code="partnership.institution.label"
+                                                        default="Institution"/></th>
 
-                                <th data-column-id="commands" data-formatter="commands" data-sortable="false">Option</th>
+                                                <th data-column-id="partnershipName"><g:message
+                                                        code="partnership.name.label"
+                                                        default="Partnership Name"/></th>
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <g:each in="${resultsActivity}" var="result">
-                                <tr>
-                                    <td>${result.id}</td>
+                                                <th data-column-id="owner"><g:message code="partnership.owner.label"
+                                                                                      default="Owner"/></th>
 
-                                    <td>${result.approval.status.name}</td>
+                                                <th data-column-id="commands" data-formatter="commands"
+                                                    data-sortable="false">Options</th>
 
-                                    <td>${result.partnership.institution}</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <g:each in="${resultsPartnership}" var="result">
+                                                <tr>
+                                                    <td>${result.id}</td>
 
-                                    <td>${result.name}</td>
+                                                    <td>${result.approval.status.name}</td>
 
-                                    <td>${result.owner}</td>
+                                                    <td>${result.institution}</td>
 
-                                    <td><button type="button"
-                                                class="btn btn-default btn-sm"
-                                                value="View"
-                                                onclick="location.reload();location.href = '${createLink(uri: '/cfapprover/showPartnership/')}${result.id}'">View</button></td>
+                                                    <td>${result.name}</td>
 
-                                </tr>
-                            </g:each>
-                            </tbody>
-                        </table>
+                                                    <td>${result.owner}</td>
 
+                                                    <td></td>
+
+                                                </tr>
+                                            </g:each>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Activities</h3>
+                                </div>
+
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table id="activityEndorseTable"
+                                               class="table table-condensed table-hover table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th data-column-id="id" data-visible="false"><g:message
+                                                        code="partnership.approval.id.label" default="ID"/></th>
+
+                                                <th data-column-id="status"><g:message
+                                                        code="partnership.approval.status.label"
+                                                        default="Status"/></th>
+
+                                                <th data-column-id="institution"><g:message
+                                                        code="partnership.institution.label"
+                                                        default="Institution"/></th>
+
+                                                <th data-column-id="activityName"><g:message
+                                                        code="partnership.name.label"
+                                                        default="Activity Name"/></th>
+
+                                                <th data-column-id="owner"><g:message
+                                                        code="partnership.owner.label"
+                                                        default="Owner"/></th>
+
+                                                <th data-column-id="commands" data-formatter="commands"
+                                                    data-sortable="false">Option</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <g:each in="${resultsActivity}" var="result">
+                                                <tr>
+                                                    <td>${result.id}</td>
+
+                                                    <td>${result.approval.status.name}</td>
+
+                                                    <td>${result.partnership.institution}</td>
+
+                                                    <td>${result.name}</td>
+
+                                                    <td>${result.owner}</td>
+
+                                                    <td><button type="button"
+                                                                class="btn btn-default btn-sm"
+                                                                value="View"
+                                                                onclick="location.reload();
+                                                                location.href = '${createLink(uri: '/cfapprover/showPartnership/')}${result.id}'">View</button>
+                                                    </td>
+
+                                                </tr>
+                                            </g:each>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</div>
+
 </body>
 </html>

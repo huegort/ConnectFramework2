@@ -37,9 +37,9 @@ class CfapproverController {
                 }
             }
         }
+        //TODO How are we going to get the Institutions or Partnerships that need to be endorse and are part of the Faculty that the approver is within?
 
         render(view: "approverHome", model: [resultsPartnership: resultsPartnership, resultsActivity: resultsActivity])
-        //render resultsActivity as JSON
     }
 
     def endorserHome() {
