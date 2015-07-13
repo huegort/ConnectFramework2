@@ -37,7 +37,7 @@
             $('#institutionEndorseTable').bootgrid({
                 formatters: {
                     "commands": function (column, row) {
-                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/endorsePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approvePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
                     }
                 }
             })
@@ -47,7 +47,7 @@
             $('#activityEndorseTable').bootgrid({
                 formatters: {
                     "commands": function (column, row) {
-                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/endorseActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approveActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
                     }
                 }
             })
