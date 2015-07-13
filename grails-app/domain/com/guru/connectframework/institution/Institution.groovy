@@ -12,12 +12,17 @@ class Institution {
     Country country
     String notes
 
+
     Set<Partnership> partnerships
 
     static hasMany = [partnerships : Partnership]
 
     // only to make queries quicker
     Partnership currentHighest
+
+    Date dateArchived
+
+
 
     static constraints = {
         description nullable: true
@@ -28,6 +33,7 @@ class Institution {
         address2 nullable: true
         provence nullable: true
         postcode nullable: true
+        dateArchived nullable: true
 
     }
     Set<Partnership> getPartnerships(){

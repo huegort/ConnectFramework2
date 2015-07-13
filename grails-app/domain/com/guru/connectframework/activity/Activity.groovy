@@ -22,6 +22,8 @@ class Activity {
 
     CriteriaDataContainer dataContainer
 
+    Date dateArchived
+
    
 
     Document agreementTemplate
@@ -36,6 +38,7 @@ class Activity {
         contact nullable: true
         agreementTemplate nullable: true
         finalAgreement nullable: true
+        dateArchived nullable: true
 
     }
     String toString() {

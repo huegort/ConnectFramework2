@@ -13,6 +13,9 @@ class CriteriaData implements Comparable<CriteriaData>{
     Approval approval
 
     String notes
+    Date dateArchived
+
+
 
 
     static constraints = {
@@ -20,6 +23,7 @@ class CriteriaData implements Comparable<CriteriaData>{
         valueDocument nullable: true
         valueDate nullable: true
         notes nullable: true
+        dateArchived nullable: true
     }
 
     @Override

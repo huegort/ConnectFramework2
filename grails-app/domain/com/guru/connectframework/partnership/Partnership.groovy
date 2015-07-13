@@ -19,6 +19,9 @@ class Partnership {
 
     CriteriaDataContainer dataContainer
 
+    Date dateArchived
+
+
 
     def getCriteriaData(){
         return dataContainer.setOfCriteriaData
@@ -29,6 +32,7 @@ class Partnership {
 
     static constraints = {
         contact nullable: true
+        dateArchived nullable: true
 
 
     }

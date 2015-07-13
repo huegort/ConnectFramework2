@@ -11,9 +11,13 @@ class Criteria implements Comparable<Criteria>{
     int sequenceNumber
     String notes
 
+    Date dateArchived
+
+
     static constraints = {
         description nullable: true
         notes nullable: true
+        dateArchived nullable: true
     }
     String toString() {
         return name
