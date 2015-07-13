@@ -318,6 +318,7 @@
     min-height: 1px;
     padding-left: 20px;
     vertical-align: top;
+    margin-bottom: 5px;
 }
 
 @media (max-width: 700px) {
