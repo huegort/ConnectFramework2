@@ -82,7 +82,7 @@
                             <div  id="approvalDiv" >
                                 <fieldset class="form">
 
-                                    <g:render template="/commontemplates/approvalform" model="[approval: activity.approval, approvers: activity.activityType.possibleApprovers, endorsers: activity.activityType.possibleEndorsers]"/>
+                                    <g:render template="/cfcommontemplates/approvalform" model="[approval: activity.approval, approvers: activity.activityType.possibleApprovers, endorsers: activity.activityType.possibleEndorsers]"/>
 
                                 </fieldset>
 
@@ -98,7 +98,7 @@
                             <div  id="criteriaDiv" >
                                 <fieldset class="form">
 
-                                    <g:render template="/commontemplates/criteriadataform"  var="criteria" collection="${activityType.criteria}"/>
+                                    <g:render template="/cfcommontemplates/criteriadataform"  var="criteria" collection="${activityType.criteria}"/>
 
                                 </fieldset>
 

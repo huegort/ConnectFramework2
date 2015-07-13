@@ -9,7 +9,7 @@ import com.guru.connectframework.partnership.PartnershipLevel
 import grails.converters.JSON
 import org.apache.commons.logging.LogFactory
 
-class CreateActivityRequestController {
+class CfCreateActivityRequestController {
     private static final log = LogFactory.getLog(this)
     def activityService
     def approvalService

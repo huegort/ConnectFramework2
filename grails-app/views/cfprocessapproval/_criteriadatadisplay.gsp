@@ -8,7 +8,7 @@
         <th>Description Of Criteria</th>
         </thead>
 
-    <g:render template="criteriadataitem"  var="criteriaData" collection="${partnership.criteriaData}"/>
+    <g:render template="criteriadataitem"  var="criteriaData" collection="${setOfCriteriaData}"/>
 
     </table>
 </div>

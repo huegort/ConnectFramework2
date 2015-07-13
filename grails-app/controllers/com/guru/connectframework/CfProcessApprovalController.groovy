@@ -1,6 +1,7 @@
 package com.guru.connectframework
 
 import com.guru.connectframework.Criteria.CriteriaStatus
+import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.criteria.CriteriaData
 import com.guru.connectframework.partnership.Partnership
@@ -15,10 +16,16 @@ class CfProcessApprovalController {
 
         SortedSet<CriteriaData> setOfcriteriaData = partnership.criteriaData
 
-        render  (view :"approvepartnership", model: [ partnership : partnership , setOfCriteriaData: setOfcriteriaData])
+        render  (view :"approvepartnership", model: [ partnership : partnership , setOfCriteriaData: setOfcriteriaData,succesStatus: CriteriaStatus.APPROVED])
 
     }
     def approveActivity(){
+        Activity activity = Activity.get(params.activityId)
+
+        SortedSet<CriteriaData> setOfcriteriaData = activity.criteriaData
+
+        render  (view :"approveactivity", model: [ activity : activity , setOfCriteriaData: setOfcriteriaData,succesStatus: CriteriaStatus.APPROVED])
+
 
     }
     def endorsePartnership(){
@@ -26,9 +33,15 @@ class CfProcessApprovalController {
 
         SortedSet<CriteriaData> setOfcriteriaData = partnership.criteriaData
 
-        render  (view :"endorsepartnership", model: [ partnership : partnership , setOfCriteriaData: setOfcriteriaData])
+        render  (view :"endorsepartnership", model: [ partnership : partnership , setOfCriteriaData: setOfcriteriaData,succesStatus: CriteriaStatus.ENDORSED])
     }
     def endorseActivity(){
+        Activity activity = Activity.get(params.activityId)
+
+        SortedSet<CriteriaData> setOfcriteriaData = activity.criteriaData
+
+        render  (view :"endorseactivity", model: [ activity : activity , setOfCriteriaData: setOfcriteriaData,succesStatus: CriteriaStatus.ENDORSED])
+
 
     }
 

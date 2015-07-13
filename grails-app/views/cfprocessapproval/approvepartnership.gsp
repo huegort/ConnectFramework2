@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Create Institute Partnership Request</title>
+    <title>Approve Partnership Request</title>
     <meta name="layout" content="bootstrap">
 
 
@@ -37,7 +37,7 @@
                     <h3 class="panel-title">Due Diligence</h3>
                 </div>
                 <div class="panel-body">
-                        <g:render template="criteriadatadisplay"   model="[partnership: partnership]"/>
+                        <g:render template="criteriadatadisplay"   model="[setOfCriteriaData: partnership.criteriaData, succesStatus: succesStatus]"/>
                 </div>
             </div>
         </div>
