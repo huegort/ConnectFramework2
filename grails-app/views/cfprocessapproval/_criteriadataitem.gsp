@@ -1,3 +1,4 @@
+<%@ page import="com.guru.connectframework.Criteria.CriteriaStatus" %>
 <td>
     ${criteriaData.criteria.name}
 </td>
@@ -6,7 +7,13 @@
 
 </td>
     <td>
-        ${criteriaData.approval.status}
+        ${criteriaData.approval.status}<br>
+        <g:if test="${criteriaData.approval.status == com.guru.connectframework.Criteria.CriteriaStatus.APPROVED}">
+            <small>by ${criteriaData.approval.approver} on <g:formatDate type="date" style="MEDIUM" date="${criteriaData.approval.dateApproved}"/></small>
+        </g:if>
+        <g:if test="${criteriaData.approval.status == com.guru.connectframework.Criteria.CriteriaStatus.ENDORSED}">
+            <small>by ${criteriaData.approval.endorser} on <g:formatDate type="date" style="MEDIUM" date="${criteriaData.approval.dateEndorsed}"/></small>
+        </g:if>
     </td>
     <td>
         <span class="criteriaDataEdit" criteriaId="${criteriaData.id}">

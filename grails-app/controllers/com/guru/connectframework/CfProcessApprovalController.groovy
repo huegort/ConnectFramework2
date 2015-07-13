@@ -46,14 +46,70 @@ class CfProcessApprovalController {
     }
 
     @Transactional
-    def changeApprovalStatus(){
-        log.debug("in approve status2")
+    def changeCriteriaDataStatus(){
+        log.debug("in approve criteria status")
 
         CriteriaData criteriaData = CriteriaData.get(params.criteriaDataId)
         String criteriaStatusID = params.newCriteriaStatus
 
         CriteriaStatus newCriteriaStatus = criteriaStatusID as CriteriaStatus
         Approval approval =criteriaData.approval
+
+
+        criteriaData.approval = changeApprovalStatus(approval,newCriteriaStatus)
+
+        criteriaData.save(flush: true, failOnError: true)
+        log.debug("the status is:"+criteriaData.approval.status.display)
+
+        render  (view :"_criteriadataitem", model: [ criteriaData : criteriaData])
+
+    }
+    @Transactional
+    def changePartnershipStatus(){
+        log.debug("in approve criteria status")
+        //TODO Security
+
+        Partnership partnership = Partnership.get(params.entityId)
+        String criteriaStatusID = params.newCriteriaStatus
+
+        CriteriaStatus newCriteriaStatus = criteriaStatusID as CriteriaStatus
+        Approval approval =partnership.approval
+
+
+        partnership.approval = changeApprovalStatus(approval,newCriteriaStatus)
+
+        partnership.save(flush: true, failOnError: true)
+        log.debug("the status is:"+partnership.approval.status.display)
+
+        render  (view :"_partnershipdisplay", model: [ partnership : partnership])
+
+
+    }
+    @Transactional
+    def changeActivityStatus(){
+        log.debug("in approve actitity status")
+        //TODO Security
+
+        Activity activity = Activity.get(params.entityId)
+
+        String criteriaStatusID = params.newCriteriaStatus
+        CriteriaStatus newCriteriaStatus = criteriaStatusID as CriteriaStatus
+        Approval approval =activity.approval
+
+
+        activity.approval = changeApprovalStatus(approval,newCriteriaStatus)
+
+        activity.save(flush: true, failOnError: true)
+        //log.debug("the status is:"+activity.approval.status.display)
+
+        render  (view :"_activitydisplay", model: [ activity : activity])
+
+    }
+
+
+    Approval changeApprovalStatus(Approval approval, CriteriaStatus newCriteriaStatus){
+
+        //log.debug("change status to "+newCriteriaStatus.display)
         // TODO check roles
         if (approval.status != newCriteriaStatus ){
             if (newCriteriaStatus == CriteriaStatus.ENDORSED){
@@ -68,12 +124,10 @@ class CfProcessApprovalController {
              }else{
                 approval.status = newCriteriaStatus}
             }
-            criteriaData.approval = approval
             approval.save(flush: true, failOnError: true)
-            criteriaData.save(flush: true, failOnError: true)
-            log.debug("the status is:"+criteriaData.approval.status.display)
+
         }
-        render  (view :"_criteriadataitem", model: [ criteriaData : criteriaData])
+       return approval
 
 
     }
