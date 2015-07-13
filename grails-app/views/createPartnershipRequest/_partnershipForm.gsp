@@ -3,6 +3,6 @@
         <g:message code="partnership.name.label" default="Name" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="name" required="" value="${partnership?.name}"/>
+    <g:textField class="form-control" name="name" required="" value="${partnership?.name}"/>
 
 </div>

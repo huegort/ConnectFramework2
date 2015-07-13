@@ -1,19 +1,20 @@
-
 <div class="fieldcontain  required">
     <label for="endorser">
-        <g:message code="approval.endorser.label" default="Endorser" />
+        <g:message code="approval.endorser.label" default="Endorser"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="endorser" name="endorserId" from="${endorsers}" optionKey="id" required="" value="${approvalInstance?.endorser?.id}" class="many-to-one"/>
+    <g:select id="endorser" name="endorserId" from="${endorsers}" optionKey="id" required=""
+              value="${approvalInstance?.endorser?.id}" class="many-to-one form-control"/>
 
 </div>
 
 <div class="fieldcontain required} ">
     <label for="approver">
-        <g:message code="approval.approver.label" default="Approver" />
+        <g:message code="approval.approver.label" default="Approver"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="approver" name="approverId" from="${approvers}" optionKey="id" required="" value="${approvalInstance?.approver?.id}" class="many-to-one"/>
+    <g:select id="approver" name="approverId" from="${approvers}" optionKey="id" required=""
+              value="${approvalInstance?.approver?.id}" class="many-to-one form-control"/>
 
 </div>
 
@@ -22,7 +23,8 @@
         Valid To
         <span class="required-indicator">*</span>
     </label>
-    <g:datePicker name="validTo" precision="day"  value="${approvalInstance?.validTo}"  />
-
+    <div>
+        <g:datePicker class="form-control" type="date" name="validTo" precision="day"  value="${approvalInstance?.validTo}"  />
+    </div>
 </div>
 

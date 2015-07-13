@@ -8,7 +8,7 @@
         </label>
 
         <g:if test="${criteria.dataType == com.guru.connectframework.criteriatype.CriteriaType.STRING}">
-            <g:textField name="data_${criteria.id}" />
+            <g:textField class="form-control" name="data_${criteria.id}" />
         </g:if>
         <g:elseif test="${criteria.dataType == com.guru.connectframework.criteriatype.CriteriaType.FILE}">
             <input type="file" name="data_${criteria.id}" />

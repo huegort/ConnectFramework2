@@ -22,7 +22,11 @@ class CfProcessApprovalController {
 
     }
     def endorsePartnership(){
+        Partnership partnership = Partnership.get(params.partnershipId)
 
+        SortedSet<CriteriaData> setOfcriteriaData = partnership.criteriaData
+
+        render  (view :"endorsepartnership", model: [ partnership : partnership , setOfCriteriaData: setOfcriteriaData])
     }
     def endorseActivity(){
 

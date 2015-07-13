@@ -18,7 +18,7 @@
                 formatters: {
                     "commands": function(column, row)
                     {
-                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approvePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/endorsePartnership?partnershipId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
                     }
                 }
             })
@@ -29,7 +29,7 @@
                 formatters: {
                     "commands": function(column, row)
                     {
-                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/approveActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
+                        return "<button type=\"button\" class=\"btn btn-default btn-xs\" value=\"View\" onclick=\"location.reload();location.href = \'${createLink(uri: '/cfProcessApproval/endorseActivity?activityId=')}" + row.id + "\'\"><span class=\"glyphicon glyphicon-pencil\"></span></button>"
                     }
                 }
             })
@@ -50,7 +50,7 @@
     </div>
 
     <div class="grid">
-        <div class="grid__col grid__col--9-of-12">
+        <div class="grid__col grid__col--12-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Institutions</h3>
@@ -210,7 +210,7 @@
             <a href="CF_USER_home.html">CF_USER HomePage</a> | <a href="CF_ADMIN_home.html">CF_ADMIN HomePage</a>
         </div>
 
-        <div class="grid__col grid__col--3-of-12">
+        <%--<div class="grid__col grid__col--3-of-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Menu</h3>
@@ -252,7 +252,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
     </div>
 </div>
 </body>
