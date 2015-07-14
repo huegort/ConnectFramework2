@@ -100,55 +100,13 @@
                                     <fieldset class="form">
                                         <g:render template="createActivityTypeForm"/>
                                     </fieldset>
-                                    <button type="button" class="btn btn-default"
-                                            onclick="$('#createCriteria').removeAttr('style');">Add New Criteria
-                                    </button>
-                                    <p></p>
 
-                                    <div id="createCriteria" class="grid" style="display: none;">
+                                    <div id="createCriteria" class="grid">
                                         <div class="grid__col grid__col--12-of-12">
                                             <div class="panel panel-default">
-                                                <div class="panel-heading">Create Criteria</div>
+                                                <div class="panel-heading">Add Criteria</div>
                                                 <div class="panel-body">
-                                                    <form id="criteriaForm">
-                                                        <div class="grid">
-                                                            <div class="grid__col grid__col--6-of-12">
-                                                                <label>Criteria Name</label>
-                                                                <br>
-                                                                <label>Criteria type</label>
-                                                            </div>
-                                                            <div class="grid__col grid__col--6-of-12">
-                                                                <input id="criteriaText" class="form-control" type="text">
-                                                                <label class="checkbox-inline">
-                                                                    <input type="radio" name="type" id="inlineCheckbox1"
-                                                                           value="text"> Text
-                                                                </label>
-                                                                <label class="checkbox-inline">
-                                                                    <input type="radio" name="type" id="inlineCheckbox2"
-                                                                           value="file"> Document
-                                                                </label>
-                                                                <label class="checkbox-inline">
-                                                                    <input type="radio" name="type" id="inlineCheckbox3"
-                                                                           value="date"> Date
-                                                                </label>
-                                                            </div>
-
-
-                                                            <div class="grid__col grid__col--10-of-12">
-
-                                                            </div>
-                                                            <div class="grid__col grid__col--2-of-12">
-                                                                <button type="button" class="btn btn-default btn-block"
-                                                                        onclick="addCriteria($('#criteriaText').val(),$('input[name=type]:checked', '#criteriaForm').val())">Add
-                                                                </button>
-                                                            </div>
-                                                            <div class="grid__col grid__col--1-of-12">
-
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-
+                                                    <g:render template="createCriteria"/>
                                                 </div>
                                             </div>
 
