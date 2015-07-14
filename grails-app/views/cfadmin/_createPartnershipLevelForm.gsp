@@ -27,4 +27,10 @@
     <div id="partnershipLevel" class="grid__col grid__col--8-of-12">
         <input class="form-control" type="text">
     </div>
+    <div class="grid__col grid__col--4-of-12">
+        <label>Duration Of Approval In Years:</label>
+    </div>
+    <div id="durationOfApprovalInYears" class="grid__col grid__col--8-of-12">
+        <input class="form-control" type="text">
+    </div>
 </div>

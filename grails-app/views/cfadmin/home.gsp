@@ -11,78 +11,8 @@
     <meta name="layout" content="bootstrap">
     <script>
         $(document).ready(function () {
-            var rowId = 0
-            $('#createCriteria').hide()
-            $('#submitLevel').click(function (){
-                var formData = {}
-                var criteriaContainer = []
-                formData.name = $('#partnershipLevelName :input').val()
-                formData.description = $('#descriptionLevel :input').val()
-                formData.urlToDoc = $('#urlToDocLevel :input').val()
-                formData.level = $('#partnershipLevel :input').val()
 
-                //console.log(JSON.stringify(formData))
-                $('#criteriaTable tbody tr').each(function () {
-                    criteriaContainer.push({criteriaId: $(this).find('input[name=criteriaId]').val() ,name: $(this).find('td :input').val(), type: $(this).find(':selected').text(),command: $(this).find('input[name=command]').val()})
-                    //criteriaContainer += {name: $(this).attr('id')}
-                    //console.log($(this).find(':input').val())
-                    //console.log($(this).attr('id'))
-                })
-
-                formData.criteriaContainer = criteriaContainer
-                console.log(JSON.stringify(formData))
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'createLevel',
-                    dataType: 'json',
-                    data: {
-                        levelName: formData.name,
-                        levelDescription : formData.description,
-                        levelUrlToDoc: formData.urlToDoc,
-                        level: formData.level,
-                        criteriaContainer: criteriaContainer
-                    },
-                    success: function (data) {
-
-                    }
-                })
-            })
-
-            $('#addCriteria').click(function () {
-                rowId += 1
-                $('#criteriaTable tbody').append(   '<tr id="tableRow' + rowId +'"><input type="hidden" name="command" value=""><input type="hidden" name="criteriaId" value="-1"><td><input type="text" class="form-control"></td> ' +
-                                                    '<td> <select class="form-control"> <option>Text</option> <option>Document</option> <option>Date</option> </select> </td> ' +
-                                                    '<td><button type="button" class="btn btn-default btn-sm" onclick="removeRow('+rowId+')"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove </button></td></tr>')
-                $('#createCriteria').show()
-            })
-
-        })
-
-        function removeRow(value) {
-            var row = '#tableRow' + value
-            console.log(row)
-            $(row).hide()
-            $(row).find('input[name=command]').val('removed')
-            if ($('#criteriaTable tbody').find("tr").length === 0 ) {
-                $('#createCriteria').hide()
-            }
-        }
-
-        function addCriteria(name, cType) {
-            if (cType == 'text') {
-                var criteriaData = '<div class="grid__col grid__col--4-of-12"> <label>' + name + '</label> </div> <div class="grid__col grid__col--8-of-12"> <input class="form-control" type="' + cType + '"> </div>';
-                $('#addLevelCriteria').append(criteriaData);
-            }
-            else if (cType == 'file') {
-                var criteriaData = '<div class="grid__col grid__col--4-of-12"> <label>' + name + '</label> </div> <div class="grid__col grid__col--8-of-12"> <input type="' + cType + '"> </div>';
-                $('#addLevelCriteria').append(criteriaData);
-            } else if (cType == 'date'){
-                var criteriaData = '<div class="grid__col grid__col--4-of-12"> <label>' + name + '</label> </div> <div class="grid__col grid__col--8-of-12"> <input type="' + cType + '"> </div>';
-                $('#addLevelCriteria').append(criteriaData);
-            }
-        }
-
+        });
 
     </script>
 </head>
@@ -112,52 +42,14 @@
                     <div >
 
                             <g:render template="partnershipLevelsDisplay"
-                                     model="[ partnershileLevals: partnershipLevels]"/>
+                                     model="[ partnershileLevels: partnershipLevels]"/>
 
 
                     </div>
 
                     <!-- Adding Partnership Level Modal -->
-                    <div class="modal fade" id="myModalLevel" tabindex="-1" role="dialog"
-                         aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Create New Level</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <fieldset class="form">
-                                        <g:render template="createPartnershipLevelForm"/>
-                                    </fieldset>
-                                    <fieldset class="form">
-                                        <g:render template="createActivityTypeForm"/>
-                                    </fieldset>
-
-                                    <div  class="grid" style="margin-top: 15px;">
-                                        <div class="grid__col grid__col--12-of-12">
-                                            <div id="createCriteria" class="panel panel-default">
-                                                <div class="panel-heading">Add Criteria</div>
-                                                <div class="panel-body">
-                                                    <g:render template="createCriteria"/>
-                                                </div>
-                                            </div>
-                                            <div style="text-align: right;">
-                                                <button id="addCriteria" type="button" class="btn btn-default btn-sm">
-                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Criteria
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button id="submitLevel" type="button" class="btn btn-primary">Create</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <g:render template="createEditPartnershipLevel"
+                              model="[activityTypeCategories: activityTypeCategories]"/>
 
                 </div>
             </div>
