@@ -63,4 +63,7 @@ class PartnershipService {
         return institution.currentHighest
 
     }
+    def createPartnershipLevel() {
+
+    }
 }
