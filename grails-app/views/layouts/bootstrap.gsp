@@ -15,12 +15,14 @@
     <asset:javascript src="application.js"/>
     <g:layoutHead/>
 </head>
-<body>
-<h1>Connect Framework</h1>
-<a href="http://localhost:8080/ConnectFramework2/cfaaastart/index">go to index</a>
 
+<body>
 <g:layoutBody/>
 <div class="footer" role="contentinfo"></div>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+<div class="main-body">
+    <h3>Connect Framework</h3>
+    <a href="http://localhost:8080/ConnectFramework2/cfaaastart/index">Go to index</a>
+</div>
 </body>
 </html>
