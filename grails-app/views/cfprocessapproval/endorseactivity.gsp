@@ -13,6 +13,9 @@
 
 
     <script>
+        function whenSuccesful(newEntityHtml){
+            $("#entityDisplay").html(newEntityHtml)
+     }
         $(document).ready(function() {
 
         });
@@ -27,7 +30,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Activity Information</h3>
                 </div>
-                <div class="panel-body">
+                <div id="entityDisplay" class="panel-body">
                     <g:render template="activityDisplay" model="[activity: activity]"/></div>
             </div>
         </div>
@@ -42,18 +45,9 @@
             </div>
         </div>
         <div class="grid__col grid__col--12-of-12">
-            <H3>Endorse</H3>
-            <div>
-                <button class="btn btn-default btn-width-30">
-                    <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span>
-                </button>
-                <button class="btn btn-default btn-width-30">
-                    <span class="glyphicon glyphicon-remove-circle" aria-hidden="true" style="color: red; font-size: 20px;"></span></button>
-                <button class="btn btn-default btn-width-30">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true" style="font-size: 20px;"></span>
-                </button>
-
-            </div>
+            <H3>Overall Aprroval</H3>
+            <em>What do we want to happen here? change back from endorsed/ go straight back to approver page</em>
+            <g:render template="approveentity"   model="[ succesStatus: succesStatus, entityId: activity.id, controllerMethod: 'changeActivityStatus' ]"/>
         </div>
     </div>
 

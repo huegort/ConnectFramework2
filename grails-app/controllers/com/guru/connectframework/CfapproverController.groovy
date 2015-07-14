@@ -27,7 +27,7 @@ class CfapproverController {
                 }
             }
         }
-
+log.debug("got partnerships "+resultsPartnership+ " for "+ userService.getApprover().id)
         def criteriaActivity = Activity.createCriteria()
         List<Activity> resultsActivity = criteriaActivity.list {
             approval {

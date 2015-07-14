@@ -15,10 +15,12 @@
 <script>
     $(document).ready(function (){
         $(".btn-criteria-approve").click(function(event){
-            var newStatus = "${com.guru.connectframework.Criteria.CriteriaStatus.APPROVED}"
+            var newStatus = "${succesStatus}"
+           // console.log("new ${succesStatus}")
             callChangeStatus(newStatus,event)
         });
         $(".btn-criteria-decline").click(function(event){
+
             var newStatus = "${com.guru.connectframework.Criteria.CriteriaStatus.DECLINED}"
             callChangeStatus(newStatus,event)
         });
@@ -40,7 +42,7 @@
         //console.log("target Row Id"+ targetRowId)
 
         var request = $.ajax({
-            url: "changeApprovalStatus",
+            url: "changeCriteriaDataStatus",
             method: "POST",
             data: { criteriaDataId : criteriaDataId, newCriteriaStatus : newStatus },
             dataType: "html"
@@ -57,7 +59,7 @@
             var row = $("body").find('#' + targetRowId);
 
             row.find(".btn-criteria-approve").click(function(event){
-                var newStatus = "${com.guru.connectframework.Criteria.CriteriaStatus.APPROVED}"
+                var newStatus = "${succesStatus}"
                 callChangeStatus(newStatus,event)
             });
             row.find(".btn-criteria-decline").click(function(event){
