@@ -57,9 +57,6 @@
                 type: 'POST',
                 url: 'getActivities',
                 dataType: 'json',
-                data: {
-                    q: '1'
-                },
                 success: function (data) {
                     $.each(data, function (i, item) {
                         var c = ''
@@ -77,9 +74,6 @@
                 type: 'POST',
                 url: 'getActivitiesRequest',
                 dataType: 'json',
-                data: {
-                    q: '1'
-                },
                 success: function (data) {
                     if (data.length > 0) {
                         $.each(data, function (i, item) {
@@ -103,9 +97,6 @@
                 type: 'POST',
                 url: 'getPartnershipRequest',
                 dataType: 'json',
-                data: {
-                    q: '1'
-                },
                 success: function (data) {
                     if (data.length > 0) {
                         $.each(data, function (i, item) {

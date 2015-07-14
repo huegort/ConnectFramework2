@@ -11,18 +11,63 @@
     <meta name="layout" content="bootstrap">
     <script>
         $(document).ready(function () {
+            var rowId = 0
+            $('#createCriteria').hide()
             $('#submitLevel').click(function (){
                 var formData = {}
+                var criteriaContainer = []
                 formData.name = $('#partnershipLevelName :input').val()
                 formData.description = $('#descriptionLevel :input').val()
                 formData.urlToDoc = $('#urlToDocLevel :input').val()
                 formData.level = $('#partnershipLevel :input').val()
 
+                //console.log(JSON.stringify(formData))
+                $('#criteriaTable tbody tr').each(function () {
+                    criteriaContainer.push({criteriaId: $(this).find('input[name=criteriaId]').val() ,name: $(this).find('td :input').val(), type: $(this).find(':selected').text(),command: $(this).find('input[name=command]').val()})
+                    //criteriaContainer += {name: $(this).attr('id')}
+                    //console.log($(this).find(':input').val())
+                    //console.log($(this).attr('id'))
+                })
+
+                formData.criteriaContainer = criteriaContainer
                 console.log(JSON.stringify(formData))
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'createLevel',
+                    dataType: 'json',
+                    data: {
+                        levelName: formData.name,
+                        levelDescription : formData.description,
+                        levelUrlToDoc: formData.urlToDoc,
+                        level: formData.level,
+                        criteriaContainer: criteriaContainer
+                    },
+                    success: function (data) {
+
+                    }
+                })
             })
 
+            $('#addCriteria').click(function () {
+                rowId += 1
+                $('#criteriaTable tbody').append(   '<tr id="tableRow' + rowId +'"><input type="hidden" name="command" value=""><input type="hidden" name="criteriaId" value="-1"><td><input type="text" class="form-control"></td> ' +
+                                                    '<td> <select class="form-control"> <option>Text</option> <option>Document</option> <option>Date</option> </select> </td> ' +
+                                                    '<td><button type="button" class="btn btn-default btn-sm" onclick="removeRow('+rowId+')"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove </button></td></tr>')
+                $('#createCriteria').show()
+            })
 
         })
+
+        function removeRow(value) {
+            var row = '#tableRow' + value
+            console.log(row)
+            $(row).hide()
+            $(row).find('input[name=command]').val('removed')
+            if ($('#criteriaTable tbody').find("tr").length === 0 ) {
+                $('#createCriteria').hide()
+            }
+        }
 
         function addCriteria(name, cType) {
             if (cType == 'text') {
@@ -100,58 +145,20 @@
                                     <fieldset class="form">
                                         <g:render template="createActivityTypeForm"/>
                                     </fieldset>
-                                    <button type="button" class="btn btn-default"
-                                            onclick="$('#createCriteria').removeAttr('style');">Add New Criteria
-                                    </button>
-                                    <p></p>
 
-                                    <div id="createCriteria" class="grid" style="display: none;">
+                                    <div  class="grid" style="margin-top: 15px;">
                                         <div class="grid__col grid__col--12-of-12">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">Create Criteria</div>
+                                            <div id="createCriteria" class="panel panel-default">
+                                                <div class="panel-heading">Add Criteria</div>
                                                 <div class="panel-body">
-                                                    <form id="criteriaForm">
-                                                        <div class="grid">
-                                                            <div class="grid__col grid__col--6-of-12">
-                                                                <label>Criteria Name</label>
-                                                                <br>
-                                                                <label>Criteria type</label>
-                                                            </div>
-                                                            <div class="grid__col grid__col--6-of-12">
-                                                                <input id="criteriaText" class="form-control" type="text">
-                                                                <label class="checkbox-inline">
-                                                                    <input type="radio" name="type" id="inlineCheckbox1"
-                                                                           value="text"> Text
-                                                                </label>
-                                                                <label class="checkbox-inline">
-                                                                    <input type="radio" name="type" id="inlineCheckbox2"
-                                                                           value="file"> Document
-                                                                </label>
-                                                                <label class="checkbox-inline">
-                                                                    <input type="radio" name="type" id="inlineCheckbox3"
-                                                                           value="date"> Date
-                                                                </label>
-                                                            </div>
-
-
-                                                            <div class="grid__col grid__col--10-of-12">
-
-                                                            </div>
-                                                            <div class="grid__col grid__col--2-of-12">
-                                                                <button type="button" class="btn btn-default btn-block"
-                                                                        onclick="addCriteria($('#criteriaText').val(),$('input[name=type]:checked', '#criteriaForm').val())">Add
-                                                                </button>
-                                                            </div>
-                                                            <div class="grid__col grid__col--1-of-12">
-
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-
+                                                    <g:render template="createCriteria"/>
                                                 </div>
                                             </div>
-
+                                            <div style="text-align: right;">
+                                                <button id="addCriteria" type="button" class="btn btn-default btn-sm">
+                                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Criteria
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

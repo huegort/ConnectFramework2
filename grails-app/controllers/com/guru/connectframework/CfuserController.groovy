@@ -11,6 +11,7 @@ import org.apache.commons.logging.LogFactory
 class CfuserController {
     private static final log = LogFactory.getLog(this)
     def partnershipService
+    UserService userService
 
     def home() {}
 
@@ -39,11 +40,7 @@ class CfuserController {
     }
 
     def getActivities() {
-
-        def q = params['q']
-
-        User current = User.findById(q)
-        def activities = Activity.findAllByOwner(current)
+        def activities = Activity.findAllByOwner(userService.getUser())
         def institutionMap = [:]
 
         for (int i = 0; i < activities.size(); i++) {
@@ -70,13 +67,10 @@ class CfuserController {
     }
 
     def getActivitiesRequest() {
-        def user = params['user']
-        user = 1
-        User current = User.findById(user)
         def pending = CriteriaStatus.PENDING
         def declined = CriteriaStatus.DECLINED
 
-        def activities = Activity.findAllByOwner(current)
+        def activities = Activity.findAllByOwner(userService.getUser())
         def activitiesList = []
 
         for (int i = 0; i < activities.size(); i++) {
@@ -93,11 +87,9 @@ class CfuserController {
     }
 
     def getPartnershipRequest() {
-        def user = params['user']
-        user = 1
-        User current = User.findById(user)
         def pending = CriteriaStatus.PENDING
         def declined = CriteriaStatus.DECLINED
+        def current = userService.getUser()
 
         def partnerships = Partnership.findAllByOwner(current)
         def partnershipList = []
