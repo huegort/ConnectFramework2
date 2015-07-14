@@ -1,5 +1,6 @@
 package com.guru.connectframework
 
+import com.guru.connectframework.activity.ActivityCategory
 import com.guru.connectframework.criteria.Criteria
 import com.guru.connectframework.criteria.CriteriaContainer
 import com.guru.connectframework.criteriatype.CriteriaType
@@ -11,11 +12,10 @@ class CfadminController {
 
     def home() {
         def partnershipLevels = PartnershipLevel.getAll()
+        def activityTypeCategories = ActivityCategory.getAll()
 
 
-
-
-        [partnershipLevels : partnershipLevels]
+        [partnershipLevels : partnershipLevels,activityTypeCategories: activityTypeCategories]
     }
 
     def createLevel() {

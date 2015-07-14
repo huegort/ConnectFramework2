@@ -109,19 +109,11 @@
                             <p></p>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Duration</th>
-                                <th>Url to documentation</th>
-                                <th>Level</th>
-                            </tr>
-                            <g:render template="displayPartnershipLevels"
-                                      var="partnershipLevel"
-                                      collection="${partnershipLevels}"/>
-                        </table>
+                    <div >
+
+                            <g:render template="partnershipLevelsDisplay"
+                                     model="[ partnershileLevals: partnershipLevels]"/>
+
 
                     </div>
 
@@ -171,66 +163,28 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Activity Categories</h3>
+                    <h3 class="panel-title">Activity Types</h3>
                 </div>
                 <div class="panel-body">
                     <div class="grid">
-                        <div class="grid__col grid__col--1-of-12">
+                        <div class="grid__col grid__col--3-of-12">
                             <button class="btn btn-default">Add Category</button>
                             <p></p>
                         </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th>Category Name</th>
-                                <th>Date Created</th>
-                                <th>Activity Type</th>
-                                <th>Options</th>
-                            </tr>
-                            <tr>
-                                <td>Category A</td>
-                                <td>12/08/2014</td>
-                                <td>Exchange</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="Edit">Edit</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Activity Type</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="grid">
-                        <div class="grid__col grid__col--1-of-12">
+                        <div class="grid__col grid__col--3-of-12">
                             <button class="btn btn-default">Add Activity</button>
                             <p></p>
                         </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tr>
-                                <th>Activity Type</th>
-                                <th>Date Created</th>
-                                <th>Institute</th>
-                                <th>Options</th>
-                            </tr>
-                            <tr>
-                                <td>Activity D</td>
-                                <td>12/08/2014</td>
-                                <td>Institute A</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="Edit">Edit</button>
-                                </td>
-                            </tr>
-                        </table>
+                    <div>
+                        <g:render template="activityTypeCategory"
+                                  model="[activityTypeCategories: activityTypeCategories]"/>
                     </div>
+
                 </div>
             </div>
+
+
         </div>
         <div class="grid__col grid__col--3-of-12">
             <div class="panel panel-default">
