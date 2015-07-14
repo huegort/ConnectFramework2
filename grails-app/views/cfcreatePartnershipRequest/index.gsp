@@ -17,7 +17,6 @@
             $("#submitCriteria").click(function () {
                 var formData = {};
                 formData.institution = $("#institutionDiv :input").serializeJSON();
-
                 formData.criteriaData = $("#criteriaDiv :input").serializeJSON();
                 formData.approval = $("#approvalDiv :input").serializeJSON();
                 formData.partnership = $("#partnershipDiv :input").serializeJSON();
