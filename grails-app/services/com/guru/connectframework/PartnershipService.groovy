@@ -37,7 +37,6 @@ class PartnershipService {
         try {
             partnership.approval.save(flush: true, failOnError: true)
             partnership.dataContainer.save(flush:true, failOnError: true)
-            partnership.dataContainer.save(flush: true, failOnError: true)
             partnership.save(flush: true, failOnError: true)
             log.debug(institution.partnerships)
             institution.partnerships += partnership
