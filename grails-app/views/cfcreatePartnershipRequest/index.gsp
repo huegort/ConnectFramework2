@@ -38,6 +38,10 @@
                     'name': 'partnershipLevelId',
                     'value':  ${partnershipLevel.id },
                     'type': 'hidden'
+                })).append(jQuery('<input>', {
+                    'name': 'activityTypeId',
+                    'value':  ${activityType.id },
+                    'type': 'hidden'
                 }));
                 newForm.submit();
 
@@ -60,6 +64,7 @@
 
 <body>
 <div class="main-body">
+
     <div class="grid">
         <div class="grid__col grid__col--12-of-12">
             <h1>Create Intitute Parnership Request</h1>
@@ -68,8 +73,23 @@
                                                                                          field="name"/></span></h3>
 
             <div class="panel panel-default">
+                <div class="panel-body">
+                    Before you can create an request for this activity (<em>${activityType.name}</em>) we need to
+                    <g:if test="${createNewInstitution == true}">
+                        create the institution and
+                    </g:if>
+                    <g:else>
+
+                    </g:else>
+                    request a partnership with this institution at the appropriate level
+
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Description of Partnership Level</h3>
+                    <h3 class="panel-title">Description of Partnership Level required for this activity</h3>
                 </div>
 
                 <div class="panel-body">
@@ -125,7 +145,7 @@
                                         <fieldset class="form">
 
                                             <g:render template="/cfcommontemplates/approvalform"
-                                                      model="[approvers: partnershipLevel.possibleApprovers, endorsers: partnershipLevel.possibleEndorsers]"/>
+                                                      model="[approvers: partnershipLevel.possibleApprovers, endorsers: partnershipLevel.possibleEndorsers, approval: approval]"/>
 
                                         </fieldset>
 

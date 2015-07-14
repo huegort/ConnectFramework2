@@ -60,6 +60,7 @@ class ApprovalService {
             approval.endorser = headOfSchool
         )else{
             approval.endorser = self
+            approval.dateEndorsed = new Date()
         }
         if (headOfFaculty != null && headOfFaculty in possibleApprovers){
             approval.approver = headOfFaculty

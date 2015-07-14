@@ -4,6 +4,7 @@ import com.guru.connectframework.User
 import com.guru.connectframework.criteria.CriteriaContainer
 
 class PartnershipLevel {
+    def userService
     String name
     String description
     String urlToDoc
@@ -27,19 +28,10 @@ class PartnershipLevel {
         return criteriaContainer.setOfCriteria
     }
     def getPossibleEndorsers(){
-        //TODO get this from the roles for this partnership level
-        Set<User> endorsers = new HashSet<User>()
-        endorsers.add(User.get(1))
-        endorsers.add(User.get(2))
-        return endorsers
-
+        return userService.getPossibleEndorsersForPartnershipLevel(this)
     }
     def getPossibleApprovers(){
-        //TODO get this from the roles for this partnership level
-        Set<User> approvers = new HashSet<User>()
-        approvers.add(User.get(1))
-        approvers.add(User.get(2))
-        return approvers
+        return userService.getPossibleApproversForPartnershipLevel(this)
+     }
 
-    }
 }

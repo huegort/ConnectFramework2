@@ -24,10 +24,11 @@ class CfCreatePartnershipRequestController {
         def institution
         def partnershipLevel = PartnershipLevel.get(params.partnershipLevel.id)
         //def activityType = new ActivityType(params.activityType.ie)
-        System.out.println(partnershipLevel)
+        Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
+
         log.debug(partnershipLevel)
 
-        [ partnershipLevel : partnershipLevel ]
+        [ partnershipLevel : partnershipLevel, approval: tempApproval ]
 
     }
     def createInsitutionAndPartnershipFirst(){
@@ -35,8 +36,10 @@ class CfCreatePartnershipRequestController {
        // long activityTypeId = ActivityType.get(params.activityTypeId)
         ActivityType activityType = ActivityType.get(params.activityTypeId)
         PartnershipLevel partnershipLevel = activityType.requiredLevel
+        Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
 
-        render (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewInstitution : true , instition: new Institution()])
+
+        render (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewInstitution : true , instition: new Institution(),approval: tempApproval])
     }
     def createPartnershipFirst(){
         //long activityTypeId = ActivityType.get(params.activityTypeId)
@@ -46,9 +49,10 @@ class CfCreatePartnershipRequestController {
 
         Institution institution = Institution.get(params.institutionId)
         //log.debug("institution: "+institution)
+        Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
 
 
-        render  (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : false,institution : institution])
+        render  (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : false,institution : institution,approval: tempApproval])
 
 
     }
@@ -71,7 +75,8 @@ class CfCreatePartnershipRequestController {
     def createPartnershipRequest( ){
         //log.debug("sanity9 " + params.partnershipLevelId)
         // TODO get this from the params
-        ActivityType activityType = ActivityType.get(1)
+        ActivityType activityType = ActivityType.get(params.activityTypeId)
+        log.debug("activityType :"+ activityType.id)
 
 
 

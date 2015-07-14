@@ -8,6 +8,7 @@ import com.guru.connectframework.partnership.PartnershipLevel
 
 
 class ActivityType {
+    def userService
 
     String name
     String description
@@ -36,19 +37,11 @@ class ActivityType {
         return name
     }
     def getPossibleEndorsers(){
-        //TODO get this from the roles for this partnership level
-        Set<User> endorsers = new HashSet<User>()
-        endorsers.add(User.get(1))
-        endorsers.add(User.get(2))
-        return endorsers
+        return userService.getPossibleEndorsersForActivityType(this)
 
     }
     def getPossibleApprovers(){
-        //TODO get this from the roles for this partnership level
-        Set<User> approvers = new HashSet<User>()
-        approvers.add(User.get(1))
-        approvers.add(User.get(2))
-        return approvers
+        return userService.getPossibleApproversForActivityType(this)
 
     }
 }

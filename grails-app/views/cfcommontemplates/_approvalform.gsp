@@ -3,8 +3,9 @@
         <g:message code="approval.endorser.label" default="Endorser"/>
         <span class="required-indicator">*</span>
     </label>
+
     <g:select id="endorser" name="endorserId" from="${endorsers}" optionKey="id" required=""
-              value="${approvalInstance?.endorser?.id}" class="many-to-one form-control"/>
+              value="${approval?.endorser?.id}" class="many-to-one form-control"/>
 
 </div>
 
@@ -13,8 +14,9 @@
         <g:message code="approval.approver.label" default="Approver"/>
         <span class="required-indicator">*</span>
     </label>
+
     <g:select id="approver" name="approverId" from="${approvers}" optionKey="id" required=""
-              value="${approvalInstance?.approver?.id}" class="many-to-one form-control"/>
+              value="${approval?.approver?.id}" class="many-to-one form-control"/>
 
 </div>
 

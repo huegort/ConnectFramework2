@@ -27,6 +27,5 @@
     <g:select id="contact" name="contact.id" from="${com.guru.connectframework.institution.Contact.list()}" optionKey="id" value="${activity?.contact?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
-agreement template
-final agreement?
+
 

@@ -59,7 +59,7 @@
             <h3> <div class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${activity.activityType}" field="name"/></div></h3>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Description of Partnership Level</h3>
+                    <h3 class="panel-title">Description of Activity Type</h3>
                 </div>
                 <div class="panel-body">
                     <span class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${activity.activityType}" field="description"/></span>

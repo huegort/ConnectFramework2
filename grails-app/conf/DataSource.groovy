@@ -21,7 +21,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://localhost/cf_dev?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://localhost/cf_dev?useUnicode=yes&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull"
         }
         hibernate {
             show_sql = true
