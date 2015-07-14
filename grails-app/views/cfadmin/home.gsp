@@ -113,19 +113,16 @@
                         <table class="table">
                             <tr>
                                 <th>Name</th>
-                                <th>Date Created</th>
+                                <th>Description</th>
+                                <th>Duration</th>
+                                <th>Url to documentation</th>
                                 <th>Level</th>
-                                <th>Options</th>
                             </tr>
-                            <tr>
-                                <td>Institute D</td>
-                                <td>12/08/2014</td>
-                                <td>Level 2</td>
-                                <td>
-                                    <button class="btn btn-default btn-sm" value="Edit">Edit</button>
-                                </td>
-                            </tr>
+                            <g:render template="displayPartnershipLevels"
+                                      var="partnershipLevel"
+                                      collection="${partnershipLevels}"/>
                         </table>
+
                     </div>
 
                     <!-- Adding Partnership Level Modal -->

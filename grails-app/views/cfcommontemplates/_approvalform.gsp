@@ -26,7 +26,8 @@
         <span class="required-indicator">*</span>
     </label>
     <div>
-        <g:datePicker class="form-control" type="date" name="validTo" precision="day"  value="${approvalInstance?.validTo}"  />
+
+        <g:datePicker class="form-control" type="date" name="validTo" precision="day"  value="${approval?.validTo}"  />
     </div>
 </div>
 
