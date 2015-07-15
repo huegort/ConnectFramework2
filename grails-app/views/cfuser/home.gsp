@@ -61,7 +61,7 @@
                     $.each(data, function (i, item) {
                         var c = ''
                         $.each(item, function (a, b) {
-                            c = c + '<p><a href=\"${createLink(uri: '/cfuser/show/')}' + b.id + '\">' + b.name + '</a></p>'
+                            c = c + '<p><a href=\"${createLink(uri: '/cfuser/showActivity/')}' + b.id + '\">' + b.name + '</a></p>'
                         })
                         $('#myActivitiesArticle').append('<details><summary class="h4">' + i + '</summary>' + c + '</details>')
                         $('#currentActivitiesPanel').show()
@@ -77,14 +77,19 @@
                 success: function (data) {
                     if (data.length > 0) {
                         $.each(data, function (i, item) {
-                            $('#activityRequestTable').append('<tr><td>'+ item.id +'</td><td>' +  item.name + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                            $('#activityRequestTable').append('<tr><td>'+ item.id +'</td><td>' + item.partnership.institution.name + '</td><td>' +  item.name + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
                         })
                         $("#activityRequestTable").bootgrid({
                             formatters: {
-                                "link": function(column, row)
+                                "linka": function(column, row)
                                 {
                                     return '<a href=\"${createLink(uri: '/cfuser/showActivity/')}'+ row.id +'\">' + row.activityName + '</a>'
+                                },
+                                "linkb": function(column, row)
+                                {
+                                    return '<a href=\"${createLink(uri: '/cfuser/showPartnership/')}'+ row.id +'\">' + row.institution + '</a>'
                                 }
+
                             }
                         });
                         $('#activityRequestPanel').show()
@@ -100,7 +105,7 @@
                 success: function (data) {
                     if (data.length > 0) {
                         $.each(data, function (i, item) {
-                            $('#partnershipRequestTable tbody').append('<tr><td>'+ item.id +'</td><td>' +  item.institution.name + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.approval.status.name + '</td></tr>')
+                            $('#partnershipRequestTable tbody').append('<tr><td>'+ item.id +'</td><td>' +  item.institution.name + '</td><td>' + item.approval.dateCreated.split("T")[0] + '</td><td>' + item.partnershipLevel.name + '</td><td>' + item.approval.status.name + '</td></tr>')
                         })
                         $("#partnershipRequestTable").bootgrid({
                             formatters: {
@@ -251,12 +256,26 @@
                 </div>
             </div>
 
+            <div id="CurrentActivitiesPanel" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Current Activitites</h3>
+                </div>
+
+                <div class="panel-body">
+                    <section>
+                        <article id="myActivitiesArticle">
+
+                        </article>
+                    </section>
+                </div>
+            </div>
+
+            <%-- Search Field CF_User Home --%>
+            <%--<div class="panel-body">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Search</h3>
                 </div>
-
-                <div class="panel-body">
                     <div style="text-align: center;">
                         <form style="margin-bottom: 0px;">
                             <div class="grid">
@@ -286,14 +305,8 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>--%>
 
-            <button class="btn btn-default btn-sm" value="See my Documents">See my Documents</button>
-            <br>
-            <a href="CF_USER_createInstituteRequest.html">Institute Request Page</a>| <a
-                href="CF_USER_createActivityRequest.html">Activity Request Page</a>| <a
-                href="CF_USER_searchResults.html">Search Results</a><br>
-            <a href="CF_APPROVER_home.html">CF_APPROVER HomePage</a>| <a href="CF_ADMIN_home.html">CF_ADMIN HomePage</a>
         </div>
 
         <div class="grid__col grid__col--6-of-12">
@@ -307,9 +320,10 @@
                         <table id="partnershipRequestTable" class="table table-condensed table-hover table-striped">
                             <thead>
                             <tr>
-                                <th data-column-id="id" datatype="numeric">ID</th>
+                                <th data-column-id="id" data-visible="false" datatype="numeric">ID</th>
                                 <th data-column-id="institution" data-formatter="link">Institute Name</th>
                                 <th data-column-id="dateCreated">Date Created</th>
+                                <th data-column-id="level">Level</th>
                                 <th data-column-id="statusName">Status</th>
                             </tr>
                             </thead>
@@ -331,8 +345,9 @@
                         <table id="activityRequestTable" class="table">
                             <thead>
                             <tr>
-                                <th data-column-id="id" datatype="numeric">ID</th>
-                                <th data-column-id="activityName" data-formatter="link">Activity Name</th>
+                                <th data-column-id="id" data-visible="false" datatype="numeric">ID</th>
+                                <th data-column-id="institution" data-formatter="linkb">Institute Name</th>
+                                <th data-column-id="activityName" data-formatter="linka">Activity Name</th>
                                 <th data-column-id="dateCreated">Date Created</th>
                                 <th data-column-id="statusName">Status</th>
                             </tr>
@@ -343,20 +358,6 @@
 
                         </table>
                     </div>
-                </div>
-            </div>
-
-            <div id="CurrentActivitiesPanel" class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">My Current Activitites</h3>
-                </div>
-
-                <div class="panel-body">
-                    <section>
-                        <article id="myActivitiesArticle">
-
-                        </article>
-                    </section>
                 </div>
             </div>
         </div>

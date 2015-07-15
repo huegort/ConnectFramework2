@@ -74,14 +74,13 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     Before you can create an request for this activity (<em>${activityType.name}</em>) we need to
-                    <g:if test="${createNewInstitution == true}">
-                        create the institution and
-                    </g:if>
-                    <g:else>
+                <g:if test="${createNewInstitution == true}">
+                    create the institution and
+                </g:if>
+                <g:else>
 
-                    </g:else>
-                    request a partnership with this institution at the appropriate level
-
+                </g:else>
+                request a partnership with this institution at the appropriate level
 
                 </div>
             </div>
@@ -104,22 +103,19 @@
                             <h3 class="panel-title">Institute Details</h3>
                         </div>
 
-                        <div class="panel-body">
-                            <div id="institutionDiv">
-                                <fieldset class="form">
-                                    <g:if test="${createNewInstitution == true}">
-                                        <g:render template="instituteform"/>
-                                    </g:if>
-                                    <g:else>
-                                        <g:render template="/cfcommontemplates/institutionDisplay"
-                                                  model="[institution: institution]"/>
-                                    </g:else>
+                        <div id="institutionDiv" class="panel-body">
 
-                                </fieldset>
-                                <fieldset class="buttons">
+                            <fieldset class="form">
+                                <g:if test="${createNewInstitution == true}">
+                                    <g:render template="instituteform"/>
+                                </g:if>
+                                <g:else>
+                                    <g:render template="/cfcommontemplates/institutionDisplay"
+                                              model="[institution: institution]"/>
+                                </g:else>
 
-                                </fieldset>
-                            </div>
+                            </fieldset>
+
                         </div>
                     </div>
                 </div>
@@ -166,11 +162,17 @@
                                         </fieldset>
 
                                     </div>
-                                    <fieldset class="buttons" style=" text-align: right;">
-                                        <g:submitButton id="submitCriteria" name="create" class="save btn btn-default btn-sm"
-                                                        style="margin-top: 5px;" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-                                    </fieldset>
+
                                 </div>
+                            </div>
+
+                            <div style="text-align: right;">
+                                <fieldset class="buttons">
+                                    <g:submitButton id="submitCriteria" name="create"
+                                                    class="save btn btn-default btn-sm"
+                                                    style="margin-top: 5px;"
+                                                    value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                </fieldset>
                             </div>
                         </div>
                     </div>

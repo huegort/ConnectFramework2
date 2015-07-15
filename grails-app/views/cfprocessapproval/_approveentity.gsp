@@ -1,3 +1,5 @@
+<div id="message"></div>
+
 <div id="entityApprovalButtons" entityId="${entityId}">
     <button class="btn btn-default btn-width-20 btn-entity-approve">
         <span class="glyphicon glyphicon-ok-circle" aria-hidden="true" style="color:green; font-size: 20px;"></span>

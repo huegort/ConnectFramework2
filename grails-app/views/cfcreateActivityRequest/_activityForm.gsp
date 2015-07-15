@@ -6,7 +6,7 @@
         <g:message code="activity.name.label" default="Name" />
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="name" required="" value="${activity?.name}"/>
+    <g:textField class="form-control" name="name" required="" value="${activity?.name}"/>
 
 </div>
 
@@ -15,7 +15,7 @@
         <g:message code="activity.description.label" default="Description" />
 
     </label>
-    <g:textField name="description" value="${activity?.description}"/>
+    <g:textField class="form-control" name="description" value="${activity?.description}"/>
 
 </div>
 
@@ -24,7 +24,7 @@
         <g:message code="activity.contact.label" default="Contact" />
 
     </label>
-    <g:select id="contact" name="contact.id" from="${com.guru.connectframework.institution.Contact.list()}" optionKey="id" value="${activity?.contact?.id}" class="many-to-one" noSelection="['null': '']"/>
+    <g:select id="contact" name="contact.id" from="${com.guru.connectframework.institution.Contact.list()}" optionKey="id" value="${activity?.contact?.id}" class="many-to-one form-control" noSelection="['null': '']"/>
 
 </div>
 

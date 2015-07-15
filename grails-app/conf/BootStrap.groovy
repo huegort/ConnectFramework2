@@ -123,7 +123,7 @@ class BootStrap {
             returnArray['institution'] = ["id": it.institution.id, "name": it.institution.name]
             returnArray['name'] = it.name
             returnArray['owner'] = ["id": it.owner.id]
-            returnArray['partnershipLevel'] = ["id": it.partnershipLevel.id]
+            returnArray['partnershipLevel'] = ["id": it.partnershipLevel.id, "name": it.partnershipLevel.name]
             return returnArray
 
         }
