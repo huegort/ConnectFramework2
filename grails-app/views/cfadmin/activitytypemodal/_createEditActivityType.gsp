@@ -47,7 +47,7 @@
             formData.partnershipLevel   = $('#partnershipLevel_${section} :input').val()
             formData.durationOfApprovalInYears = $('#durationOfApprovalInYears_${section} :input').val()
 
-
+            var categoryId = $('#category_${section} :input').val()
 
             //console.log(JSON.stringify(formData))
             $('#criteriaTable_${section} tbody tr').each(function () {
@@ -77,13 +77,17 @@
             })
             request.done(function( msg ) {
 
-                console.log("in success")
+                console.log("in success xx about to add "+msg+"\nto:"+categoryId)
+                $('#displayActivityTypesTable_'+categoryId).append(msg);
                 $('#ModalActivityType').modal('hide');
+
 
 
             })
             request.fail(function( jqXHR, textStatus ) {
                 console.log("fail "+textStatus)
+                alert("We could not create this activity type because an error occured while processing the data ")
+                $('#ModalActivityType').modal('hide');
             })
 
         })

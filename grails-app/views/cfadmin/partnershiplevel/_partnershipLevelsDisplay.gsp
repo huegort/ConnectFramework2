@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table">
+    <table id="displayPartnershipLevelsTable" class="table">
        <tr>
            <th>Name</th>
            <th>Description</th>

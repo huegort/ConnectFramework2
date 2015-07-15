@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table">
+    <table id="displayActivityTypesTable_${category.id}"class="table">
         <tr>
             <th>Name</th>
             <th>Description</th>

@@ -70,7 +70,8 @@
             })
             request.done(function( msg ) {
 
-                    console.log("in success")
+                    console.log("in success pl")
+                    $('#displayPartnershipLevelsTable').append(msg);
                     $('#myModalLevel').modal('hide');
 
 
