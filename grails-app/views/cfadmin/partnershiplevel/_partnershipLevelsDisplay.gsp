@@ -7,7 +7,7 @@
            <th>Url to documentation</th>
            <th>Level</th>
        </tr>
-        <g:render template="partnershipLevelRow"
+        <g:render template="partnershiplevel/partnershipLevelRow"
                   var="partnershipLevel"
                   collection="${partnershipLevels}"/>
     </table>

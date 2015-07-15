@@ -16,7 +16,7 @@ class ActivityType {
     PartnershipLevel requiredLevel
     CriteriaContainer criteriaContainer
 
-    int defaultDurationInYears = 5
+    int durationOfApprovalInYears = 5
 
     String urlToDoc
     Document document

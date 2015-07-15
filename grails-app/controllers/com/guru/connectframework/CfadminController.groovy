@@ -1,9 +1,7 @@
 package com.guru.connectframework
 
 import com.guru.connectframework.activity.ActivityCategory
-import com.guru.connectframework.criteria.Criteria
-import com.guru.connectframework.criteria.CriteriaContainer
-import com.guru.connectframework.criteriatype.CriteriaType
+import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.partnership.PartnershipLevel
 import grails.transaction.Transactional
 import org.apache.commons.logging.LogFactory
@@ -11,6 +9,7 @@ import org.apache.commons.logging.LogFactory
 class CfadminController {
     private static final log = LogFactory.getLog(this)
     def partnershipLevelService
+    def activityTypeService
     def criteriaService
 
     def home() {
@@ -37,7 +36,26 @@ class CfadminController {
         partnershipLevel.criteriaContainer.save(failOnError: true)
         partnershipLevel.save(flush: true, failOnError: true)
 
-        render  (view :"_partnershipLevelItem", model: [partnershipLevel: partnershipLevel])
+        render  (view :"partnershiplevel/_partnershipLevelItem", model: [partnershipLevel: partnershipLevel])
+
+    }
+    @Transactional
+    def createActivityType() {
+        //TODO when sequence number is null we get errors
+        log.debug(params.toString())
+        log.debug("criteriasxxx: "+params.criterias)
+        ActivityType activityType= activityTypeService.createActivityTypeFromParams(params)
+        log.debug("activity Type : "+ activityType)
+        activityType.criteriaContainer = criteriaService.getCriteriaContainerForJSON(params.criterias)
+        //log.debug("partnershipLevel:" +partnershipLevel)
+        //log.debug("container:" +partnershipLevel.criteriaContainer)
+        //log.debug("container set:" +partnershipLevel.criteriaContainer.setOfCriteria)
+
+
+        activityType.criteriaContainer.save(failOnError: true)
+        activityType.save(flush: true, failOnError: true)
+
+        render  (view :"activitytype/_activityTypeItem", model: [activityType: activityType])
 
     }
 }

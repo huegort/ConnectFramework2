@@ -11,7 +11,7 @@
         </div>
         <div id="collapse_${category.id}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading_${category.id}">
           <div class="panel-body">
-              <g:render template="activityTypeDisplay"
+              <g:render template="activitytype/activityTypeDisplay"
                         model="[activityTypes: category.activityTypes]"/>
             </div>
         </div>

@@ -1,8 +1,8 @@
-<div id="criteriaDiv" class="grid__col grid__col--12-of-12">
-    <div id="createCriteria" class="panel panel-default">
+<div id="criteriaDiv_${section}" class="grid__col grid__col--12-of-12">
+    <div id="createCriteria_${section}" class="panel panel-default">
         <div class="panel-heading">Add Criteria</div>
         <div class="panel-body">
-            <table id="criteriaTable" class="table">
+            <table id="criteriaTable_${section}" class="table">
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div style="text-align: right;">
-        <button id="addCriteria" type="button" class="btn btn-default btn-sm">
+        <button id="addCriteria_${section}" type="button" class="btn btn-default btn-sm">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Criteria
         </button>
     </div>
@@ -27,9 +27,9 @@
 <script>
     $(document).ready(function () {
         var rowId = 0
-        $('#addCriteria').click(function () {
+        $('#addCriteria_${section}').click(function () {
                    rowId += 1
-                   $('#criteriaTable tbody').append(   '<tr id="tableRow' + rowId +'">' +
+                   $('#criteriaTable_${section} tbody').append(   '<tr id="tableRow_${section}' + rowId +'">' +
                         '<td>' +
                             '<input type="hidden" name="command" value="">' +
                             '<input type="hidden" name="criteriaId" value="-1">' +
@@ -55,32 +55,33 @@
                             '</button>' +
                         '</td>' +
                         '</tr>')
-                    $('#createCriteria').show()
+                    $('#createCriteria_${section}').show()
                 })
 
     })
 
     function removeRow(value) {
-        var row = '#tableRow' + value
+        var row = '#tableRow_${section}' + value
         console.log(row)
         $(row).hide()
         $(row).find('input[name=command]').val('removed')
-        if ($('#criteriaTable tbody').find("tr").length === 0 ) {
-            $('#createCriteria').hide()
+        if ($('#criteriaTable_${section} tbody').find("tr").length === 0 ) {
+            $('#createCriteria_${section}').hide()
         }
     }
 
     function addCriteria(name, cType) {
+        console.log("*****************add criteria called*************")
         if (cType == 'text') {
             var criteriaData = '<div class="grid__col grid__col--4-of-12"> <label>' + name + '</label> </div> <div class="grid__col grid__col--8-of-12"> <input class="form-control" type="' + cType + '"> </div>';
-            $('#addLevelCriteria').append(criteriaData);
+            $('#addLevelCriteria_${section}').append(criteriaData);
         }
         else if (cType == 'file') {
             var criteriaData = '<div class="grid__col grid__col--4-of-12"> <label>' + name + '</label> </div> <div class="grid__col grid__col--8-of-12"> <input type="' + cType + '"> </div>';
-            $('#addLevelCriteria').append(criteriaData);
+            $('#addLevelCriteria_${section}').append(criteriaData);
         } else if (cType == 'date'){
             var criteriaData = '<div class="grid__col grid__col--4-of-12"> <label>' + name + '</label> </div> <div class="grid__col grid__col--8-of-12"> <input type="' + cType + '"> </div>';
-            $('#addLevelCriteria').append(criteriaData);
+            $('#addLevelCriteria_${section}').append(criteriaData);
         }
     }
 

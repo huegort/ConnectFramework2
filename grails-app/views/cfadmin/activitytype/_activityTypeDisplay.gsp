@@ -8,7 +8,7 @@
             <th>Url to documentation</th>
             <th>Document</th>
         </tr>
-        <g:render template="activityTypeRow"
+        <g:render template="activitytype/activityTypeRow"
                   var="activityType"
                   collection="${activityTypes}"/>
     </table>

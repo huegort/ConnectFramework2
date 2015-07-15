@@ -1,5 +1,5 @@
 <tr>
-    <g:render template="partnershipLevelItem"
+    <g:render template="partnershiplevel/partnershipLevelItem"
              model="[partnershipLevel: partnershipLevel]"/>
 
 </tr>

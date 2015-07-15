@@ -41,15 +41,15 @@
                     </div>
                     <div >
 
-                            <g:render template="partnershipLevelsDisplay"
+                            <g:render template="partnershiplevel/partnershipLevelsDisplay"
                                      model="[ partnershileLevels: partnershipLevels]"/>
 
 
                     </div>
 
                     <!-- Adding Partnership Level Modal -->
-                    <g:render template="createEditPartnershipLevel"
-                              model="[activityTypeCategories: activityTypeCategories]"/>
+                    <g:render template="partnershiplevelmodal/createEditPartnershipLevel"
+                              model="[section: 'pl']"/>
 
                 </div>
             </div>
@@ -64,12 +64,16 @@
                             <p></p>
                         </div>
                         <div class="grid__col grid__col--3-of-12">
-                            <button class="btn btn-default">Add Activity</button>
-                            <p></p>
+
+                            <button type="button" class="btn btn-default" data-toggle="modal"
+                                    data-target="#ModalActivityType">Add Activity
+                            </button>
+                            <g:render template="activitytypemodal/createEditActivityType"
+                                      model="[section: 'at']"/>
                         </div>
                     </div>
                     <div>
-                        <g:render template="activityTypeCategory"
+                        <g:render template="activitytype/activityTypeCategory"
                                   model="[activityTypeCategories: activityTypeCategories]"/>
                     </div>
 
