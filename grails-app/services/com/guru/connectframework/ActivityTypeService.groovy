@@ -13,8 +13,8 @@ class ActivityTypeService {
         ActivityType activityType = new ActivityType(params)
         def categoryId = Integer.parseInt(params.categoryId)
         activityType.category = ActivityCategory.get(categoryId)
-        def partnershipId = Integer.parseInt(params.partnershipId)
-        activityType.requiredLevel = PartnershipLevel.get(partnershipId)
+        def partnershipLevelId = Integer.parseInt(params.partnershipLevelId)
+        activityType.requiredLevel = PartnershipLevel.get(partnershipLevelId)
         try{
             //def documentId = Integer.parseInt(params.documentId)
             //activityType.document = Document.get(documentId)
@@ -22,6 +22,7 @@ class ActivityTypeService {
         }catch(NumberFormatException nfe){
             log.info("activity type ("+activityType+") created without a document (we got a number format exception on "+params.documentId+")")
         }
+        return activityType
 
     }
 }

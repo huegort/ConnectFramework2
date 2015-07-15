@@ -36,7 +36,7 @@ class CfadminController {
         partnershipLevel.criteriaContainer.save(failOnError: true)
         partnershipLevel.save(flush: true, failOnError: true)
 
-        render  (view :"partnershiplevel/_partnershipLevelItem", model: [partnershipLevel: partnershipLevel])
+        render  (view :"partnershiplevel/_partnershipLevelRow", model: [partnershipLevel: partnershipLevel])
 
     }
     @Transactional
@@ -55,7 +55,7 @@ class CfadminController {
         activityType.criteriaContainer.save(failOnError: true)
         activityType.save(flush: true, failOnError: true)
 
-        render  (view :"activitytype/_activityTypeItem", model: [activityType: activityType])
+        render  (view :"activitytype/_activityTypeRow", model: [activityType: activityType])
 
     }
 }
