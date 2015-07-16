@@ -7,7 +7,6 @@ class Approval {
     User createdBy
     Date created
 
-
     User endorser
     Date dateEndorsed
 
