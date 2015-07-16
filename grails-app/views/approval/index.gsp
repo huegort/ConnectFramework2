@@ -24,7 +24,7 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="notes" title="${message(code: 'approval.notes.label', default: 'Notes')}" />
+						<g:sortableColumn property="notes" title="${message(code: 'approval.feedback.label', default: 'Notes')}" />
 					
 						<g:sortableColumn property="dateArchived" title="${message(code: 'approval.dateArchived.label', default: 'Date Archived')}" />
 					
@@ -42,7 +42,7 @@
 				<g:each in="${approvalInstanceList}" status="i" var="approvalInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${approvalInstance.id}">${fieldValue(bean: approvalInstance, field: "notes")}</g:link></td>
+						<td><g:link action="show" id="${approvalInstance.id}">${fieldValue(bean: approvalInstance, field: "feedback")}</g:link></td>
 					
 						<td><g:formatDate date="${approvalInstance.dateArchived}" /></td>
 					

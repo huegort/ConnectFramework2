@@ -67,16 +67,14 @@ class CfuserController {
     }
 
     def getActivitiesRequest() {
-        def pending = CriteriaStatus.PENDING
-        def declined = CriteriaStatus.DECLINED
-
+       // TODO use criteria to get all the ones approved and not archived, from the DB
         def activities = Activity.findAllByOwner(userService.getUser())
         def activitiesList = []
 
         for (int i = 0; i < activities.size(); i++) {
             def currentActivity = activities.get(i)
 
-            if (currentActivity.approval.status == pending || currentActivity.approval.status == declined) {
+            if (currentActivity.approval.status != CriteriaStatus.APPROVED ) {
                 activitiesList += currentActivity
             }
 
@@ -87,8 +85,8 @@ class CfuserController {
     }
 
     def getPartnershipRequest() {
-        def pending = CriteriaStatus.PENDING
-        def declined = CriteriaStatus.DECLINED
+        // TODO use criteria to get all the ones approved and not archived, from the DB
+
         def current = userService.getUser()
 
         def partnerships = Partnership.findAllByOwner(current)
@@ -96,7 +94,7 @@ class CfuserController {
 
         for (int i = 0; i < partnerships.size(); i++) {
             def currentPartnership = partnerships.get(i)
-            if (currentPartnership.approval.status == pending || currentPartnership.approval.status == declined){
+            if (currentPartnership.approval.status != CriteriaStatus.APPROVED){
                 partnershipList += currentPartnership
             }
 

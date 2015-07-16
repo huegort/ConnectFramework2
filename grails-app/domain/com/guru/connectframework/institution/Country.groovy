@@ -6,10 +6,11 @@ class Country {
     Date dateArchived
 
     static constraints = {
+        dateArchived nullable: true
     }
     String toString() {
         return name
-        dateArchived nullable: true
+
 
     }
 }

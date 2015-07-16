@@ -26,7 +26,7 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'institution.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="notes" title="${message(code: 'institution.notes.label', default: 'Notes')}" />
+						<g:sortableColumn property="notes" title="${message(code: 'institution.feedback.label', default: 'Notes')}" />
 					
 						<th><g:message code="institution.currentHighest.label" default="Current Highest" /></th>
 					
@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${institutionInstance.id}">${fieldValue(bean: institutionInstance, field: "description")}</g:link></td>
 					
-						<td>${fieldValue(bean: institutionInstance, field: "notes")}</td>
+						<td>${fieldValue(bean: institutionInstance, field: "feedback")}</td>
 					
 						<td>${fieldValue(bean: institutionInstance, field: "currentHighest")}</td>
 					

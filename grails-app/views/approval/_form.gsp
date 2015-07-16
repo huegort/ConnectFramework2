@@ -2,7 +2,7 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: approvalInstance, field: 'notes', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: approvalInstance, field: 'feedback', 'error')} ">
 	<label for="notes">
 		<g:message code="approval.notes.label" default="Notes" />
 		

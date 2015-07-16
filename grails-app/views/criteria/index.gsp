@@ -26,7 +26,7 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'criteria.description.label', default: 'Description')}" />
 					
-						<g:sortableColumn property="notes" title="${message(code: 'criteria.notes.label', default: 'Notes')}" />
+						<g:sortableColumn property="notes" title="${message(code: 'criteria.feedback.label', default: 'Notes')}" />
 					
 						<th><g:message code="criteria.container.label" default="Container" /></th>
 					
@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${criteriaInstance.id}">${fieldValue(bean: criteriaInstance, field: "description")}</g:link></td>
 					
-						<td>${fieldValue(bean: criteriaInstance, field: "notes")}</td>
+						<td>${fieldValue(bean: criteriaInstance, field: "feedback")}</td>
 					
 						<td>${fieldValue(bean: criteriaInstance, field: "container")}</td>
 					

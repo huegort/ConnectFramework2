@@ -19,7 +19,7 @@ class Approval {
 
     Date dateArchived
 
-    String notes
+    String feedback
 
     public Approval(){
     }
@@ -40,7 +40,7 @@ class Approval {
         return (dateEndorsed != null)
     }
     static constraints = {
-        notes nullable: true
+        feedback nullable: true
         dateArchived nullable: true
         dateApproved nullable: true
         dateEndorsed nullable: true

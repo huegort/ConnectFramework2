@@ -1,3 +1,4 @@
+<%@ page import="com.guru.connectframework.Criteria.CriteriaStatus" %>
 <div id="alertMessage" class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     Changes have been <strong>Done!</strong>
@@ -21,11 +22,14 @@
     $(document).ready(function () {
         $('#alertMessage').hide()
         $('#backHome').click(function () {
-            if (window.location.pathname == '${createLink(uri: '/cfProcessApproval/endorseActivity')}'){
+            <g:if test="${succesStatus == com.guru.connectframework.Criteria.CriteriaStatus.ENDORSED}">
+
                 window.location.href = "${createLink(uri: '/cfapprover/endorserHome')}";
-            }else{
+            </g:if>
+            <g:else>
+
                 window.location.href = "${createLink(uri: '/cfapprover/approverHome')}";
-            }
+           </g:else>
 
         })
 

@@ -37,7 +37,7 @@ class BootStrap {
             returnArray['country'] = it.country
             returnArray['description'] = it.description
             returnArray['name'] = it.name
-            returnArray['notes'] = it.notes
+            returnArray['feedback'] = it.notes
             return returnArray
         }
         JSON.registerObjectMarshaller(Country) {
@@ -137,7 +137,7 @@ class BootStrap {
             returnArray['dateApproved'] = it.dateApproved
             returnArray['dateEndorsed'] = it.dateEndorsed
             returnArray['endorser'] = ["id": it.endorser.id]
-            returnArray['notes'] = it.notes
+            returnArray['feedback'] = it.notes
             returnArray['status'] = it.status
             returnArray['validTo'] = it.validTo
             return returnArray

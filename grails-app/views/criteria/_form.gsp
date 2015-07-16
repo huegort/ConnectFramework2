@@ -11,7 +11,7 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: criteriaInstance, field: 'notes', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: criteriaInstance, field: 'feedback', 'error')} ">
     <label for="notes">
         <g:message code="criteria.notes.label" default="Notes"/>
 

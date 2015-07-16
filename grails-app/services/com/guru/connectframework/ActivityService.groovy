@@ -29,7 +29,7 @@ class ActivityService {
         log.debug("service: "+ approvalService)
 
 
-        activity.approval = approvalService.createDefaultApproval(activityType.defaultDurationInYears, activityType.possibleApprovers, activityType.possibleEndorsers)
+        activity.approval = approvalService.createDefaultApproval(activityType.durationOfApprovalInYears, activityType.possibleApprovers, activityType.possibleEndorsers)
 
         //activity.dataContainer = new CriteriaDataContainer()
         activity.activityType = activityType
