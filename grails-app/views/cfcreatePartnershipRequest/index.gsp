@@ -13,7 +13,76 @@
 
 
     <script>
+        var instituteContactsData = {contact: []}
+        var newContactData = {contact: []}
+        var editedContactData = {contact: []}
+        var length = 0
         $(document).ready(function () {
+
+            $('#createEditContactPanel').hide()
+            $('#addContactButton').click(function () {
+                $('#createEditContactPanel').show()
+                $('#isContactNew').attr('isContactNew','new')
+            })
+            $('#saveContactButton').click(function () {
+
+                //When click save, add it to the contact table and refresh table
+                //if click save is a new contact do this. add hidden input that contains isContactNew=new or empty
+                if ($('#isContactNew').attr('isContactNew') == 'new') {
+                    length++
+                    newContactData.contact.push({
+                        title: $('#contactTitleForm').val(),
+                        firstName: $('#contactFirstForm').val(),
+                        lastName: $('#contactLastForm').val(),
+                        roleInInstitution: $('#contactRoleForm').val(),
+                        phone: $('#contactPhoneForm').val(),
+                        email: $('#contactEmailForm').val(),
+                        institution: []
+                    })
+                    console.log('In Contact is new')
+                    $('#contactTable tbody').append('<tr id="newRow' + length + '">' +
+                            '<td>' + $('#contactTitleForm').val() + ' ' + $('#contactFirstForm').val() + ' ' + $('#contactLastForm').val() + '</td>' +
+                            '<td>' + $('#contactPhoneForm').val() + '</td>' +
+                            '<td>' + $('#contactEmailForm').val() + '</td>' +
+                            '<td><button onclick="editNewContact()" class="btn btn-default btn-sm" id="editRow' + length + '">' +
+                            '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
+                            '</button>' +
+                            '<button onclick="deleteNewContact()" class="btn btn-default btn-sm" id="deleteRow' + length + '">' +
+                            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>' +
+                            '</button>' +
+                            '</td>' +
+                            '</tr>')
+                }
+                //TODO if contact is not new,
+                if ($('#isContactNew').attr('isContactNew') == ''){
+                    editedContactData.contact.push({
+                        id: $('#contactId').val(),
+                        title: $('#contactTitleForm').val(),
+                        firstName: $('#contactFirstForm').val(),
+                        lastName: $('#contactLastForm').val(),
+                        roleInInstitution: $('#contactRoleForm').val(),
+                        phone: $('#contactPhoneForm').val(),
+                        email: $('#contactEmailForm').val(),
+                        institution: []
+                    })
+                    console.log('In Contact is not new')
+
+                    //TODO replace row thats been edited
+                }
+
+                //Clear form when save
+                //$('#contactTable tbody').val("")
+                $('#contactTitleForm').val("")
+                $('#contactFirstForm').val("")
+                $('#contactLastForm').val("")
+                $('#contactRoleForm').val("")
+                $('#contactPhoneForm').val("")
+                $('#contactEmailForm').val("")
+                $('#isContactNew').attr('isContactNew','')
+                $('#createEditContactPanel').hide()
+
+
+            })
             $("#submitCriteria").click(function () {
                 var formData = {};
                 formData.institution = $("#institutionDiv :input").serializeJSON();
@@ -58,6 +127,50 @@
             });
 
         });
+
+        //TODO create ajax call to get the current contacts in the system
+        function getCurrentContacts() {
+            instituteContactsData //Get Contact Data and put it here
+
+
+            $('#contactTable tbody').append('<tr id="newRow' + length + '">' +
+                    '<td>' + $('#contactTitleForm').val() + ' ' + $('#contactFirstForm').val() + ' ' + $('#contactLastForm').val() + '</td>' +
+                    '<td>' + $('#contactPhoneForm').val() + '</td>' +
+                    '<td>' + $('#contactEmailForm').val() + '</td>' +
+                    '<td><button onclick="editNewContact()" class="btn btn-default btn-sm" id="editRow' + length + '">' +
+                    '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
+                    '</button>' +
+                    '<button onclick="deleteNewContact()" class="btn btn-default btn-sm" id="deleteRow' + length + '">' +
+                    '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>' +
+                    '</button>' +
+                    '</td>' +
+                    '</tr>')
+        }
+
+        function editNewContact() {
+            console.log('Inside edit new contact')
+        }
+
+        function editOldContact(idValue) {
+            //TODO Find contact by id in instituteContactsData
+            //TODO append contact to the inputs
+
+            $('#createEditContactPanel').show()
+        }
+
+        function deleteNewContact() {
+            console.log('Inside delete new contact')
+        }
+
+        function deleteOldContact() {
+
+        }
+
+        function viewContactData() {
+            console.log(newContactData)
+        }
+
+
     </script>
 </head>
 
@@ -123,7 +236,7 @@
                 <div class="grid__col grid__col--6-of-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Request Partnership Level ??</h3>
+                            <h3 class="panel-title">Request Level</h3>
                         </div>
 
                         <div class="panel-body">
@@ -136,6 +249,7 @@
 
                                     </div>
 
+
                                     <div id="approvalDiv">
                                         <fieldset class="form">
 
@@ -143,6 +257,18 @@
                                                       model="[approvers: partnershipLevel.possibleApprovers, endorsers: partnershipLevel.possibleEndorsers, approval: approval]"/>
 
                                         </fieldset>
+
+                                    </div>
+
+                                    <div id="contact">
+                                        <g:render template="/cfcontact/viewContacts"/>
+                                        <div class="btn-align-right">
+                                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal"
+                                                    data-target="#contactModal">
+                                                <span class="glyphicon glyphicon-user"
+                                                      aria-hidden="true"></span>  Manage Contacts
+                                            </button>
+                                        </div>
 
                                     </div>
                                 </div>

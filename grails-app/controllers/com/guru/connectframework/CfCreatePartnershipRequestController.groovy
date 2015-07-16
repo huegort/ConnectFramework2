@@ -16,6 +16,7 @@ class CfCreatePartnershipRequestController {
     def partnershipService
     def institutionService
     def approvalService
+    def contactService
 
 
 

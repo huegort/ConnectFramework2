@@ -28,3 +28,8 @@ article {
 .btn-width-30 {
     width: 31%;
 }
+
+.btn-align-right {
+    margin-top: 15px;
+    text-align: right;
+}
