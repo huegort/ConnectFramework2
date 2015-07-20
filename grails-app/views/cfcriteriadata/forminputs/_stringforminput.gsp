@@ -1,0 +1,1 @@
+<g:textField class="form-control" name="data_${criteria.id}" />

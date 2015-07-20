@@ -44,6 +44,6 @@ class DateDataHandler extends CriteriaDataHandler {
 
     @Override
     String getFormInput() {
-        return "/cfcriteriadata/renderers/dateforminput"
+        return "/cfcriteriadata/forminputs/dateforminput"
     }
 }

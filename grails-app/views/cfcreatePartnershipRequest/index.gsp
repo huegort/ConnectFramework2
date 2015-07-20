@@ -83,7 +83,7 @@
                     'type': 'hidden'
                 })).append(jQuery('<input>', {
                     'name': 'partnershipLevelId',
-                    'value':  ${partnershipLevel.id },
+                    'value':  ${partnership.partnershipLevel.id },
                     'type': 'hidden'
                 })).append(jQuery('<input>', {
                     'name': 'activityTypeId',
@@ -101,7 +101,7 @@
                 //    type: "POST",
                 //    url: "createPartnershipRequest",
                 //    dataType: 'json',
-                //    data: {sendData : JSON.stringify(formData), partnershipLevelId : ${partnershipLevel.id }},
+                //    data: {sendData : JSON.stringify(formData), partnershipLevelId : ${partnership.partnershipLevel.id }},
                 //    cache: false,
                 //    success: function (data) {
                 //    }
@@ -285,7 +285,7 @@
         <div class="grid__col grid__col--12-of-12">
             <h1>Create Intitute Parnership Request</h1>
 
-            <h3><span class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${partnershipLevel}"
+            <h3><span class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${partnership.partnershipLevel}"
                                                                                          field="name"/></span></h3>
 
             <div class="panel panel-default">
@@ -308,7 +308,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <span class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${partnershipLevel}"
+                    <span class="property-value" aria-labelledby="level-label"><g:fieldValue bean="${partnership.partnershipLevel}"
                                                                                              field="description"/></span>
                 </div>
             </div>
@@ -324,11 +324,11 @@
 
                             <fieldset class="form">
                                 <g:if test="${createNewInstitution == true}">
-                                    <g:render template="instituteform"/>
+                                    <g:render template="instituteform" model="[institution: partnership.institution]"/>
                                 </g:if>
                                 <g:else>
                                     <g:render template="/cfcommontemplates/institutionDisplay"
-                                              model="[institution: institution]"/>
+                                              model="[institution: partnership.institution]"/>
                                 </g:else>
 
                             </fieldset>
@@ -348,7 +348,7 @@
                                 <div class="panel-body">
                                     <div id="partnershipDiv">
                                         <fieldset class="form">
-                                            <g:render template="partnershipform"/>
+                                            <g:render template="partnershipform" />
                                         </fieldset>
 
                                     </div>
@@ -358,7 +358,7 @@
                                         <fieldset class="form">
 
                                             <g:render template="/cfcommontemplates/approvalform"
-                                                      model="[approvers: partnershipLevel.possibleApprovers, endorsers: partnershipLevel.possibleEndorsers, approval: approval]"/>
+                                                      model="[approvers: partnership.partnershipLevel.possibleApprovers, endorsers: partnership.partnershipLevel.possibleEndorsers, approval: partnership.approval]"/>
 
                                         </fieldset>
 
@@ -400,7 +400,7 @@
 
                                         <fieldset class="form">
                                             <g:render template="/cfcommontemplates/criteriadataform" var="criteria"
-                                                      collection="${partnershipLevel.criteria}"/>
+                                                      collection="${partnership.partnershipLevel.criteria}"/>
                                         </fieldset>
 
                                     </div>

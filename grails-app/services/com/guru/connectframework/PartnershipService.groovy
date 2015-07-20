@@ -16,6 +16,18 @@ class PartnershipService {
     private static final log = LogFactory.getLog(this)
     def userService
 
+    def createTempPartnership(Approval approval, PartnershipLevel partnershipLevel, Institution institution){
+        Partnership partnership = new Partnership()
+        partnership.name = partnershipLevel.name
+        partnership.partnershipLevel = partnershipLevel
+        partnership.approval = approval
+        partnership.owner = userService.currentUser
+        partnership.institution = institution
+
+
+        partnership.dataContainer = new CriteriaDataContainer()
+        return partnership
+    }
 
     def createPartnership(Approval approval , Institution institution, PartnershipLevel partnershipLevel, JSONElement partnershipJSON ,JSONElement criteriaDataJSON) {
         Partnership partnership = new Partnership(partnershipJSON)

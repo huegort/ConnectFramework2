@@ -36,6 +36,10 @@ class Partnership {
 
 
     }
+    static mapping = {
+        approval fetch: 'join'
+
+    }
     String toString() {
         return name
     }

@@ -7,17 +7,8 @@
             ${criteria.name}
         </label>
 
-        <g:if test="${criteria.dataType == com.guru.connectframework.criteriatype.CriteriaType.STRING}">
-            <g:textField class="form-control" name="data_${criteria.id}" />
-        </g:if>
-        <g:elseif test="${criteria.dataType == com.guru.connectframework.criteriatype.CriteriaType.FILE}">
-            <input type="file" name="data_${criteria.id}" />
-        </g:elseif>
-        <g:elseif test="${criteria.dataType == com.guru.connectframework.criteriatype.CriteriaType.DATE}">
-           <g:datePicker name="data_${criteria.id}"  precision="day"/>
-        </g:elseif>
 
-
+        <g:render template="${criteria.dataType.formInput}" model="[criteria : criteria]"/>
 
     </div>
 
