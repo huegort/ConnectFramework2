@@ -8,13 +8,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                <button id="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Contacts</h4>
             </div>
 
             <div class="modal-body">
 
+                <div id="alertMessage" class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div id="alertMessageText"></div>
+                </div>
                 <%-- View all Contacts that belongs to an Institution --%>
 
                 <table id="contactTable" class="table">
@@ -27,17 +31,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Mr Luis</td>
-                        <td>888-8888</td>
-                        <td>some email</td>
-                        <button onclick="editOldContact()" class="btn btn-default btn-sm" id="editRow">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                        </button>
-                        <button onclick="deleteOldContact()" class="btn btn-default btn-sm" id="deleteRow">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                        </button>
-                    </tr>
+
+
                     </tbody>
                 </table>
 
@@ -57,8 +52,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="closeModalButton" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

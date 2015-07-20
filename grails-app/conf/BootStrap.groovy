@@ -146,9 +146,16 @@ class BootStrap {
         JSON.registerObjectMarshaller(Contact) {
             def returnArray = [:]
             returnArray['id'] = it.id
-            returnArray['name'] = it.toString()
+            returnArray['title'] = it.title
+            returnArray['firstName'] = it.firstName
+            returnArray['lastName'] = it.lastName
+            returnArray['roleInInstitution'] = it.roleInInstitution
+            returnArray['phone'] = it.phone
+            returnArray['email'] = it.email
             return returnArray
         }
+
+
     }
     def destroy = {
     }

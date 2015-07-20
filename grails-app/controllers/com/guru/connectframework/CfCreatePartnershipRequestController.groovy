@@ -1,5 +1,4 @@
 package com.guru.connectframework
-
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.institution.Institution
@@ -17,7 +16,6 @@ class CfCreatePartnershipRequestController {
     def institutionService
     def approvalService
     def contactService
-
 
 
     def index() {
@@ -79,8 +77,6 @@ class CfCreatePartnershipRequestController {
         ActivityType activityType = ActivityType.get(params.activityTypeId)
         log.debug("activityType :"+ activityType.id)
 
-
-
         def partnershipLevel = PartnershipLevel.get(params.partnershipLevelId)
         def data = JSON.parse(params.sendData)
         def approvalJSON =data.approval
@@ -91,7 +87,6 @@ class CfCreatePartnershipRequestController {
         Approval approval = approvalService.createApprovalFromJSON(approvalJSON)
 
         Partnership partnership = partnershipService.createPartnership(approval,institution1,partnershipLevel,parnershipJSON , criteriaDataJSON)
-
 
         redirect(controller: "cfCreateActivityRequest", action: "createActivityCh", params: [partnershipId: partnership.id, activityTypeId: activityType.id, institution: institution1])
     }

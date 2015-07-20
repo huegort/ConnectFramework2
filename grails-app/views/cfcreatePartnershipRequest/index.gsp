@@ -13,76 +13,54 @@
 
 
     <script>
-        var instituteContactsData = {contact: []}
-        var newContactData = {contact: []}
-        var editedContactData = {contact: []}
-        var length = 0
+        var contactData
+        var editContactId
+
         $(document).ready(function () {
 
+            listContacts()
+            $('#alertMessage').hide()
             $('#createEditContactPanel').hide()
+
             $('#addContactButton').click(function () {
                 $('#createEditContactPanel').show()
-                $('#isContactNew').attr('isContactNew','new')
+                $('#contactId').val('-1')
+                $('#alertMessageText').text('')
             })
+
+            //When Close Modal clear fields
+            $('#cancelContactButton').click(function () {
+                clearForm()
+            })
+            $('#closeModal').click(function () {
+                clearForm()
+            })
+            $('#closeModalButton').click(function () {
+                clearForm()
+            })
+
             $('#saveContactButton').click(function () {
+
+                // -1 represents a new contact
+                if ($('#contactId').val() == -1) {
+                    createNewContact()
+                } else {
+                    saveEditContact($('contactId').val())
+                }
+
 
                 //When click save, add it to the contact table and refresh table
                 //if click save is a new contact do this. add hidden input that contains isContactNew=new or empty
-                if ($('#isContactNew').attr('isContactNew') == 'new') {
-                    length++
-                    newContactData.contact.push({
-                        title: $('#contactTitleForm').val(),
-                        firstName: $('#contactFirstForm').val(),
-                        lastName: $('#contactLastForm').val(),
-                        roleInInstitution: $('#contactRoleForm').val(),
-                        phone: $('#contactPhoneForm').val(),
-                        email: $('#contactEmailForm').val(),
-                        institution: []
-                    })
-                    console.log('In Contact is new')
-                    $('#contactTable tbody').append('<tr id="newRow' + length + '">' +
-                            '<td>' + $('#contactTitleForm').val() + ' ' + $('#contactFirstForm').val() + ' ' + $('#contactLastForm').val() + '</td>' +
-                            '<td>' + $('#contactPhoneForm').val() + '</td>' +
-                            '<td>' + $('#contactEmailForm').val() + '</td>' +
-                            '<td><button onclick="editNewContact()" class="btn btn-default btn-sm" id="editRow' + length + '">' +
-                            '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
-                            '</button>' +
-                            '<button onclick="deleteNewContact()" class="btn btn-default btn-sm" id="deleteRow' + length + '">' +
-                            '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>' +
-                            '</button>' +
-                            '</td>' +
-                            '</tr>')
-                }
-                //TODO if contact is not new,
-                if ($('#isContactNew').attr('isContactNew') == ''){
-                    editedContactData.contact.push({
-                        id: $('#contactId').val(),
-                        title: $('#contactTitleForm').val(),
-                        firstName: $('#contactFirstForm').val(),
-                        lastName: $('#contactLastForm').val(),
-                        roleInInstitution: $('#contactRoleForm').val(),
-                        phone: $('#contactPhoneForm').val(),
-                        email: $('#contactEmailForm').val(),
-                        institution: []
-                    })
-                    console.log('In Contact is not new')
 
-                    //TODO replace row thats been edited
-                }
+                /*//Selects main contact for the partnership
 
-                //Clear form when save
-                //$('#contactTable tbody').val("")
-                $('#contactTitleForm').val("")
-                $('#contactFirstForm').val("")
-                $('#contactLastForm').val("")
-                $('#contactRoleForm').val("")
-                $('#contactPhoneForm').val("")
-                $('#contactEmailForm').val("")
-                $('#isContactNew').attr('isContactNew','')
-                $('#createEditContactPanel').hide()
-
-
+                 //For each contact in the table, add it to the id="mainContactPartnertship options"
+                 $('#mainContactPartnertship').find('option').remove()
+                 $('#contactTable > tbody > tr').each(function () {
+                 $('#mainContactPartnertship').append('<option id="' + $(this).attr('id') + '">' + $(this).closest('tr').find('td:first-child').html() + '</option>')
+                 })*/
             })
+
             $("#submitCriteria").click(function () {
                 var formData = {};
                 formData.institution = $("#institutionDiv :input").serializeJSON();
@@ -93,6 +71,7 @@
                 console.log(formData);
 
                 event.preventDefault();
+
 
                 // TODO I should use the form itself
                 var newForm = jQuery('<form>', {
@@ -110,8 +89,13 @@
                     'name': 'activityTypeId',
                     'value':  ${activityType.id },
                     'type': 'hidden'
+                })).append(jQuery('<input>', {
+                    'name': 'contactId',
+                    'value':  $('#mainContactPartnertship option:selected').val(),
+                    'type': 'hidden'
                 }));
                 newForm.submit();
+
 
                 //$.ajax({
                 //    type: "POST",
@@ -126,48 +110,168 @@
 
             });
 
+
         });
 
-        //TODO create ajax call to get the current contacts in the system
-        function getCurrentContacts() {
-            instituteContactsData //Get Contact Data and put it here
+        function createNewContact() {
 
+            getFormValues()
 
-            $('#contactTable tbody').append('<tr id="newRow' + length + '">' +
-                    '<td>' + $('#contactTitleForm').val() + ' ' + $('#contactFirstForm').val() + ' ' + $('#contactLastForm').val() + '</td>' +
-                    '<td>' + $('#contactPhoneForm').val() + '</td>' +
-                    '<td>' + $('#contactEmailForm').val() + '</td>' +
-                    '<td><button onclick="editNewContact()" class="btn btn-default btn-sm" id="editRow' + length + '">' +
-                    '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
-                    '</button>' +
-                    '<button onclick="deleteNewContact()" class="btn btn-default btn-sm" id="deleteRow' + length + '">' +
-                    '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>' +
-                    '</button>' +
-                    '</td>' +
-                    '</tr>')
+            $.ajax({
+                type: "POST",
+                url: "${createLink(uri: '/cfcontact/createContact/')}",
+                data: {
+                    contact: JSON.stringify(contactData)
+                },
+                success: function (data) {
+
+                    contactData = ''
+                    listContacts()
+                    clearForm()
+
+                }
+            })
         }
 
-        function editNewContact() {
-            console.log('Inside edit new contact')
+        function saveEditContact() {
+            getFormValues()
+
+            $.ajax({
+                type: "POST",
+                url: "${createLink(uri: '/cfcontact/updateContact/')}",
+                data: {
+                    contact: JSON.stringify(contactData),
+                    contactId: editContactId
+                },
+                success: function (data) {
+
+                    contactData = ''
+                    editContactId = ''
+                    listContacts()
+                    clearForm()
+                }
+            })
         }
 
-        function editOldContact(idValue) {
-            //TODO Find contact by id in instituteContactsData
+        function editContact(idValue) {
             //TODO append contact to the inputs
+            $('#alertMessageText').text('')
+            viewEditContactData(idValue)
+            editContactId = idValue
 
             $('#createEditContactPanel').show()
-        }
 
-        function deleteNewContact() {
-            console.log('Inside delete new contact')
-        }
-
-        function deleteOldContact() {
 
         }
 
-        function viewContactData() {
-            console.log(newContactData)
+        //Create ajax call to list contacts in the system with no institution
+        function listContacts() {
+            //Link to list contacts http://localhost:8080/ConnectFramework2/cfcontact/listContactsNoInst
+            $.ajax({
+                type: 'POST',
+                url: '${createLink(uri: '/cfcontact/listContactsNoInst/')}',
+                success: function (data) {
+
+                    $('#contactTable > tbody').empty()
+                    $.each(data, function (index, element) {
+
+                        $('#contactTable tbody').append('<tr id="' + element.id + '">' +
+                                '<td>' + element.title + ' ' + element.firstName + ' ' + element.lastName + '</td>' +
+                                '<td>' + element.phone + '</td>' +
+                                '<td>' + element.email + '</td>' +
+                                '<td><button onclick="editContact(' + element.id + ')" class="btn btn-default btn-sm" id="editRow' + length + '">' +
+                                '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>' +
+                                '</button>' +
+                                '<button onclick="deleteContact(' + element.id + ')"    style="margin-left: 5px;" class="btn btn-default btn-sm" id="deleteRow' + length + '">' +
+                                '<span class="glyphicon glyphicon-trash" aria-hidden="true" ></span>' +
+                                '</button>' +
+                                '</td>' +
+                                '</tr>')
+                    })
+                    addMainContacts()
+
+                }
+            })
+        }
+
+        //delete contact
+        function deleteContact(value) {
+            var warning = confirm('Are you sure?')
+
+            if (warning == true) {
+                $.ajax({
+                    type: 'POST',
+                    url: '${createLink(uri: '/cfcontact/deleteContact')}',
+                    data: {
+                        contactId: value
+                    },
+                    success: function (data) {
+                        $('#alertMessageText').append(data.message)
+                        $('#alertMessage').show()
+                    }
+                    //TODO add success message
+                })
+
+                var rowId = ' tr#' + value
+
+                $('#contactTable tbody' + rowId).remove()
+                addMainContacts()
+            } else {
+                return false
+            }
+        }
+
+        function viewEditContactData(value) {
+            $.ajax({
+                type: 'POST',
+                url: '${createLink(uri:'/cfcontact/findContact')}',
+                data: {
+                    contactId: value
+                },
+                success: function (data) {
+                    $('#contactTitleForm').val(data.title)
+                    $('#contactFirstForm').val(data.firstName)
+                    $('#contactLastForm').val(data.lastName)
+                    $('#contactRoleForm').val(data.roleInInstitution)
+                    $('#contactPhoneForm').val(data.phone)
+                    $('#contactEmailForm').val(data.email)
+                    $('#contactId').val(data.id)
+                }
+            })
+
+        }
+
+        function clearForm() {
+            $('#contactTitleForm').val("")
+            $('#contactFirstForm').val("")
+            $('#contactLastForm').val("")
+            $('#contactRoleForm').val("")
+            $('#contactPhoneForm').val("")
+            $('#contactEmailForm').val("")
+            $('#createEditContactPanel').hide()
+        }
+
+        function getFormValues() {
+            contactData = {
+
+                title: $('#contactTitleForm').val(),
+                firstName: $('#contactFirstForm').val(),
+                lastName: $('#contactLastForm').val(),
+                roleInInstitution: $('#contactRoleForm').val(),
+                phone: $('#contactPhoneForm').val(),
+                email: $('#contactEmailForm').val()
+            }
+        }
+
+        function addMainContacts() {
+            if ($('#contactTable tbody').children().length == 0) {
+
+            } else {
+                $('#mainContactPartnertship').find('option').remove()
+                $('#contactTable > tbody > tr').each(function () {
+                    $('#mainContactPartnertship').append('<option id="' + $(this).attr('id') + '">' + $(this).closest('tr').find('td:first-child').html() + '</option>')
+                })
+            }
         }
 
 
@@ -259,17 +363,29 @@
                                         </fieldset>
 
                                     </div>
+                                    <label>Main Contact</label>
 
-                                    <div id="contact">
-                                        <g:render template="/cfcontact/viewContacts"/>
-                                        <div class="btn-align-right">
-                                            <button type="button" class="btn btn-default btn-sm" data-toggle="modal"
-                                                    data-target="#contactModal">
-                                                <span class="glyphicon glyphicon-user"
-                                                      aria-hidden="true"></span>  Manage Contacts
-                                            </button>
+                                    <div class="grid">
+                                        <div class="grid__col grid__col--8-of-12">
+                                            <select id="mainContactPartnertship" class="form-control">
+                                                <option disabled>Please Add a Contact</option>
+                                            </select>
                                         </div>
 
+                                        <div class="grid__col grid__col--4-of-12">
+                                            <div id="contact">
+                                                <g:render template="/cfcontact/viewContacts"/>
+                                                <div>
+                                                    <button type="button" class="btn btn-default btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#contactModal">
+                                                        <span class="glyphicon glyphicon-user"
+                                                              aria-hidden="true"></span>  Manage Contacts
+                                                    </button>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

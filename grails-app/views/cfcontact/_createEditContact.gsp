@@ -20,10 +20,12 @@
         <input id="contactPhoneForm" type="text" class="form-control"/>
         <label>Email</label>
         <input id="contactEmailForm" type="text" class="form-control"/>
-        <input id="isContactNew" type="hidden" isContactNew=""/>
         <input id="contactId" type="hidden"/>
 
         <div class="btn-align-right">
+            <button id="cancelContactButton" type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+            </button>
             <button id="saveContactButton" type="button" class="btn btn-default btn-sm">
                 <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span> Save
             </button>

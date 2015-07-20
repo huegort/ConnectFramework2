@@ -16,8 +16,7 @@ class Contact {
         phone nullable: true
         email nullable: true
         dateArchived nullable: true
-
-
+        institution nullable: true
     }
     String getName(){
         return firstName + " " + lastName

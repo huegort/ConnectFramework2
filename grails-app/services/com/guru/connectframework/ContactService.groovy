@@ -1,7 +1,5 @@
 package com.guru.connectframework
-
 import com.guru.connectframework.institution.Contact
-import com.guru.connectframework.institution.Institution
 import grails.transaction.Transactional
 import org.apache.commons.logging.LogFactory
 import org.codehaus.groovy.grails.web.json.JSONElement
@@ -30,26 +28,49 @@ class ContactService {
         log.debug(result.toString())
     }
 
-    def createNewContact(JSONElement contactDetails, Institution institution) {
-        Contact contact = new Contact()
+    def createContact(JSONElement contactDetails) {
+        Contact contact
+        //log.debug('In Create new contact ===========>>> '+ contactDetails.toString())
+        //log.debug('In Create contact showing institution ' + institution.id)
 
         try {
-            contactDetails.each { contactJSON ->
-                contact.title = contactJSON["title"]
+                contact = new Contact(contactDetails)
+
+                /*contact.title = contactJSON["title"]
                 contact.firstName = contactJSON["firstName"]
                 contact.lastName = contactJSON["latName"]
                 contact.roleInInstitution = contactJSON["roleInInstitution"]
                 contact.phone = contactJSON["phone"]
-                contact.email = contactJSON["email"]
-                contact.institution.properties = institution
+                contact.email = contactJSON["email"]*/
+
+                log.debug('This is a Contact ++++======>>>>' + contact.toString())
 
                 contact.save(flush: true, failOnError: true)
 
-            }
         }catch (ValidationException e) {
             e.printStackTrace()
         }
 
-        //TODO Test createNewContact()
+        return contact
+        //Tested createNewContact()
+    }
+
+    def findContact(String name){
+
+        String[] split = name.split("\\s+")
+
+        def criteria = Contact.createCriteria()
+        def result = criteria {
+            and {
+                split.each { search ->
+                    eq('title', search)
+                    eq('firstName', search)
+                    eq('lastName', search)
+                }
+
+            }
+        }
+
+        return result
     }
 }
