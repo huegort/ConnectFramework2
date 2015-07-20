@@ -32,6 +32,6 @@ class StringDataHandler extends CriteriaDataHandler {
 
     @Override
     String getFormInput() {
-        return "/cfcriteriadata/renderers/stringforminput"
+        return "/cfcriteriadata/forminputs/stringforminput"
     }
 }

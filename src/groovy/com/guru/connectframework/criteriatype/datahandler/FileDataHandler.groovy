@@ -31,6 +31,6 @@ class FileDataHandler extends  CriteriaDataHandler{
 
     @Override
     String getFormInput() {
-        return "/cfcriteriadata/renderers/fileforminput"
+        return "/cfcriteriadata/forminputs/fileforminput"
     }
 }
