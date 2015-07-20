@@ -16,7 +16,6 @@ class FileDataHandler extends  CriteriaDataHandler{
     CriteriaData handleData(Criteria criteria, JSONElement jsonElement) {
         //log.debug("in string handler2")
         CriteriaData criteriaData = new CriteriaData()
-
         try {
             //criteriaData.valueString=jsonElement["data_" + criteria.id]
         }catch (Exception e){
