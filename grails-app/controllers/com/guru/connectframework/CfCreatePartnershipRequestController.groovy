@@ -9,6 +9,7 @@ import grails.converters.JSON
 import grails.transaction.Transactional
 import org.apache.commons.logging.LogFactory
 import org.grails.datastore.mapping.validation.ValidationException
+import org.springframework.beans.MethodInvocationException
 
 @Transactional
 class CfCreatePartnershipRequestController {
@@ -21,15 +22,17 @@ class CfCreatePartnershipRequestController {
 
 
     def index() {
+        log.error("****** index method is called but not implemented")
+        throw new MethodInvocationException()
         //log.debug(params.partnershipLevel.id)
-        def institution
-        def partnershipLevel = PartnershipLevel.get(params.partnershipLevel.id)
+       // def institution
+       // def partnershipLevel = PartnershipLevel.get(params.partnershipLevel.id)
         //def activityType = new ActivityType(params.activityType.ie)
-        Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
+        //Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
 
-        log.debug(partnershipLevel)
+        //log.debug(partnershipLevel)
 
-        [ partnershipLevel : partnershipLevel, approval: tempApproval ]
+        //[ partnershipLevel : partnershipLevel, approval: tempApproval ]
 
     }
     def createInsitutionAndPartnershipFirst(){
@@ -39,8 +42,10 @@ class CfCreatePartnershipRequestController {
         PartnershipLevel partnershipLevel = activityType.requiredLevel
         Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
 
+        Partnership partnership = partnershipService.createTempPartnership(tempApproval, partnershipLevel, new Institution())
 
-        render (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewInstitution : true , instition: new Institution(),approval: tempApproval])
+        // we might be able to just send the partnership with this
+        render (view: 'index', model: [ partnership: partnership , activityType : activityType , createNewInstitution : true])
     }
     def createPartnershipFirst(){
         //long activityTypeId = ActivityType.get(params.activityTypeId)
@@ -51,9 +56,10 @@ class CfCreatePartnershipRequestController {
         Institution institution = Institution.get(params.institutionId)
         //log.debug("institution: "+institution)
         Approval tempApproval = approvalService.createDefaultApproval(partnershipLevel.durationOfApprovalInYears,partnershipLevel.possibleApprovers,partnershipLevel.possibleEndorsers)
+        Partnership partnership = partnershipService.createTempPartnership(tempApproval, partnershipLevel, institution)
 
 
-        render  (view: 'index', model: [ partnershipLevel : partnershipLevel , activityType : activityType , createNewIntitute : false,institution : institution,approval: tempApproval])
+        render  (view: 'index', model: [ partnership : partnership , activityType : activityType , createNewIntitute : false])
 
 
     }

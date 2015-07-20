@@ -24,6 +24,11 @@ class CriteriaData implements Comparable<CriteriaData>{
         valueDate nullable: true
         notes nullable: true
         dateArchived nullable: true
+
+    }
+    static mapping = {
+        approval fetch: 'join'
+
     }
 
     @Override
