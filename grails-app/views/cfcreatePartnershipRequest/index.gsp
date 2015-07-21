@@ -18,15 +18,15 @@
 
         $(document).ready(function () {
 
+            <g:if test="${createNewInstitution}">
+            $('#nextStep').addClass('disabled')
+            </g:if>
 
             // Navigation for tabs --Starts--
             $('#contactPanel').hide()
             $('#levelRequestPanel').hide()
 
-            $('li > a').click(function () {
-                $('li').removeClass();
-                $(this).parent().addClass('active');
-            });
+            //changed the way a tab becomes active
 
             $('#instituteLink').click(function () {
                 $('#')
@@ -64,11 +64,11 @@
             })
 
             /*$('#closeModal').click(function () {
-                clearForm()
-            })
-            $('#closeModalButton').click(function () {
-                clearForm()
-            })*/
+             clearForm()
+             })
+             $('#closeModalButton').click(function () {
+             clearForm()
+             })*/
 
             $('#saveContactButton').click(function () {
 
@@ -94,6 +94,7 @@
 
             $('#submitInstitution').click(function () {
                 createInstitution()
+                $('#nextStep').removeClass('disabled')
             })
 
             $("#submitCriteria").click(function () {
@@ -103,7 +104,6 @@
                 formData.approval = $("#approvalDiv :input").serializeJSON();
                 formData.partnership = $("#partnershipDiv :input").serializeJSON();
                 // alert(criteriaData);
-                console.log(formData);
 
                 event.preventDefault();
 
@@ -144,9 +144,46 @@
 
             });
 
-
-
         });
+
+        function nextStepForm() {
+            if ($('#institutionPanel').is(':visible') && !$('#nextStep').hasClass('disabled')) {
+                $('#institutionPanel').hide()
+                $('#institutionTab').removeClass('active')
+                $('#levelRequestPanel').hide()
+                $('#contactPanel').show()
+                $('#contactTab').addClass('active')
+                $('#previousStep').removeClass('disabled hidden')
+                if ($('#contactTable tbody').children().length == 0) {
+                    $('#nextStep').addClass('disabled')
+                }
+            } else if ($('#contactPanel').is(':visible') && !$('#nextStep').hasClass('disabled')) {
+                $('#contactPanel').hide()
+                $('#contactTab').removeClass('active')
+                $('#institutionPanel').hide()
+                $('#levelRequestPanel').show()
+                $('#levelTab').addClass('active')
+                $('#nextStep').addClass('hidden')
+            }
+        }
+
+        function previousStepForm() {
+            if ($('#levelRequestPanel').is(':visible')) {
+                $('#levelRequestPanel').hide()
+                $('#levelTab').removeClass('active')
+                $('#contactPanel').show()
+                $('#contactTab').addClass('active')
+                $('#institutionPanel').hide()
+                $('#nextStep').removeClass('hidden')
+            } else if ($('#contactPanel').is(':visible')) {
+                $('#contactPanel').hide()
+                $('#contactTab').removeClass('active')
+                $('#institutionPanel').show()
+                $('#institutionTab').addClass('active')
+                $('#levelRequestPanel').hide()
+                $('#previousStep').addClass('hidden')
+            }
+        }
 
         //added ajax call to create a new institution
         function createInstitution() {
@@ -160,7 +197,6 @@
                     $('#institutionDiv').empty()
                     appendInstitution(data)
                     //When created it adds the institution view and the create button
-                    console.log(data)
                 }
             })
         }
@@ -176,12 +212,10 @@
                     '<input type="hidden" name="provence" value="' + data.provence + '">' +
                     '<input type="hidden" name="postcode" value="' + data.postcode + '">' +
                     '<dl><div class="grid">' +
-                    '<div class="grid__col grid__col--6-of-12">' +
+                    '<div class="grid__col grid__col--12-of-12">' +
                     '<li class="list-group-item"><dt>Name</dt><dd>' + data.name + '</dd></li>' +
                     '<li class="list-group-item"><dt>Description</dt><dd>' + data.description + '</dd></li>' +
                     '<li class="list-group-item"><dt>Notes</dt><dd>' + data.feedback + '</dd></li>' +
-                    '</div>' +
-                    '<div class="grid__col grid__col--6-of-12">' +
                     '<li class="list-group-item"><dt>Country</dt><dd>' + data.country.name + '</dd></li>' +
                     '<li class="list-group-item"><dt>Address</dt><dd>' + data.address1 + '</dd><dd>' + data.address2 + '</dd><dd>' + data.provence + '</dd></li>' +
                     '<li class="list-group-item"><dt>Postcode</dt><dd>' + data.postcode + '</dd></li>' +
@@ -194,27 +228,26 @@
         function editInstitution() {
             var data = {}
             data.institution = $("#institutionDiv :input").serializeJSON();
-            console.log(JSON.stringify(data))
 
             //TODO get the country list as select option
 
             $('#institutionDiv').empty()
             $('#institutionDiv').append('<input type="hidden" name="id" value="' + data.institution.id + '">' +
-                            '<label>Name</label>' +
+                    '<label>Name</label>' +
                     '<input class="form-control" type="text" name="name" value="' + data.institution.name + '">' +
-                            '<label>Description</label>' +
+                    '<label>Description</label>' +
                     '<input class="form-control" type="text" name="description" value="' + data.institution.description + '">' +
-                            '<label>Notes</label>' +
+                    '<label>Notes</label>' +
                     '<input class="form-control" type="text" name="notes" value="' + data.institution.notes + '">' +
-                            '<label>Country</label>' +
+                    '<label>Country</label>' +
                     '<input class="form-control" type="text" name="countryId" value="' + data.institution.countryId + '">' +
-                            '<label>Address1</label>' +
+                    '<label>Address1</label>' +
                     '<input class="form-control" type="text" name="address1" value="' + data.institution.address1 + '">' +
-                            '<label>Address2</label>' +
+                    '<label>Address2</label>' +
                     '<input class="form-control" type="text" name="address2" value="' + data.institution.address2 + '">' +
-                            '<label>Provence</label>' +
+                    '<label>Provence</label>' +
                     '<input class="form-control" type="text" name="provence" value="' + data.institution.provence + '">' +
-                            '<label>Postcode</label>' +
+                    '<label>Postcode</label>' +
                     '<input class="form-control" type="text" name="postcode" value="' + data.institution.postcode + '">' +
                     '<div class="btn-align-right"> <button type="button" class="btn btn-default btn-sm" onclick="updateInstitution()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Done</button></div>')
         }
@@ -230,8 +263,7 @@
                 success: function (data) {
                     $('#institutionDiv').empty()
                     appendInstitution(data)
-                    //TODO when updated add the institution view and the add button
-                    console.log(data)
+                    //when updated add the institution view and the add button
                 }
             })
         }
@@ -251,7 +283,7 @@
                     contactData = ''
                     listContacts()
                     clearForm()
-
+                    $('#nextStep').removeClass('disabled')
                 }
             })
         }
@@ -277,7 +309,7 @@
         }
 
         function editContact(idValue) {
-            //TODO append contact to the inputs
+            //append contact to the inputs
             $('#alertMessageText').text('')
             viewEditContactData(idValue)
             editContactId = idValue
@@ -350,6 +382,9 @@
                 addMainContacts()
             } else {
                 return false
+            }
+            if ($('#contactTable tbody').children().length == 0) {
+                $('#nextStep').addClass('disabled')
             }
         }
 
@@ -454,10 +489,15 @@
 
                     <div id="stepTabs" style="margin-bottom: 10px;">
                         <ul class="nav nav-tabs">
-                            <li role="presentation" class="active"><a id="instituteLink">1. Create/Edit Institution</a>
+                            <li id="institutionTab" role="presentation" class="active">
+                                <a>1. Create/Edit Institution</a>
                             </li>
-                            <li role="presentation"><a id="contactLink">2. Add Contacts</a></li>
-                            <li role="presentation"><a id="levelLink">3. Request Level</a></li>
+                            <li id="contactTab" role="presentation">
+                                <a>2. Add Contacts</a>
+                            </li>
+                            <li id="levelTab" role="presentation">
+                                <a>3. Request Level</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -467,7 +507,6 @@
                         </div>
 
                         <div id="institutionDiv" class="panel-body">
-
                             <fieldset class="form">
                                 <g:if test="${createNewInstitution == true}">
                                     <g:render template="instituteform"
@@ -479,10 +518,8 @@
                                 </g:else>
 
                             </fieldset>
-
                         </div>
                     </div>
-
 
                     <div id="contactPanel" class="panel panel-default">
                         <div class="panel-heading">
@@ -644,6 +681,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <nav>
+                        <ul class="pager">
+                            <li id="previousStep" class="previous disabled hidden" onclick="previousStepForm()"><a><span
+                                    aria-hidden="true">&larr;</span> Previous</a></li>
+                            <li id="nextStep" class="next" onclick="nextStepForm()"><a>Next <span
+                                    aria-hidden="true">&rarr;</span></a></li>
+                        </ul>
+                    </nav>
+
                 </div>
             </div>
         </div>
