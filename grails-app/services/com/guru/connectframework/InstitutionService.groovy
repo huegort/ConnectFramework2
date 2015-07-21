@@ -38,4 +38,15 @@ class InstitutionService {
         return institution
 
     }
+
+    def updateInstitutionFormJSON(JSONElement institutionJSON) {
+
+        Institution institution = Institution.findById(Long.parseLong(institutionJSON.id))
+
+        institution.properties = institutionJSON
+
+        institution.save(flush: true, failOnError: true)
+
+        return institution
+    }
 }

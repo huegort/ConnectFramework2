@@ -33,9 +33,14 @@ class CfcontactController {
     }
 
     def listContactsNoInst () {
+        //def instituteId = Long.parseLong(params.instituteId)
         def criteria = Contact.createCriteria()
         def result = criteria {
-            isNull('institution')
+            and {
+                //eq('institution.id',instituteId)
+                isNull('institution')
+            }
+
         }
 
         render result as JSON
@@ -43,6 +48,7 @@ class CfcontactController {
 
     @Transactional
     def deleteContact () {
+        //TODO Archive Contact
         def contactId = params.contactId
 
         Contact contact = Contact.findById(contactId)

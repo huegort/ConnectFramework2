@@ -34,10 +34,14 @@ class BootStrap {
         JSON.registerObjectMarshaller(Institution) {
             def returnArray =[:]
             returnArray['id'] = it.id
-            returnArray['country'] = it.country
+            returnArray['country'] = ["id": it.country.id, "name": it.country.name]
             returnArray['description'] = it.description
             returnArray['name'] = it.name
             returnArray['feedback'] = it.notes
+            returnArray['address1'] = it.address1
+            returnArray['address2'] = it.address2
+            returnArray['provence'] = it.provence
+            returnArray['postcode'] = it.postcode
             return returnArray
         }
         JSON.registerObjectMarshaller(Country) {

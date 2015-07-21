@@ -116,4 +116,23 @@ class CfCreatePartnershipRequestController {
             e.printStackTrace()
         }
     }
+
+    @Transactional
+    def createInstitution() {
+        def institutionJSON = JSON.parse(params.institution)
+        log.debug(institutionJSON)
+
+        Institution institution = institutionService.createInstitutionFromJSON(institutionJSON)
+
+        render institution as JSON
+    }
+
+    @Transactional
+    def updateInstitution() {
+        def institutionJSON = JSON.parse(params.institution)
+
+        Institution institution = institutionService.updateInstitutionFormJSON(institutionJSON)
+
+        render institution as JSON
+    }
 }

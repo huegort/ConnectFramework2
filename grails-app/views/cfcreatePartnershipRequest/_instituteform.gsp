@@ -75,3 +75,12 @@
 
 </div>
 
+<div class="btn-align-right">
+    <fieldset class="buttons">
+        <g:submitButton id="submitInstitution" name="create"
+                        class="save btn btn-default btn-sm"
+                        style="margin-top: 5px;"
+                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+    </fieldset>
+</div>
+
