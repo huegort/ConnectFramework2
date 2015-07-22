@@ -1,5 +1,6 @@
 package com.guru.connectframework
 import com.guru.connectframework.institution.Contact
+import com.guru.connectframework.institution.Institution
 import grails.converters.JSON
 import grails.transaction.Transactional
 
@@ -11,8 +12,11 @@ class CfcontactController {
 
     @Transactional
     def createContact() {
+        def instituteId = Long.parseLong(params.instituteId)
+        Institution institution = Institution.findById(instituteId)
+
         def contactDataJSON = JSON.parse(params.contact)
-        Contact contact = contactService.createContact(contactDataJSON)
+        Contact contact = contactService.createContact(contactDataJSON,institution)
         log.debug(contact)
 
         render model: [contact : contact]
@@ -33,12 +37,11 @@ class CfcontactController {
     }
 
     def listContactsNoInst () {
-        //def instituteId = Long.parseLong(params.instituteId)
+        def instituteId = Long.parseLong(params.instituteId)
         def criteria = Contact.createCriteria()
         def result = criteria {
             and {
-                //eq('institution.id',instituteId)
-                isNull('institution')
+                eq('institution.id',instituteId)
             }
 
         }

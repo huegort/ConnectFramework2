@@ -15,6 +15,7 @@
     <script>
         var contactData
         var editContactId
+        var instituteId
 
         $(document).ready(function () {
 
@@ -182,6 +183,7 @@
                 $('#institutionTab').addClass('active')
                 $('#levelRequestPanel').hide()
                 $('#previousStep').addClass('hidden')
+                $('#nextStep').removeClass('disabled')
             }
         }
 
@@ -195,6 +197,8 @@
                 },
                 success: function (data) {
                     $('#institutionDiv').empty()
+                    instituteId = ''
+                    instituteId = data.id
                     appendInstitution(data)
                     //When created it adds the institution view and the create button
                 }
@@ -276,7 +280,13 @@
                 type: "POST",
                 url: "${createLink(uri: '/cfcontact/createContact/')}",
                 data: {
-                    contact: JSON.stringify(contactData)
+                    contact: JSON.stringify(contactData),
+                    <g:if test="${createNewInstitution}">
+                        instituteId: instituteId
+                    </g:if>
+                    <g:else>
+                        instituteId: ${partnership.institution.id}
+                    </g:else>
                 },
                 success: function (data) {
 
@@ -322,11 +332,14 @@
         //Create ajax call to list contacts in the system with no institution
         function listContacts() {
             //Link to list contacts http://localhost:8080/ConnectFramework2/cfcontact/listContactsNoInst
+            //TODO Add contact to the institute --- List institutes contacts
             $.ajax({
                 type: 'POST',
                 url: '${createLink(uri: '/cfcontact/listContactsNoInst/')}',
                 <g:if test="${createNewInstitution}">
-
+                data: {
+                    instituteId: instituteId
+                },
                 </g:if>
                 <g:else>
                 data: {
@@ -489,13 +502,13 @@
 
                     <div id="stepTabs" style="margin-bottom: 10px;">
                         <ul class="nav nav-tabs">
-                            <li id="institutionTab" role="presentation" class="active">
+                            <li id="institutionTab" role="presentation" class="active disabled">
                                 <a>1. Create/Edit Institution</a>
                             </li>
-                            <li id="contactTab" role="presentation">
+                            <li id="contactTab" role="presentation" class="disabled">
                                 <a>2. Add Contacts</a>
                             </li>
-                            <li id="levelTab" role="presentation">
+                            <li id="levelTab" role="presentation" class="disabled">
                                 <a>3. Request Level</a>
                             </li>
                         </ul>

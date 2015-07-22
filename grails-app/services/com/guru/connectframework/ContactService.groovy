@@ -1,5 +1,6 @@
 package com.guru.connectframework
 import com.guru.connectframework.institution.Contact
+import com.guru.connectframework.institution.Institution
 import grails.transaction.Transactional
 import org.apache.commons.logging.LogFactory
 import org.codehaus.groovy.grails.web.json.JSONElement
@@ -28,13 +29,14 @@ class ContactService {
         log.debug(result.toString())
     }
 
-    def createContact(JSONElement contactDetails) {
+    def createContact(JSONElement contactDetails, Institution institution) {
         Contact contact
         //log.debug('In Create new contact ===========>>> '+ contactDetails.toString())
         //log.debug('In Create contact showing institution ' + institution.id)
 
         try {
                 contact = new Contact(contactDetails)
+                contact.institution = institution
 
                 /*contact.title = contactJSON["title"]
                 contact.firstName = contactJSON["firstName"]
