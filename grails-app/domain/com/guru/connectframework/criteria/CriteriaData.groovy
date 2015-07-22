@@ -1,9 +1,10 @@
 package com.guru.connectframework.criteria
 
+import com.guru.connectframework.CfEntity
 import com.guru.connectframework.Document
 
 
-class CriteriaData implements Comparable<CriteriaData>{
+class CriteriaData extends CfEntity implements Comparable<CriteriaData> {
     static belongsTo = [container: CriteriaDataContainer]
     Criteria criteria
     String valueString

@@ -1,6 +1,8 @@
 package com.guru.connectframework.activity
 
-class ActivityCategory {
+import com.guru.connectframework.CfEntity
+
+class ActivityCategory extends CfEntity{
     String name
 
     Date dateArchived

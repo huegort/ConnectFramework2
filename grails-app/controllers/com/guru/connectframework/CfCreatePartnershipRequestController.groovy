@@ -78,10 +78,12 @@ class CfCreatePartnershipRequestController {
     }
     @Transactional
     def createPartnershipRequest( ){
-        //log.debug("sanity9 " + params.partnershipLevelId)
-        // TODO get this from the params
+        log.debug("sanity9 " + params)
+
         ActivityType activityType = ActivityType.get(params.activityTypeId)
         log.debug("activityType :"+ activityType.id)
+
+
 
         def partnershipLevel = PartnershipLevel.get(params.partnershipLevelId)
         def data = JSON.parse(params.sendData)
@@ -89,7 +91,7 @@ class CfCreatePartnershipRequestController {
         def parnershipJSON = data.partnership
         def criteriaDataJSON = data.criteriaData
 
-        Institution institution1 = institutionService.createInstitutionFromJSON(data.institution)
+        Institution institution1 =  Institution.get(params.instituteId)
         Approval approval = approvalService.createApprovalFromJSON(approvalJSON)
 
         Partnership partnership = partnershipService.createPartnership(approval,institution1,partnershipLevel,parnershipJSON , criteriaDataJSON)

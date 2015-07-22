@@ -100,7 +100,7 @@
 
             $("#submitCriteria").click(function () {
                 var formData = {};
-                formData.institution = $("#institutionDiv :input").serializeJSON();
+                //formData.institution = $("#institutionDiv :input").serializeJSON();
                 formData.criteriaData = $("#criteriaDiv :input").serializeJSON();
                 formData.approval = $("#approvalDiv :input").serializeJSON();
                 formData.partnership = $("#partnershipDiv :input").serializeJSON();
@@ -128,6 +128,10 @@
                 })).append(jQuery('<input>', {
                     'name': 'contactId',
                     'value': $('#mainContactPartnertship option:selected').val(),
+                    'type': 'hidden'
+                })).append(jQuery('<input>', {
+                    'name': 'instituteId',
+                    'value': $("#institutionDiv :input[name='id']").val(),
                     'type': 'hidden'
                 }));
                 newForm.submit();
