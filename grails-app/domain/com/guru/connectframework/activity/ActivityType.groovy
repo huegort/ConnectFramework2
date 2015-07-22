@@ -1,5 +1,6 @@
 package com.guru.connectframework.activity
 
+import com.guru.connectframework.ApprovableTypeEnity
 import com.guru.connectframework.Document
 import com.guru.connectframework.Role
 import com.guru.connectframework.User
@@ -7,7 +8,7 @@ import com.guru.connectframework.criteria.CriteriaContainer
 import com.guru.connectframework.partnership.PartnershipLevel
 
 
-class ActivityType {
+class ActivityType extends ApprovableTypeEnity{
     def userService
 
     String name

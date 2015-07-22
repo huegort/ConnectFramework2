@@ -1,5 +1,6 @@
 package com.guru.connectframework.partnership
 
+import com.guru.connectframework.CfEntity
 import com.guru.connectframework.User
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.criteria.Approval
@@ -7,7 +8,7 @@ import com.guru.connectframework.criteria.CriteriaDataContainer
 import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.institution.Institution
 
-class Partnership {
+class Partnership extends CfEntity{
     String name
 
     User owner

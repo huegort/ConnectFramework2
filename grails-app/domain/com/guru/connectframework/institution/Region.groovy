@@ -1,6 +1,8 @@
 package com.guru.connectframework.institution
 
-class Region {
+import com.guru.connectframework.CfEntity
+
+class Region extends CfEntity{
     Date dateArchived
 
 
