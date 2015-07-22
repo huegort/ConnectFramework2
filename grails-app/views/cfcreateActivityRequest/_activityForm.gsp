@@ -24,7 +24,7 @@
         <g:message code="activity.contact.label" default="Contact" />
 
     </label>
-    <g:select id="contact" name="contact.id" from="${com.guru.connectframework.institution.Contact.list()}" optionKey="id" value="${activity?.contact?.id}" class="many-to-one form-control" noSelection="['null': '']"/>
+    <g:select id="contact" name="contact.id" from="${println(com.guru.connectframework.institution.Contact.findAllByInstitution(institution))}" optionKey="id" value="${activity?.contact?.name}" class="many-to-one form-control" noSelection="['null': '']"/>
 
 </div>
 

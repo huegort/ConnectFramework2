@@ -2,7 +2,7 @@ package com.guru.connectframework.institution
 
 import com.guru.connectframework.CfEntity
 
-class Contact extends CfEntity{
+class Contact{
     String title
     String firstName
     String lastName

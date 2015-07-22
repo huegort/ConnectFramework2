@@ -3,7 +3,7 @@ package com.guru.connectframework
 /**
  * Created by andrewbeatty on 22/07/15.
  */
-class CfEntity {
+abstract class CfEntity {
     long id
 
     def toStringForAudit(){

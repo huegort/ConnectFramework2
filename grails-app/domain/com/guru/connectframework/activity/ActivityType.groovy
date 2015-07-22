@@ -8,7 +8,7 @@ import com.guru.connectframework.criteria.CriteriaContainer
 import com.guru.connectframework.partnership.PartnershipLevel
 
 
-class ActivityType extends ApprovableTypeEnity{
+class ActivityType{
     def userService
 
     String name

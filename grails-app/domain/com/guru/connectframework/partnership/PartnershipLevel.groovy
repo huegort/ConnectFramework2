@@ -1,10 +1,8 @@
 package com.guru.connectframework.partnership
 
-import com.guru.connectframework.ApprovableTypeEnity
-import com.guru.connectframework.User
 import com.guru.connectframework.criteria.CriteriaContainer
 
-class PartnershipLevel extends ApprovableTypeEnity{
+class PartnershipLevel{
     def userService
     String name
     String description

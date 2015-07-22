@@ -4,7 +4,7 @@ import com.guru.connectframework.ApprovableTypeEnity
 import com.guru.connectframework.CfEntity
 import com.guru.connectframework.criteriatype.CriteriaType
 
-class Criteria extends ApprovableTypeEnity implements Comparable<Criteria>{
+class Criteria implements Comparable<Criteria>{
     static belongsTo = [container: CriteriaContainer]
     String name
     CriteriaContainer container
