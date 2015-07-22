@@ -7,7 +7,7 @@ class CfEntity {
     long id
 
     def toStringForAudit(){
-       //TODO decide defualt action for this
+       //TODO decide defualt action for this (JSON??)
     }
 
 }
