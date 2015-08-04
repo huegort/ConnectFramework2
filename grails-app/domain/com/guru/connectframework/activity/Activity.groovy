@@ -1,5 +1,4 @@
 package com.guru.connectframework.activity
-
 import com.guru.connectframework.CfEntity
 import com.guru.connectframework.Document
 import com.guru.connectframework.User
@@ -8,9 +7,7 @@ import com.guru.connectframework.criteria.CriteriaDataContainer
 import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.partnership.Partnership
 
-
-
-class Activity{
+class Activity extends CfEntity{
 
     String name
     String description
@@ -49,4 +46,6 @@ class Activity{
     String toString() {
         return name
     }
+
+
 }
