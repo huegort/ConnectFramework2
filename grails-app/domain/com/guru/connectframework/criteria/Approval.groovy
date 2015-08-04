@@ -4,7 +4,7 @@ import com.guru.connectframework.CfEntity
 import com.guru.connectframework.Criteria.CriteriaStatus
 import com.guru.connectframework.User
 
-class Approval extends CfEntity{
+class Approval {
     User createdBy
     Date created
 

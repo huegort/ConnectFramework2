@@ -3,7 +3,7 @@ package com.guru.connectframework.institution
 import com.guru.connectframework.CfEntity
 import com.guru.connectframework.partnership.Partnership
 
-class Institution extends CfEntity{
+class Institution {
     String name
     String description
     String address1

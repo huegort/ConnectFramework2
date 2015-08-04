@@ -2,7 +2,7 @@ package com.guru.connectframework.institution
 
 import com.guru.connectframework.CfEntity
 
-class Country extends CfEntity{
+class Country {
     String name
     Region region
     Date dateArchived

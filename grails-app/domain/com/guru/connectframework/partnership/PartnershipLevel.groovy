@@ -3,7 +3,7 @@ package com.guru.connectframework.partnership
 import com.guru.connectframework.CfEntity
 import com.guru.connectframework.criteria.CriteriaContainer
 
-class PartnershipLevel extends CfEntity{
+class PartnershipLevel {
     def userService
     String name
     String description
