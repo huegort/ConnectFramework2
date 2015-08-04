@@ -2,7 +2,7 @@ package com.guru.connectframework
 
 import com.guru.connectframework.documents.FileType
 
-class Document {
+class Document extends CfEntity{
     String filename
     byte[] filedata
     Date uploadDate = new Date()
