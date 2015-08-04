@@ -23,9 +23,10 @@ class CfuserController {
         respond partnershipInstance
     }
 
+    //TODO return a list off all institutions in the system
     def institutionsList() {
-        def q = params['q']
-        def institutionList = Institution.findAllByNameLike("%${q}%")
+        //def q = params['q']
+        def institutionList = Institution.getAll()
         render institutionList as JSON
     }
 

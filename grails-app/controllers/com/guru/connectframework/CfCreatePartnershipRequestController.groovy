@@ -93,10 +93,11 @@ class CfCreatePartnershipRequestController {
 
         Institution institution =  Institution.get(params.instituteId)
         Approval approval = approvalService.createApprovalFromJSON(approvalJSON)
+        log.debug('This is institution id ' + institution.id)
 
         Partnership partnership = partnershipService.createPartnership(approval,institution,partnershipLevel,parnershipJSON , criteriaDataJSON)
 
-        redirect(controller: "cfCreateActivityRequest", action: "createActivityCh", params: [partnershipId: partnership.id, activityTypeId: activityType.id, institution: institution])
+        redirect(controller: "cfCreateActivityRequest", action: "createActivityCh", params: [partnershipId: partnership.id, activityTypeId: activityType.id, institutionId: institution.id])
     }
     def test(){
         log.debug("sanity")

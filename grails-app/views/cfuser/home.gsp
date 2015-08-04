@@ -23,13 +23,11 @@
                 type: 'POST',
                 url: 'institutionsList',
                 dataType: 'json',
-                data: {
-                    q: $('#institutes').val()
-                },
                 success: function (data) {
                     var a = []
                     for (i = 0; i < data.length; i++) {
                         a.push(data[i].name)
+                        $('#institutionList').append('<option label="' + data[i].name + '" value="' + data[i].name + '  ">')
                     }
                     $('#institutes').autocomplete({
                         source: a
@@ -200,7 +198,10 @@
 
                         <div id="institute">
                             <h4>Please Select Institute</h4>
-                            <input id="institutes" type="text" class="form-control" value="" name="institutionId">
+                            <input id="institutes" type="text" class="form-control" value="" name="institutionId" list="institutionList">
+                            <datalist id="institutionList">
+                                <option label="test" value="test">
+                            </datalist>
                             <div class="fieldcontain ">
                                 <label for="createNewInstitution">
                                     Create New Institution

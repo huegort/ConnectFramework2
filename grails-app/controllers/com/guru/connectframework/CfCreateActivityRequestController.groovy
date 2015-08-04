@@ -1,11 +1,9 @@
 package com.guru.connectframework
-
 import com.guru.connectframework.activity.Activity
 import com.guru.connectframework.activity.ActivityType
 import com.guru.connectframework.criteria.Approval
 import com.guru.connectframework.institution.Institution
 import com.guru.connectframework.partnership.Partnership
-import com.guru.connectframework.partnership.PartnershipLevel
 import grails.converters.JSON
 import org.apache.commons.logging.LogFactory
 
@@ -18,10 +16,12 @@ class CfCreateActivityRequestController {
        //log.debug("chainModel:" + chainModel)
        ActivityType activityType = ActivityType.get(params.activityTypeId)
        Partnership partnership = Partnership.get(params.partnershipId)
+       Institution institution = Institution.get(params.institutionId)
+       log.debug('this is an institution in ' + institution)
        //log.debug("activity type 1: "+ activityType)
        //log.debug("partnership 1" + partnership)
        Activity activity = activityService.createDefaultActivity(activityType, partnership)
-       render (view: "index" , model: [partnership: partnership, activityType: activityType, activity: activity])
+       render (view: "index" , model: [partnership: partnership, activityType: activityType, activity: activity, institution: institution])
   }
 
 

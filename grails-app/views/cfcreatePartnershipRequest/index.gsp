@@ -76,6 +76,8 @@
                 // -1 represents a new contact
                 if ($('#contactId').val() == -1) {
                     createNewContact()
+                    $('#contactTable').show()
+
                 } else {
                     saveEditContact($('contactId').val())
                 }
@@ -147,9 +149,19 @@
                 //    }
                 //});
 
-            });
+            })
+
+
+            setTimeout(hideTableIfEmpty ,1000)
 
         });
+        function hideTableIfEmpty() {
+            if ($('#contactTable tbody').children().length == 0) {
+                $('#contactTable').hide()
+                $('#contactId').val('-1')
+                $('#createEditContactPanel').show()
+            }
+        }
 
         function nextStepForm() {
             if ($('#institutionPanel').is(':visible') && !$('#nextStep').hasClass('disabled')) {
