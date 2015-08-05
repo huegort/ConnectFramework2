@@ -27,12 +27,30 @@
                     var a = []
                     for (i = 0; i < data.length; i++) {
                         a.push(data[i].name)
-                        $('#institutionList').append('<option label="' + data[i].name + '" value="' + data[i].name + '  ">')
+                        //$('#institutionList').append('<option label="' + data[i].name + '" value="' + data[i].name + '  ">')
                     }
                     $('#institutes').autocomplete({
-                        source: a
+                        source: a,
+                        minLength:0,
+                        change: function (e, ui) {
+                            if (!('' || ui.item)) {
+                                e.target.value = ""
+                                $('#warningMessage').removeClass('hidden')
+                            }
+                        }
+                    })
+
+                    $('#institutes').click(function() {
+                        $('#warningMessage').addClass('hidden')
+                        $(this).autocomplete("search","")
                     })
                 }
+            })
+
+            /* Disables/Enables institution textbox */
+            $('#createNewInstitution').click(function () {
+                isCheckBoxChecked()
+                $('#warningMessage').addClass('hidden')
             })
 
             /* Sets the values to the select tag '#categories'*/
@@ -119,6 +137,16 @@
             })
 
         });
+
+        function isCheckBoxChecked() {
+            if($('#createNewInstitution').is(':checked')){
+                $('#institutes').val('')
+                $('#institutes').attr('disabled','disabled')
+            }else{
+                $('#institutes').removeAttr('disabled')
+            }
+        }
+
         /* Adds description when user chooses an activty */
         function getDescriptionContent() {
             $.ajax({
@@ -196,12 +224,11 @@
                 <div class="panel-body">
                     <g:form action="createActivityRequest">
 
+                        <div id="warningMessage" class="alert alert-warning hidden" role="alert">Please enter a valid institution or create new instution</div>
                         <div id="institute">
                             <h4>Please Select Institute</h4>
-                            <input id="institutes" type="text" class="form-control" value="" name="institutionId" list="institutionList">
-                            <datalist id="institutionList">
-                                <option label="test" value="test">
-                            </datalist>
+                            <input id="institutes" type="text" class="form-control" value="" name="institutionId">
+
                             <div class="fieldcontain ">
                                 <label for="createNewInstitution">
                                     Create New Institution
