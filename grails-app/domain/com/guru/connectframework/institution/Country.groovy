@@ -1,6 +1,8 @@
 package com.guru.connectframework.institution
 
-class Country{
+import com.guru.connectframework.CfEntity
+
+class Country {
     String name
     Region region
     Date dateArchived

@@ -1,5 +1,7 @@
 package com.guru.connectframework.activity
 
+import com.guru.connectframework.CfEntity
+
 class ActivityCategory{
     String name
 

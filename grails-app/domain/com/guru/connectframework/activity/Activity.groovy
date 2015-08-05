@@ -7,7 +7,7 @@ import com.guru.connectframework.criteria.CriteriaDataContainer
 import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.partnership.Partnership
 
-class Activity extends CfEntity{
+class Activity {
 
     String name
     String description

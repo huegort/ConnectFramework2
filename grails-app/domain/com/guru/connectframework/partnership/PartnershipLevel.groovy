@@ -1,8 +1,9 @@
 package com.guru.connectframework.partnership
 
+import com.guru.connectframework.CfEntity
 import com.guru.connectframework.criteria.CriteriaContainer
 
-class PartnershipLevel{
+class PartnershipLevel {
     def userService
     String name
     String description
