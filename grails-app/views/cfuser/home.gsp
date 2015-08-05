@@ -18,6 +18,11 @@
             $('#partnershipRequestPanel').hide()
             $('#currentActivitiesPanel').hide()
 
+            /* Disables buttons if values are empty*/
+            $('#activities').click(function() {
+                $('#createbutton').removeAttr('disabled')
+            })
+
             /*  Searches institutions when user types into textfield '#institutes' */
             $.ajax({
                 type: 'POST',
@@ -222,7 +227,7 @@
                 </div>
 
                 <div class="panel-body">
-                    <g:form action="createActivityRequest">
+                    <g:form name="createActivityForm" action="createActivityRequest">
 
                         <div id="warningMessage" class="alert alert-warning hidden" role="alert">Please enter a valid institution or create new instution</div>
                         <div id="institute">
@@ -276,9 +281,7 @@
                         </div>
 
                         <div style="text-align: right;">
-                            <input class="btn btn-default" id="createbutton" type="submit" value="Create"
-
-                                   style="margin-top: 15px;">
+                            <input class="btn btn-default" id="createbutton" type="submit" value="Create" style="margin-top: 15px;" disabled="disabled">
                         </div>
                     </g:form>
                 </div>

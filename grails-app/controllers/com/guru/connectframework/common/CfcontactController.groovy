@@ -1,4 +1,4 @@
-package com.guru.connectframework
+package com.guru.connectframework.common
 import com.guru.connectframework.institution.Contact
 import com.guru.connectframework.institution.Institution
 import grails.converters.JSON
